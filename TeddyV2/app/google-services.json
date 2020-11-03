@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "34322359457",
+    "firebase_url": "https://teddy-952e0.firebaseio.com",
+    "project_id": "teddy-952e0",
+    "storage_bucket": "teddy-952e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34322359457:android:e597012a795c1d2e3cbce0",
+        "android_client_info": {
+          "package_name": "com.example.teddyv2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34322359457-nocvmgbndq6a6f3a6rhd05d8p3qqp6og.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLHslzraAMv2lAoGNINNrgVB1f3S_0WyE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "34322359457-nocvmgbndq6a6f3a6rhd05d8p3qqp6og.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
