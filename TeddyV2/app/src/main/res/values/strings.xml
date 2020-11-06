@@ -10,6 +10,16 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_1">Buscador de partido</string>
+    <string name="tab_text_2">Crear un partido</string>
+    <string-array name="matchTypes">
+        <item>Individual</item>
+        <item>Por parejas</item>
+    </string-array>
+    <string-array name="difficultyTypes">
+        <item>Principiante</item>
+        <item>Amateur</item>
+        <item>Experto</item>
+        <item>Profesional</item>
+    </string-array>
 </resources>
