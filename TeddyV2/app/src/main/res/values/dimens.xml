@@ -5,4 +5,12 @@
     <dimen name="appbar_padding">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="input_lateral_margin">24dp</dimen>
+    <dimen name="button_lateral_margin">48dp</dimen>
+    <dimen name="input_main_margin">8dp</dimen>
+    <dimen name="button_top_margin">16dp</dimen>
+    <dimen name="login_general_margin">64dp</dimen>
+    <dimen name="button_height">64dp</dimen>
+    <dimen name="buttonText">20sp</dimen>
+    <dimen name="errorText">11sp</dimen>
 </resources>
