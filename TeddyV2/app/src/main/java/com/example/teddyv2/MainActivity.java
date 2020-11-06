@@ -2,10 +2,12 @@ package com.example.teddyv2;
 
 import android.os.Bundle;
 
+import com.example.teddyv2.ui.main.SettingsFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,8 +33,13 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                /*
+                SettingsFragment fragment = new SettingsFragment();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction()
+                        .add(android.R.id.content, fragment, fragment.getClass().getSimpleName())
+                        .commit();
+                */
             }
         });
     }

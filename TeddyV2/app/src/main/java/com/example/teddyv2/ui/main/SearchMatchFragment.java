@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.annotation.Nullable;
@@ -27,14 +26,14 @@ import java.util.Calendar;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class PlaceholderFragment extends Fragment {
+public class SearchMatchFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     private PageViewModel pageViewModel;
 
-    public static PlaceholderFragment newInstance(int index) {
-        PlaceholderFragment fragment = new PlaceholderFragment();
+    public static SearchMatchFragment newInstance(int index) {
+        SearchMatchFragment fragment = new SearchMatchFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(ARG_SECTION_NUMBER, index);
         fragment.setArguments(bundle);
@@ -57,17 +56,17 @@ public class PlaceholderFragment extends Fragment {
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_main, container, false);
+        View root = inflater.inflate(R.layout.fragment_search_match, container, false);
 
-        final Spinner matchType = root.findViewById(R.id.matchType);
+        final Spinner matchType = root.findViewById(R.id.matchTypeSearch);
         ArrayAdapter<String> adapterMatchType = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.matchTypes));
         matchType.setAdapter(adapterMatchType);
 
-        final Spinner difficultyType = root.findViewById(R.id.difficultyType);
+        final Spinner difficultyType = root.findViewById(R.id.difficultyTypeSearch);
         ArrayAdapter<String> adapterDifficultyType = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.difficultyTypes));
         difficultyType.setAdapter(adapterDifficultyType);
 
-        final EditText startHour = root.findViewById(R.id.startHour);
+        final EditText startHour = root.findViewById(R.id.startHourSearch);
         startHour.setInputType(InputType.TYPE_NULL);
         startHour.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +86,7 @@ public class PlaceholderFragment extends Fragment {
             }
         });
 
-        final EditText matchDate = root.findViewById(R.id.matchDate);
+        final EditText matchDate = root.findViewById(R.id.matchDateSearch);
         matchDate.setInputType(InputType.TYPE_NULL);
         matchDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,17 +107,6 @@ public class PlaceholderFragment extends Fragment {
             }
         });
 
-        if(pageViewModel.getIndex()==2){
-            matchType.setVisibility(View.GONE);
-            difficultyType.setVisibility(View.GONE);
-            startHour.setVisibility(View.GONE);
-            matchDate.setVisibility(View.GONE);
-        }else{
-            matchType.setVisibility(View.VISIBLE);
-            difficultyType.setVisibility(View.VISIBLE);
-            startHour.setVisibility(View.VISIBLE);
-            matchType.setVisibility(View.VISIBLE);
-        }
         pageViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

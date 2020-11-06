@@ -27,9 +27,15 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        switch(position){
+            case 0:
+                return SearchMatchFragment.newInstance(position+1);
+            default:
+                return CreateMatchFragment.newInstance();
+        }
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+
     }
 
     @Nullable
