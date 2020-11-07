@@ -39,4 +39,18 @@
         <item name="android:textSize">@dimen/errorText</item>
     </style>
 
+    <style name="TeddyProccessTitle" parent="AppTheme">
+        <item name="android:textSize">36sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/onPrimary</item>
+    </style>
+
+    <style name="TeddyPolicy" parent="AppTheme">
+        <item name="android:textColor">@color/onPrimary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@color/greyTint</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
 </resources>

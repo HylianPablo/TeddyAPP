@@ -13,4 +13,6 @@
     <dimen name="button_height">64dp</dimen>
     <dimen name="buttonText">20sp</dimen>
     <dimen name="errorText">11sp</dimen>
+    <dimen name="terms_margin">32dp</dimen>
+    <dimen name="policy_height">420dp</dimen>
 </resources>
