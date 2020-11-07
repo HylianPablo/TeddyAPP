@@ -33,13 +33,13 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*
+
                 SettingsFragment fragment = new SettingsFragment();
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction()
                         .add(android.R.id.content, fragment, fragment.getClass().getSimpleName())
                         .commit();
-                */
+
             }
         });
     }
