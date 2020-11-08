@@ -2,6 +2,7 @@ package com.example.teddyv2.ui.register;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
@@ -12,6 +13,14 @@ public class RegisterActivity extends AppCompatActivity {
 
     private User user;
 
+    private TermsFragment termsFragment;
+    private UserCreationFragment userCreationFragment;
+    private NameFragment nameFragment;
+    private ContactFragment contactFragment;
+    private PaymentFragment paymentFragment;
+    private LevelSelectionFragment levelSelectionFragment;
+    private RegistrationCongratsFragment registrationCongratsFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,63 +28,73 @@ public class RegisterActivity extends AppCompatActivity {
 
         if (savedInstanceState == null){
             user = new User();
-            TermsFragment fragment = TermsFragment.newInstance(this);
+
+            termsFragment = TermsFragment.newInstance(this);
+            userCreationFragment = UserCreationFragment.newInstance(this, user);
+            nameFragment = NameFragment.newInstance(this, user);
+            contactFragment = ContactFragment.newInstance(this, user);
+            paymentFragment = PaymentFragment.newInstance(this, user);
+            levelSelectionFragment = LevelSelectionFragment.newInstance(this, user);
+            registrationCongratsFragment = RegistrationCongratsFragment.newInstance();
 
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction()
-                    .add(android.R.id.content, fragment, fragment.getClass().getSimpleName())
+                    .add(android.R.id.content, termsFragment, termsFragment.getClass().getSimpleName())
                     .commit();
         }
     }
 
     public void navigateFromTermsToUserCreation(){
-        UserCreationFragment fragment = UserCreationFragment.newInstance(this, user);
-
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction()
-                .add(android.R.id.content, fragment, fragment.getClass().getSimpleName())
-                .commit();
+        FragmentTransaction ft = manager.beginTransaction()
+                .add(android.R.id.content, userCreationFragment, userCreationFragment.getClass().getSimpleName());
+        ft.hide(termsFragment);
+        ft.commit();
     }
 
     public void navigateFromUserCreationToName(){
-        NameFragment fragment = NameFragment.newInstance(this, user);
-
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction()
-                .add(android.R.id.content, fragment, fragment.getClass().getSimpleName())
-                .commit();
+        FragmentTransaction ft = manager.beginTransaction()
+                .add(android.R.id.content, nameFragment, nameFragment.getClass().getSimpleName());
+        ft.hide(userCreationFragment);
+        ft.commit();
     }
 
     public void navigateFromNameToContact(){
-        ContactFragment fragment = ContactFragment.newInstance(this, user);
-
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction()
-                .add(android.R.id.content, fragment, fragment.getClass().getSimpleName())
-                .commit();
+        FragmentTransaction ft = manager.beginTransaction()
+                .add(android.R.id.content, contactFragment, contactFragment.getClass().getSimpleName());
+        ft.hide(nameFragment);
+        ft.commit();
     }
 
     public void navigateFromContactToPayment(){
-        PaymentFragment fragment = PaymentFragment.newInstance(this, user);
-
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction()
-                .add(android.R.id.content, fragment, fragment.getClass().getSimpleName())
-                .commit();
+        FragmentTransaction ft = manager.beginTransaction()
+                .add(android.R.id.content, paymentFragment, paymentFragment.getClass().getSimpleName());
+        ft.hide(contactFragment);
+        ft.commit();
     }
 
-    private void navigateFromPaymentToCongrats(){
-        RegisterCongratsFragment fragment = RegisterCongratsFragment.newInstance();
-
+    public void navigateFromPaymentToLevelSelection(){
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction()
-                .add(android.R.id.content, fragment, fragment.getClass().getSimpleName())
-                .commit();
+        FragmentTransaction ft = manager.beginTransaction()
+                .add(android.R.id.content, levelSelectionFragment, levelSelectionFragment.getClass().getSimpleName());
+        ft.hide(paymentFragment);
+        ft.commit();
+    }
+
+    private void navigateFromLevelSelectionToCongrats(){
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction ft = manager.beginTransaction()
+                .add(android.R.id.content, registrationCongratsFragment, registrationCongratsFragment.getClass().getSimpleName());
+        ft.hide(levelSelectionFragment);
+        ft.commit();
     }
 
     public void finishRegistration(){
         // TODO: Include database transaction here to register the User
-        navigateFromPaymentToCongrats();
+        navigateFromLevelSelectionToCongrats();
     }
 
 }

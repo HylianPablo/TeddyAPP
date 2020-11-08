@@ -1,143 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".ui.login.LoginActivity"
-    android:background="@drawable/login_backgr">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/login_logo"
-        android:layout_width="match_parent"
-        android:layout_height="128dp"
-        android:layout_marginStart="@dimen/login_general_margin"
-        android:layout_marginTop="@dimen/login_general_margin"
-        android:layout_marginEnd="@dimen/login_general_margin"
-        android:src="@drawable/teddy_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/logo_description"/>
-
-    <ImageView
-        android:id="@+id/login_title"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/login_general_margin"
-        android:layout_marginStart="@dimen/login_general_margin"
-        android:layout_marginEnd="@dimen/login_general_margin"
-        android:src="@drawable/teddy"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_logo"
-        android:contentDescription="@string/app_name_description"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/username_layout"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/input_lateral_margin"
-        android:layout_marginTop="@dimen/input_main_margin"
-        android:layout_marginEnd="@dimen/input_lateral_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_title"
-        app:errorTextAppearance="@style/TeddyErrorText">
+        android:background="@drawable/login_backgr"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context=".ui.login.LoginActivity">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/username"
+        <ImageView
+            android:id="@+id/login_logo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints="@string/prompt_email"
-            android:hint="@string/prompt_email"
-            android:inputType="textEmailAddress"
-            android:selectAllOnFocus="true"
+            android:layout_height="128dp"
+            android:layout_marginStart="@dimen/login_general_margin"
+            android:layout_marginEnd="@dimen/login_general_margin"
+            android:contentDescription="@string/logo_description"
+            android:src="@drawable/teddy_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/password_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/input_lateral_margin"
-        android:layout_marginTop="@dimen/input_main_margin"
-        android:layout_marginEnd="@dimen/input_lateral_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_layout"
-        app:errorTextAppearance="@style/TeddyErrorText" >
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password"
+        <ImageView
+            android:id="@+id/login_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints="@string/prompt_password"
-            android:hint="@string/prompt_password"
-            android:imeActionLabel="@string/action_sign_in_short"
-            android:imeOptions="actionDone"
-            android:inputType="textPassword"
-            android:selectAllOnFocus="true"
+            android:layout_height="@dimen/login_general_margin"
+            android:layout_marginStart="@dimen/login_general_margin"
+            android:layout_marginEnd="@dimen/login_general_margin"
+            android:contentDescription="@string/app_name_description"
+            android:src="@drawable/teddy"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/login_logo" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/username_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/input_lateral_margin"
+            android:layout_marginTop="@dimen/input_main_margin"
+            android:layout_marginEnd="@dimen/input_lateral_margin"
+            app:errorTextAppearance="@style/TeddyErrorText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_title">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/login"
-        style="@style/TeddyButton.SecondaryColor"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/button_height"
-        android:layout_marginStart="@dimen/button_lateral_margin"
-        android:layout_marginTop="@dimen/button_top_margin"
-        android:layout_marginEnd="@dimen/button_lateral_margin"
-        android:layout_marginBottom="@dimen/login_general_margin"
-        android:enabled="false"
-        android:text="@string/action_sign_in"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_layout"
-        app:layout_constraintVertical_bias="0.2" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="@string/prompt_email"
+                android:hint="@string/prompt_email"
+                android:inputType="textEmailAddress"
+                android:selectAllOnFocus="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/register"
-        style="@style/TeddyButton.PrimaryVariantColor"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/button_height"
-        android:layout_marginStart="@dimen/button_lateral_margin"
-        android:layout_marginTop="@dimen/button_top_margin"
-        android:layout_marginEnd="@dimen/button_lateral_margin"
-        android:layout_marginBottom="@dimen/login_general_margin"
-        android:enabled="false"
-        android:text="@string/action_register"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login"
-        app:layout_constraintVertical_bias="0.2" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/input_lateral_margin"
+            android:layout_marginTop="@dimen/input_main_margin"
+            android:layout_marginEnd="@dimen/input_lateral_margin"
+            app:errorTextAppearance="@style/TeddyErrorText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/username_layout">
 
-    <ProgressBar
-        android:id="@+id/loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/login_general_margin"
-        android:layout_marginTop="@dimen/login_general_margin"
-        android:layout_marginEnd="@dimen/login_general_margin"
-        android:layout_marginBottom="@dimen/login_general_margin"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/password_layout"
-        app:layout_constraintStart_toStartOf="@+id/password_layout"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="@string/prompt_password"
+                android:hint="@string/prompt_password"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:selectAllOnFocus="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/login"
+            style="@style/TeddyButton.SecondaryColor"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginStart="@dimen/button_lateral_margin"
+            android:layout_marginTop="@dimen/button_top_margin"
+            android:layout_marginEnd="@dimen/button_lateral_margin"
+            android:layout_marginBottom="@dimen/login_general_margin"
+            android:enabled="false"
+            android:text="@string/action_sign_in"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password_layout"
+            app:layout_constraintVertical_bias="0.2" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/register"
+            style="@style/TeddyButton.PrimaryVariantColor"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginStart="@dimen/button_lateral_margin"
+            android:layout_marginTop="@dimen/button_top_margin"
+            android:layout_marginEnd="@dimen/button_lateral_margin"
+            android:layout_marginBottom="@dimen/login_general_margin"
+            android:enabled="false"
+            android:text="@string/action_register"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login"
+            app:layout_constraintVertical_bias="0.2" />
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/login_general_margin"
+            android:layout_marginTop="@dimen/login_general_margin"
+            android:layout_marginEnd="@dimen/login_general_margin"
+            android:layout_marginBottom="@dimen/login_general_margin"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/password_layout"
+            app:layout_constraintStart_toStartOf="@+id/password_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

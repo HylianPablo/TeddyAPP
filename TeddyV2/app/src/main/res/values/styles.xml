@@ -23,12 +23,12 @@
     </style>
 
     <style name="TeddyButton.SecondaryColor" parent="TeddyButton">
-        <item name="android:backgroundTint">@color/secondary</item>
+        <item name="android:backgroundTint">@color/btn_selector_secondary_color</item>
         <item name="android:textColor">@color/onSecondary</item>
     </style>
 
     <style name="TeddyButton.PrimaryVariantColor" parent="TeddyButton">
-        <item name="android:backgroundTint">@color/primaryVariant</item>
+        <item name="android:backgroundTint">@color/btn_selector_primaryvariant_color</item>
         <item name="android:textColor">@color/onPrimary</item>
     </style>
 

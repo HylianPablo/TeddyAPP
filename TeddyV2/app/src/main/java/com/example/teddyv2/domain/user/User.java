@@ -9,15 +9,17 @@ public class User {
     private String email;
     private String phone;
     private UserLevel level;
+    private String paymentAccount;
 
     public User(){
-        username = null;
-        password = null;
-        name = null;
-        surname = null;
-        email = null;
-        phone = null;
+        username = "";
+        password = "";
+        name = "";
+        surname = "";
+        email = "";
+        phone = "";
         level = null;
+        paymentAccount = "";
     }
 
     public User(
@@ -27,7 +29,8 @@ public class User {
             String surname,
             String email,
             String phone,
-            UserLevel level
+            UserLevel level,
+            String paymentAccount
     ){
         this.username = username;
         this.password = password;
@@ -36,6 +39,7 @@ public class User {
         this.email = email;
         this.phone = phone;
         this.level = level;
+        this.paymentAccount = paymentAccount;
     }
 
     public String getUsername() {
@@ -92,6 +96,14 @@ public class User {
 
     public void setLevel(UserLevel level) {
         this.level = level;
+    }
+
+    public String getPaymentAccount() {
+        return paymentAccount;
+    }
+
+    public void setPaymentAccount(String paymentAccount) {
+        this.paymentAccount = paymentAccount;
     }
 
 }

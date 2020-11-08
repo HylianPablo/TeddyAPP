@@ -16,6 +16,10 @@
     <string name="logo_description">Application logo</string>
     <string name="app_name_description">Application name: Teddy</string>
     <string name="small_placeholder">Lorem ipsum</string>
+    <string name="action_continue">continue</string>
+    <string name="prompt_username">Username</string>
+
+    <!-- Registration process Strings -->
     <string name="terms_title">Privacy policy</string>
     <string name="privacy_policy">
         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
@@ -43,5 +47,23 @@
         ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestib
     </string>
     <string name="policy_checkbox">I have read and I accept the privacy policy</string>
-    <string name="action_continue">continue</string>
+    <string name="user_creation_title">Create a user</string>
+    <string name="prompt_password_repetition">Repeat password</string>
+    <string name="name_registration_title">Name and Surname</string>
+    <string name="prompt_name">First name</string>
+    <string name="prompt_surname">Surname</string>
+    <string name="passwords_dont_match">passwords do not match</string>
+    <string name="contact_registration_title">Contact information</string>
+    <string name="phone_prompt">phone number</string>
+    <string name="invalid_phone">phone is not valid</string>
+    <string name="invalid_email">email is not valid</string>
+    <string name="payment_title">PayPal Account</string>
+    <string name="prompt_payment_account">PayPal account</string>
+    <string name="invalid_payment">invalid PayPal account</string>
+    <string-array name="level_spinner">
+        <item>Beginner</item>
+        <item>Amateur</item>
+        <item>Expert</item>
+        <item>Professional</item>
+    </string-array>
 </resources>

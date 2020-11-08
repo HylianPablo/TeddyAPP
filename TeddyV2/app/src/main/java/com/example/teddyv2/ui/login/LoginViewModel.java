@@ -52,6 +52,8 @@ public class LoginViewModel extends ViewModel {
         }
     }
 
+    // TODO: Pasar esto a una clase Utils que contega el checkeo de la contrasenna para
+    //  reutilizacion en el registro
     // A placeholder username validation check
     private boolean isUserNameValid(String username) {
         if (username == null) {
@@ -64,6 +66,8 @@ public class LoginViewModel extends ViewModel {
         }
     }
 
+    // TODO: Pasar esto a una clase Utils que contega el checkeo de la contrasenna para
+    //  reutilizacion en el registro
     // A placeholder password validation check
     private boolean isPasswordValid(String password) {
         return password != null && password.trim().length() > 5;

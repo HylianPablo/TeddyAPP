@@ -123,6 +123,7 @@ public class LoginActivity extends AppCompatActivity {
                         passwordEditText.getText().toString());
             }
         });
+        loginButton.setEnabled(true);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +132,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        registerButton.setEnabled(true);
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
