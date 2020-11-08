@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.teddyv2.MainActivity;
 import com.example.teddyv2.R;
 import com.example.teddyv2.domain.user.User;
 
@@ -35,7 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
             contactFragment = ContactFragment.newInstance(this, user);
             paymentFragment = PaymentFragment.newInstance(this, user);
             levelSelectionFragment = LevelSelectionFragment.newInstance(this, user);
-            registrationCongratsFragment = RegistrationCongratsFragment.newInstance();
+            registrationCongratsFragment = RegistrationCongratsFragment.newInstance(this);
 
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction()
@@ -95,6 +97,11 @@ public class RegisterActivity extends AppCompatActivity {
     public void finishRegistration(){
         // TODO: Include database transaction here to register the User
         navigateFromLevelSelectionToCongrats();
+    }
+
+    public void navigateToMainActivity(){
+        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
 }

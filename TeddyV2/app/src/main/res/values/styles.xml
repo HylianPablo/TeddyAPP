@@ -40,7 +40,14 @@
     </style>
 
     <style name="TeddyProccessTitle" parent="AppTheme">
-        <item name="android:textSize">36sp</item>
+        <item name="android:textSize">@dimen/title_text_size</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/onPrimary</item>
+    </style>
+
+    <style name="TeddySubtitle" parent="AppTheme">
+        <item name="android:textSize">@dimen/subtitle_text_size</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@color/onPrimary</item>
@@ -48,9 +55,13 @@
 
     <style name="TeddyPolicy" parent="AppTheme">
         <item name="android:textColor">@color/onPrimary</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/policy_text_size</item>
         <item name="android:background">@color/greyTint</item>
         <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TeddyButton.TeddySpinner" parent="TeddyButton">
+        <item name="android:background">@color/greyTint</item>
     </style>
 
 </resources>

@@ -18,6 +18,7 @@
     <string name="small_placeholder">Lorem ipsum</string>
     <string name="action_continue">continue</string>
     <string name="prompt_username">Username</string>
+    <string name="congratulations">Congratulations!</string>
 
     <!-- Registration process Strings -->
     <string name="terms_title">Privacy policy</string>
@@ -60,10 +61,6 @@
     <string name="payment_title">PayPal Account</string>
     <string name="prompt_payment_account">PayPal account</string>
     <string name="invalid_payment">invalid PayPal account</string>
-    <string-array name="level_spinner">
-        <item>Beginner</item>
-        <item>Amateur</item>
-        <item>Expert</item>
-        <item>Professional</item>
-    </string-array>
+    <string name="level_selection_title">Level Selection</string>
+    <string name="registration_congrats_subtitle">You account has been successfully created!</string>
 </resources>

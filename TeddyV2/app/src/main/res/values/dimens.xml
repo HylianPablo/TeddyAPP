@@ -12,8 +12,13 @@
     <dimen name="login_general_margin">64dp</dimen>
     <dimen name="button_height">64dp</dimen>
     <dimen name="buttonText">20sp</dimen>
+    <dimen name="policy_text_size">14sp</dimen>
     <dimen name="errorText">11sp</dimen>
     <dimen name="terms_margin">32dp</dimen>
     <dimen name="form_vertical_margin">64dp</dimen>
     <dimen name="policy_height">320dp</dimen>
+    <dimen name="title_text_size">36sp</dimen>
+    <dimen name="subtitle_text_size">28sp</dimen>
+    <dimen name="splash_height">300dp</dimen>
+    <dimen name="congrats_margin">24dp</dimen>
 </resources>
