@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Patterns;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,12 +16,11 @@ import android.widget.TextView;
 
 import com.example.teddyv2.R;
 import com.example.teddyv2.domain.user.User;
+import com.example.teddyv2.utils.ValidationUtils;
 import com.google.android.material.textfield.TextInputLayout;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link ContactFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Fragmento encargado de recoger los datos de contacto del Usuario.
  */
 public class ContactFragment extends Fragment {
 
@@ -39,10 +37,20 @@ public class ContactFragment extends Fragment {
     private TextInputLayout emailLayout;
     private EditText emailText;
 
+    /**
+     * Establece referencia con la Actividad de Registro.
+     *
+     * @param registerActivity actividad de registro asociada
+     */
     private void setRegisterActivity(RegisterActivity registerActivity){
         this.registerActivity = registerActivity;
     }
 
+    /**
+     * Establece referencia con el Usuario que se se esta creando.
+     *
+     * @param user usuario que se esta creando
+     */
     private void setUser(User user){
         this.user = user;
     }
@@ -52,10 +60,10 @@ public class ContactFragment extends Fragment {
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * Metodo factoria a usar en lugar del constructor para una correcta instanciacion del
+     * Fragmento.
      *
-     * @return A new instance of fragment ContactFragment.
+     * @return instancia del Fragmento
      */
     public static ContactFragment newInstance(RegisterActivity registerActivity, User user) {
         ContactFragment fragment = new ContactFragment();
@@ -79,15 +87,24 @@ public class ContactFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Asigna las referencias a los elementos del Layout con las variables.
+     *
+     * @param view vista del layout
+     */
     private void assignLayoutVariables(View view){
-        title = (TextView) view.findViewById(R.id.two_input_layout_title);
-        continueBtn = (Button) view.findViewById(R.id.two_input_continue_btn);
-        phoneLayout = (TextInputLayout) view.findViewById(R.id.two_input_layout_first_inputLayout);
-        phoneText = (EditText) view.findViewById(R.id.two_input_layout_first_editText);
-        emailLayout = (TextInputLayout) view.findViewById(R.id.two_input_layout_second_inputLayout);
-        emailText = (EditText) view.findViewById(R.id.two_input_layout_second_editText);
+        title = view.findViewById(R.id.two_input_layout_title);
+        continueBtn = view.findViewById(R.id.two_input_continue_btn);
+        phoneLayout = view.findViewById(R.id.two_input_layout_first_inputLayout);
+        phoneText = view.findViewById(R.id.two_input_layout_first_editText);
+        emailLayout = view.findViewById(R.id.two_input_layout_second_inputLayout);
+        emailText = view.findViewById(R.id.two_input_layout_second_editText);
     }
 
+    /**
+     * Establece el aspecto que debe tener el layout correspondiente, ya que se crea a partir de una
+     * plantilla.
+     */
     private void setLayoutLook(){
         title.setText(R.string.contact_registration_title);
 
@@ -106,6 +123,10 @@ public class ContactFragment extends Fragment {
         continueBtn.setEnabled(isContinueOk());
     }
 
+    /**
+     * Annade los controladores correspondientes a los elementos interactivos (botones, entradas de
+     * texto, etc.).
+     */
     private void setUpListeners(){
         phoneText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -113,7 +134,7 @@ public class ContactFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(!isPhoneValid(phoneText.getText().toString())){
+                if(!ValidationUtils.isValidPhone(phoneText.getText().toString())){
                     phoneLayout.setError(getString(R.string.invalid_phone));
                 }else{
                     phoneLayout.setError(null);
@@ -131,7 +152,7 @@ public class ContactFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(!isEmailValid(emailText.getText().toString())){
+                if(!ValidationUtils.isValidEmail(emailText.getText().toString())){
                     emailLayout.setError(getString(R.string.invalid_email));
                 }else{
                     emailLayout.setError(null);
@@ -152,21 +173,24 @@ public class ContactFragment extends Fragment {
         });
     }
 
+    /**
+     * Guarda los datos del Usuario. Llamar a esta funcion previo a finalizar este Fragmento.
+     */
     private void setUserData(){
         user.setPhone(phoneText.getText().toString());
         user.setEmail(emailText.getText().toString());
     }
 
-    // TODO: Move the validation to a utils class
+    /**
+     * Determina si el puede continuarse al siguiente Fragmento.
+     * @return {@code true} si se han rellenado correctamente todos los campos o {@code false} en
+     * caso contrario
+     */
     private boolean isContinueOk(){
-        return (isPhoneValid(phoneText.getText().toString()) && isEmailValid(emailText.getText().toString()));
+        return (
+                ValidationUtils.isValidPhone(phoneText.getText().toString())
+                        && ValidationUtils.isValidEmail(emailText.getText().toString())
+        );
     }
 
-    private boolean isPhoneValid(String phone){
-        return Patterns.PHONE.matcher(phone).matches();
-    }
-
-    private boolean isEmailValid(String email){
-        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
 }

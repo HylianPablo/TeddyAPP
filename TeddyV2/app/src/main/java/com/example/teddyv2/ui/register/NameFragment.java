@@ -16,12 +16,11 @@ import android.widget.TextView;
 
 import com.example.teddyv2.R;
 import com.example.teddyv2.domain.user.User;
+import com.example.teddyv2.utils.ValidationUtils;
 import com.google.android.material.textfield.TextInputLayout;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link NameFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Fragmento encargado de recoger el nombre y apellido del Usuario.
  */
 public class NameFragment extends Fragment {
 
@@ -38,10 +37,20 @@ public class NameFragment extends Fragment {
     private TextInputLayout surnameLayout;
     private EditText surnameText;
 
+    /**
+     * Establece referencia con la Actividad de Registro.
+     *
+     * @param registerActivity actividad de registro asociada
+     */
     private void setRegisterActivity(RegisterActivity registerActivity){
         this.registerActivity = registerActivity;
     }
 
+    /**
+     * Establece referencia con el Usuario que se se esta creando.
+     *
+     * @param user usuario que se esta creando
+     */
     private void setUser(User user){
         this.user = user;
     }
@@ -51,12 +60,11 @@ public class NameFragment extends Fragment {
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * Metodo factoria a usar en lugar del constructor para una correcta instanciacion del
+     * Fragmento.
      *
-     * @return A new instance of fragment NameFragment.
+     * @return instancia del Fragmento
      */
-    // TODO: Rename and change types and number of parameters
     public static NameFragment newInstance(RegisterActivity registerActivity, User user) {
         NameFragment fragment = new NameFragment();
         fragment.setRegisterActivity(registerActivity);
@@ -79,15 +87,24 @@ public class NameFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Asigna las referencias a los elementos del Layout con las variables.
+     *
+     * @param view vista del layout
+     */
     private void assignLayoutVariables(View view){
-        title = (TextView) view.findViewById(R.id.two_input_layout_title);
-        continueBtn = (Button) view.findViewById(R.id.two_input_continue_btn);
-        nameLayout = (TextInputLayout) view.findViewById(R.id.two_input_layout_first_inputLayout);
-        nameText = (EditText) view.findViewById(R.id.two_input_layout_first_editText);
-        surnameLayout = (TextInputLayout) view.findViewById(R.id.two_input_layout_second_inputLayout);
-        surnameText = (EditText) view.findViewById(R.id.two_input_layout_second_editText);
+        title = view.findViewById(R.id.two_input_layout_title);
+        continueBtn = view.findViewById(R.id.two_input_continue_btn);
+        nameLayout = view.findViewById(R.id.two_input_layout_first_inputLayout);
+        nameText = view.findViewById(R.id.two_input_layout_first_editText);
+        surnameLayout = view.findViewById(R.id.two_input_layout_second_inputLayout);
+        surnameText = view.findViewById(R.id.two_input_layout_second_editText);
     }
 
+    /**
+     * Establece el aspecto que debe tener el layout correspondiente, ya que se crea a partir de una
+     * plantilla.
+     */
     private void setLayoutLook(){
         title.setText(R.string.name_registration_title);
 
@@ -106,8 +123,12 @@ public class NameFragment extends Fragment {
         continueBtn.setEnabled(isContinueOk());
     }
 
+    /**
+     * Annade los controladores correspondientes a los elementos interactivos (botones, entradas de
+     * texto, etc.).
+     */
     private void setUpListeners(){
-        // Watcher can be equal for both
+        // Watcher puede ser el mismo en ambos
         TextWatcher watcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
@@ -133,10 +154,21 @@ public class NameFragment extends Fragment {
         });
     }
 
+    /**
+     * Determina si el puede continuarse al siguiente Fragmento.
+     * @return {@code true} si se han rellenado correctamente todos los campos o {@code false} en
+     * caso contrario
+     */
     private boolean isContinueOk(){
-        return (!nameText.getText().toString().equals("") && !surnameText.getText().toString().equals(""));
+        return (
+                ValidationUtils.isNotNull(nameText.getText().toString())
+                        && ValidationUtils.isNotNull(surnameText.getText().toString())
+        );
     }
 
+    /**
+     * Guarda los datos del Usuario. Llamar a esta funcion previo a finalizar este Fragmento.
+     */
     private void setUserData(){
         user.setName(nameText.getText().toString());
         user.setSurname(surnameText.getText().toString());

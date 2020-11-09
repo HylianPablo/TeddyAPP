@@ -13,9 +13,8 @@ import android.widget.CheckBox;
 import com.example.teddyv2.R;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link TermsFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Fragmento inicial del registro que presenta al usuario con la politica de privacidad que debe
+ * aceptar para poder continuar.
  */
 public class TermsFragment extends Fragment {
 
@@ -24,6 +23,11 @@ public class TermsFragment extends Fragment {
     private CheckBox checkbox;
     private Button continueBtn;
 
+    /**
+     * Establece referencia con la Actividad de Registro.
+     *
+     * @param registerActivity actividad de registro asociada
+     */
     private void setRegisterActivity(RegisterActivity registerActivity){
         this.registerActivity = registerActivity;
     }
@@ -33,11 +37,10 @@ public class TermsFragment extends Fragment {
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * Metodo factoria a usar en lugar del constructor para una correcta instanciacion del
+     * Fragmento.
      *
-     * @param registerActivity RegisterActivity linked to teh fragment for callback
-     * @return A new instance of fragment TermsFragment.
+     * @return instancia del Fragmento
      */
     public static TermsFragment newInstance(RegisterActivity registerActivity) {
         TermsFragment fragment = new TermsFragment();
@@ -55,8 +58,8 @@ public class TermsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_terms, container, false);
-        checkbox = (CheckBox) vista.findViewById(R.id.policy_checkbox);
-        continueBtn = (Button) vista.findViewById(R.id.policy_continue_btn);
+        checkbox = vista.findViewById(R.id.policy_checkbox);
+        continueBtn = vista.findViewById(R.id.policy_continue_btn);
 
         continueBtn.setEnabled(checkbox.isChecked());
         continueBtn.setOnClickListener(new View.OnClickListener() {

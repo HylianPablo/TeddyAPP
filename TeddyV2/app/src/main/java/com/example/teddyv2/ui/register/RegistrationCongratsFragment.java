@@ -13,9 +13,8 @@ import android.widget.TextView;
 import com.example.teddyv2.R;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link RegistrationCongratsFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Fragmento puramente estetico para dar al usuario un mensaje indicando que la creacion de su
+ * cuenta se ha llevado acabo de forma exitosa.
  */
 public class RegistrationCongratsFragment extends Fragment {
 
@@ -29,14 +28,20 @@ public class RegistrationCongratsFragment extends Fragment {
         // Required empty public constructor
     }
 
+    /**
+     * Establece referencia con la Actividad de Registro.
+     *
+     * @param registerActivity actividad de registro asociada
+     */
     private void setRegisterActivity(RegisterActivity registerActivity){
         this.registerActivity = registerActivity;
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     * @return A new instance of fragment RegistrationCongratsFragment.
+     * Metodo factoria a usar en lugar del constructor para una correcta instanciacion del
+     * Fragmento.
+     *
+     * @return instancia del Fragmento
      */
     public static RegistrationCongratsFragment newInstance(RegisterActivity registerActivity) {
         RegistrationCongratsFragment fragment = new RegistrationCongratsFragment();
@@ -59,15 +64,28 @@ public class RegistrationCongratsFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Asigna las referencias a los elementos del Layout con las variables.
+     *
+     * @param view vista del layout
+     */
     private void assignLayoutVariables(View view){
-        subTitle = (TextView) view.findViewById(R.id.congrats_subtitle);
-        continueBtn = (Button) view.findViewById(R.id.congrats_continue_btn);
+        subTitle = view.findViewById(R.id.congrats_subtitle);
+        continueBtn = view.findViewById(R.id.congrats_continue_btn);
     }
 
+    /**
+     * Establece el aspecto que debe tener el layout correspondiente, ya que se crea a partir de una
+     * plantilla.
+     */
     private void setLayoutLook(){
         subTitle.setText(R.string.registration_congrats_subtitle);
     }
 
+    /**
+     * Annade los controladores correspondientes a los elementos interactivos (botones, entradas de
+     * texto, etc.).
+     */
     private void setUpListeners(){
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override

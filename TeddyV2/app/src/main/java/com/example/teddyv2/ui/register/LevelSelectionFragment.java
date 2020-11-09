@@ -18,9 +18,7 @@ import com.example.teddyv2.domain.user.User;
 import com.example.teddyv2.domain.user.UserLevel;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link LevelSelectionFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Fragmento encargado de recoger el nivel del Usuario.
  */
 public class LevelSelectionFragment extends Fragment {
 
@@ -32,10 +30,20 @@ public class LevelSelectionFragment extends Fragment {
     private Button continueBtn;
     private Spinner spinner;
 
+    /**
+     * Establece referencia con la Actividad de Registro.
+     *
+     * @param registerActivity actividad de registro asociada
+     */
     private void setRegisterActivity(RegisterActivity registerActivity){
         this.registerActivity = registerActivity;
     }
 
+    /**
+     * Establece referencia con el Usuario que se se esta creando.
+     *
+     * @param user usuario que se esta creando
+     */
     private void setUser(User user){
         this.user = user;
     }
@@ -45,10 +53,10 @@ public class LevelSelectionFragment extends Fragment {
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * Metodo factoria a usar en lugar del constructor para una correcta instanciacion del
+     * Fragmento.
      *
-     * @return A new instance of fragment RegisterCongratsFragment.
+     * @return instancia del Fragmento
      */
     public static LevelSelectionFragment newInstance(RegisterActivity registerActivity, User user) {
         LevelSelectionFragment fragment = new LevelSelectionFragment();
@@ -72,12 +80,21 @@ public class LevelSelectionFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Asigna las referencias a los elementos del Layout con las variables.
+     *
+     * @param view vista del layout
+     */
     private void assignLayoutVariables(View view) {
-        title = (TextView) view.findViewById(R.id.single_spinner_layout_title);
-        continueBtn = (Button) view.findViewById(R.id.single_spinner_continue_btn);
-        spinner = (Spinner) view.findViewById(R.id.single_spinner_layout_spinner);
+        title = view.findViewById(R.id.single_spinner_layout_title);
+        continueBtn = view.findViewById(R.id.single_spinner_continue_btn);
+        spinner = view.findViewById(R.id.single_spinner_layout_spinner);
     }
 
+    /**
+     * Establece el aspecto que debe tener el layout correspondiente, ya que se crea a partir de una
+     * plantilla.
+     */
     private void setLayoutLook(){
         title.setText(R.string.level_selection_title);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -89,10 +106,15 @@ public class LevelSelectionFragment extends Fragment {
         spinner.setAdapter(adapter);
     }
 
+    /**
+     * Annade los controladores correspondientes a los elementos interactivos (botones, entradas de
+     * texto, etc.).
+     */
     private void setUpListeners(){
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                // En este caso se setea aqui el dato del usuario porque es mas sencillo
                 user.setLevel(UserLevel.getUserLevelByNumber(i));
                 continueBtn.setEnabled(true);
             }

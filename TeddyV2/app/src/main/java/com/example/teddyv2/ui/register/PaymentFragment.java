@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +16,13 @@ import android.widget.TextView;
 
 import com.example.teddyv2.R;
 import com.example.teddyv2.domain.user.User;
+import com.example.teddyv2.utils.ValidationUtils;
 import com.google.android.material.textfield.TextInputLayout;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link PaymentFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Fragmento encargado de recoger los datos de pago del Usuario.
+ * <br>
+ * Se asume que el dato de pago es una cuenta PayPal.
  */
 public class PaymentFragment extends Fragment {
 
@@ -36,10 +36,20 @@ public class PaymentFragment extends Fragment {
     private TextInputLayout paymentLayout;
     private EditText paymentText;
 
+    /**
+     * Establece referencia con la Actividad de Registro.
+     *
+     * @param registerActivity actividad de registro asociada
+     */
     private void setRegisterActivity(RegisterActivity registerActivity){
         this.registerActivity = registerActivity;
     }
 
+    /**
+     * Establece referencia con el Usuario que se se esta creando.
+     *
+     * @param user usuario que se esta creando
+     */
     private void setUser(User user){
         this.user = user;
     }
@@ -49,10 +59,10 @@ public class PaymentFragment extends Fragment {
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * Metodo factoria a usar en lugar del constructor para una correcta instanciacion del
+     * Fragmento.
      *
-     * @return A new instance of fragment PaymentFragment.
+     * @return instancia del Fragmento
      */
     public static PaymentFragment newInstance(RegisterActivity registerActivity, User user) {
         PaymentFragment fragment = new PaymentFragment();
@@ -76,13 +86,22 @@ public class PaymentFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Asigna las referencias a los elementos del Layout con las variables.
+     *
+     * @param view vista del layout
+     */
     private void assignLayoutVariables(View view){
-        title = (TextView) view.findViewById(R.id.single_input_layout_title);
-        continueBtn = (Button) view.findViewById(R.id.single_input_continue_btn);
-        paymentLayout = (TextInputLayout) view.findViewById(R.id.single_input_layout_inputLayout);
-        paymentText = (EditText) view.findViewById(R.id.single_input_layout_editText);
+        title = view.findViewById(R.id.single_input_layout_title);
+        continueBtn = view.findViewById(R.id.single_input_continue_btn);
+        paymentLayout =  view.findViewById(R.id.single_input_layout_inputLayout);
+        paymentText = view.findViewById(R.id.single_input_layout_editText);
     }
 
+    /**
+     * Establece el aspecto que debe tener el layout correspondiente, ya que se crea a partir de una
+     * plantilla.
+     */
     private void setLayoutLook(){
         title.setText(R.string.payment_title);
 
@@ -95,6 +114,10 @@ public class PaymentFragment extends Fragment {
         continueBtn.setEnabled(isContinueOk());
     }
 
+    /**
+     * Annade los controladores correspondientes a los elementos interactivos (botones, entradas de
+     * texto, etc.).
+     */
     private void setUpListeners(){
         paymentText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -123,10 +146,18 @@ public class PaymentFragment extends Fragment {
         });
     }
 
+    /**
+     * Determina si el puede continuarse al siguiente Fragmento.
+     * @return {@code true} si se han rellenado correctamente todos los campos o {@code false} en
+     * caso contrario
+     */
     private boolean isContinueOk(){
-        return Patterns.EMAIL_ADDRESS.matcher(paymentText.getText().toString()).matches();
+        return ValidationUtils.isValidEmail(paymentText.getText().toString());
     }
 
+    /**
+     * Guarda los datos del Usuario. Llamar a esta funcion previo a finalizar este Fragmento.
+     */
     private void setUserData(){
         user.setPaymentAccount(paymentText.getText().toString());
     }

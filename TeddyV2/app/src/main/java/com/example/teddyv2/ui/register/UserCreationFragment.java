@@ -16,12 +16,14 @@ import android.widget.TextView;
 
 import com.example.teddyv2.R;
 import com.example.teddyv2.domain.user.User;
+import com.example.teddyv2.utils.ValidationUtils;
 import com.google.android.material.textfield.TextInputLayout;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link UserCreationFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Fragmento encargado de recoger el nombre de usuario y contrasenna. El nombre de usuario deberia
+ * validarse contra la base de datos para comprobar si existe. Lo mas correcto referido a UX seria
+ * comprobarlo segun lo va escribiendo, pero puede ser mas eficiente hacerlo al pulsar el boton,
+ * ya que la escalabilidad en caso contrario se veria muy afectada.
  */
 public class UserCreationFragment extends Fragment {
 
@@ -42,10 +44,20 @@ public class UserCreationFragment extends Fragment {
     private EditText passwordRepeatText;
 
 
+    /**
+     * Establece referencia con la Actividad de Registro.
+     *
+     * @param registerActivity actividad de registro asociada
+     */
     private void setRegisterActivity(RegisterActivity registerActivity){
         this.registerActivity = registerActivity;
     }
 
+    /**
+     * Establece referencia con el Usuario que se se esta creando.
+     *
+     * @param user usuario que se esta creando
+     */
     private void setUser(User user){
         this.user = user;
     }
@@ -55,12 +67,11 @@ public class UserCreationFragment extends Fragment {
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * Metodo factoria a usar en lugar del constructor para una correcta instanciacion del
+     * Fragmento.
      *
-     * @return A new instance of fragment UserCreationFragment.
+     * @return instancia del Fragmento
      */
-    // TODO: Rename and change types and number of parameters
     public static UserCreationFragment newInstance(RegisterActivity registerActivity, User user) {
         UserCreationFragment fragment = new UserCreationFragment();
         fragment.setRegisterActivity(registerActivity);
@@ -84,17 +95,26 @@ public class UserCreationFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Asigna las referencias a los elementos del Layout con las variables.
+     *
+     * @param view vista del layout
+     */
     private void assignLayoutVariables(View view){
-        title = (TextView) view.findViewById(R.id.three_input_layout_title);
-        continueBtn = (Button) view.findViewById(R.id.three_input_continue_btn);
-        userLayout = (TextInputLayout) view.findViewById(R.id.three_input_layout_first_inputLayout);
-        userText = (EditText) view.findViewById(R.id.three_input_layout_first_editText);
-        passwordLayout = (TextInputLayout) view.findViewById(R.id.three_input_layout_second_inputLayout);
-        passwordText = (EditText) view.findViewById(R.id.three_input_layout_second_editText);
-        passwordRepeatLayout = (TextInputLayout) view.findViewById(R.id.three_input_layout_third_inputLayout);
-        passwordRepeatText = (EditText) view.findViewById(R.id.three_input_layout_third_editText);
+        title = view.findViewById(R.id.three_input_layout_title);
+        continueBtn = view.findViewById(R.id.three_input_continue_btn);
+        userLayout = view.findViewById(R.id.three_input_layout_first_inputLayout);
+        userText = view.findViewById(R.id.three_input_layout_first_editText);
+        passwordLayout = view.findViewById(R.id.three_input_layout_second_inputLayout);
+        passwordText = view.findViewById(R.id.three_input_layout_second_editText);
+        passwordRepeatLayout = view.findViewById(R.id.three_input_layout_third_inputLayout);
+        passwordRepeatText = view.findViewById(R.id.three_input_layout_third_editText);
     }
 
+    /**
+     * Establece el aspecto que debe tener el layout correspondiente, ya que se crea a partir de una
+     * plantilla.
+     */
     private void setLayoutLook(){
         title.setText(R.string.user_creation_title);
 
@@ -117,12 +137,20 @@ public class UserCreationFragment extends Fragment {
         continueBtn.setEnabled(isContinueOk());
     }
 
+    /**
+     * Annade los controladores correspondientes a los elementos interactivos (botones, entradas de
+     * texto, etc.).
+     */
     private void setUpListeners(){
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setUserData();
-                registerActivity.navigateFromUserCreationToName();
+                if(isAvailableUserName()){
+                    setUserData();
+                    registerActivity.navigateFromUserCreationToName();
+                }else{
+                    userLayout.setError(getString(R.string.username_taken_error));
+                }
             }
         });
 
@@ -132,7 +160,7 @@ public class UserCreationFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(!isValidUserName()){
+                if(!ValidationUtils.isNotNull(userText.getText().toString())){
                     userLayout.setError(getString(R.string.invalid_username));
                 }else{
                     userLayout.setError(null);
@@ -150,7 +178,7 @@ public class UserCreationFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(!isPasswordValid()){
+                if(!ValidationUtils.isValidPassword(passwordText.getText().toString())){
                     passwordLayout.setError(getString(R.string.invalid_password));
                 }else{
                     passwordLayout.setError(null);
@@ -181,27 +209,46 @@ public class UserCreationFragment extends Fragment {
         });
     }
 
-    private boolean isValidUserName(){
-        // TODO: Comprobar que este nombre de usuario ne existe con la base de datos
-        // TODO: Cambiar este stub
-        return !userText.getText().toString().equals("");
-    }
-
-    // TODO: mover a una clase utils para reutilizacion
-    private boolean isPasswordValid() {
-        return (!passwordText.getText().toString().equals("") && passwordText.getText().toString().trim().length() > 5);
-    }
-
+    /**
+     * Comprueba que las dos contrasennas introducidas coincidan.
+     *
+     * @return {@code true} si coinciden o {@code false} en caso contrario
+     */
     private boolean passwordsMatch(){
         return passwordText.getText().toString().equals(passwordRepeatText.getText().toString());
     }
 
+    /**
+     * Determina si el boton puede estar habilitado o no.
+     *
+     * @return {@code true} si se han rellenado correctamente todos los campos o {@code false} en
+     * caso contrario
+     */
     private boolean isContinueOk(){
-        return (isValidUserName() && isPasswordValid() && passwordsMatch());
+        return (
+                ValidationUtils.isNotNull(userText.getText().toString())
+                        && ValidationUtils.isValidPassword(passwordText.getText().toString())
+                        && passwordsMatch()
+        );
     }
 
+    /**
+     * Guarda los datos del Usuario. Llamar a esta funcion previo a finalizar este Fragmento.
+     */
     private void setUserData(){
         user.setUsername(userText.getText().toString());
         user.setPassword(passwordText.getText().toString());
+    }
+
+    /**
+     * Comprueba que el nombre de usuario indicado esta disponible con la base de datos.
+     *
+     * @return {@code true} si el nombre de usuario indicado esta disponible o {@code false} en
+     * caso contrario
+     */
+    private boolean isAvailableUserName(){
+        // TODO: Combrobar en la base de datos si el nombre de usuario esta disponible
+        // TODO: implement!
+        return true;
     }
 }
