@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/cardview_light_background">
+    <PreferenceCategory
+        android:title="Datos personales">
+
+        <EditTextPreference
+            android:key="accesstoken"
+            android:icon="@drawable/baseline_account_circle_black_18dp"
+            android:summary="Subtitulo 1"
+            android:title="Nombre de usuario" />
+
+        <EditTextPreference
+            android:key="accesstokensecret"
+            android:icon="@drawable/baseline_vpn_key_black_18dp"
+            android:summary="Subtitulo 2"
+            android:title="Contraseña" />
+
+        <EditTextPreference
+            android:key="accesstokensecret2"
+            android:icon="@drawable/baseline_phone_black_18dp"
+            android:summary="Subtitulo 3"
+            android:title="Teléfono" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Valoraciones y similar">
+
+        <CheckBoxPreference
+            android:key="checkbox_preference"
+            android:title="Boton" />
+
+        <SwitchPreference
+            android:key="switch_preference"
+            android:title="Boton" />
+
+    </PreferenceCategory>
+</PreferenceScreen>
