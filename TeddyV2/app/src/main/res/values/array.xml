@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="level_spinner">
+        <item>Beginner</item>
+        <item>Amateur</item>
+        <item>Expert</item>
+        <item>Professional</item>
+    </string-array>
+</resources>

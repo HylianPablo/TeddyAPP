@@ -23,4 +23,9 @@ public class PageViewModel extends ViewModel {
     public LiveData<String> getText() {
         return mText;
     }
+
+    public int getIndex(){
+        System.out.println(mIndex.getValue());
+        return mIndex.getValue();
+    }
 }
