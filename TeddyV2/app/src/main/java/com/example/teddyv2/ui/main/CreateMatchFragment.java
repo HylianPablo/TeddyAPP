@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -129,6 +130,8 @@ public class CreateMatchFragment extends Fragment {
                 picker.show();
             }
         });
+
+        Button createMatchButton = root.findViewById(R.id.createMatchButton);
 
         return root;
     }
