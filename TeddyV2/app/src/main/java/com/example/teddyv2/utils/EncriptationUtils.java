@@ -1,5 +1,8 @@
 package com.example.teddyv2.utils;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 /**
  * Clase que permite encriptar y desencriptar los datos personales del usuario. Aunque en la vida
  * real no seria un sistema viable de encriptacion, podemos usarlo para simular uno en la practica.
@@ -67,4 +70,23 @@ public class EncriptationUtils {
         }
     }
 
+    /**
+     * Encripta una cadena en SHA1.
+     * @param input cadena a encriptar
+     * @return cadena encriptada en SHA1
+     */
+    public static String sha1(String input) {
+        try {
+            MessageDigest mDigest = MessageDigest.getInstance("SHA1");
+            byte[] result = mDigest.digest(input.getBytes());
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < result.length; i++) {
+                sb.append(Integer.toString((result[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            return sb.toString();
+        }catch (Exception e){
+            return  null;
+        }
+
+    }
 }

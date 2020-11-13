@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 
 import com.example.teddyv2.data.model.LoggedInUser;
 import com.example.teddyv2.ui.login.LoginViewModel;
+import com.example.teddyv2.utils.EncriptationUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -47,8 +48,7 @@ public class LoginRepository {
     }
     // handle login
     public void login(final String username, final String password, final LoginViewModel modeloVista) {
-        try {
-            final String digestPass = sha1(password);
+            final String digestPass = EncriptationUtils.sha1(password);
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             db.collection("Usuarios").document(username).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
@@ -71,21 +71,6 @@ public class LoginRepository {
                 }
             });
 
-        }catch (Exception e){
-            Result<LoggedInUser> result = new Result.Error(new Exception("Fallo en la encriptación."));
-            modeloVista.loginCallback(result);
-        }
-
-    }
-
-    static String sha1(String input) throws NoSuchAlgorithmException {
-        MessageDigest mDigest = MessageDigest.getInstance("SHA1");
-        byte[] result = mDigest.digest(input.getBytes());
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < result.length; i++) {
-            sb.append(Integer.toString((result[i] & 0xff) + 0x100, 16).substring(1));
-        }
-        return sb.toString();
     }
 
 }
