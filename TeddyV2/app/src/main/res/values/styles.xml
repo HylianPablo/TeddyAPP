@@ -54,6 +54,7 @@
     </style>
 
     <style name="TeddyPolicy" parent="AppTheme">
+        <item name="android:justificationMode">inter_word</item>
         <item name="android:textColor">@color/onPrimary</item>
         <item name="android:textSize">@dimen/policy_text_size</item>
         <item name="android:background">@color/greyTint</item>
