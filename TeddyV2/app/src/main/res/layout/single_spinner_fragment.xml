@@ -26,7 +26,8 @@
 
     <Spinner
         android:id="@+id/single_spinner_layout_spinner"
-        style="@style/TeddyButton.TeddySpinner"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
         android:layout_marginStart="@dimen/input_lateral_margin"
@@ -35,7 +36,9 @@
         android:hint="@string/small_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/single_spinner_layout_title">
+        app:layout_constraintTop_toBottomOf="@+id/single_spinner_layout_title"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.475" >
     </Spinner>
 
     <com.google.android.material.button.MaterialButton

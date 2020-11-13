@@ -60,6 +60,7 @@
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
+    <!-- Deprecated? -->
     <style name="TeddyButton.TeddySpinner" parent="TeddyButton">
         <item name="android:background">@color/greyTint</item>
     </style>

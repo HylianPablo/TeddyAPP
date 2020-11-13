@@ -78,4 +78,10 @@
     <string name="level_selection_title">Level Selection</string>
     <string name="registration_congrats_subtitle">You account has been successfully created!</string>
     <string name="username_taken_error">This username is already taken</string>
+    <string name="match_start_time">Hora de inicio</string>
+    <string name="match_date">Día del partido</string>
+    <string name="match_search">Buscar partido</string>
+    <string name="match_end_time">Hora de fin</string>
+    <string name="action_create_match">Crear partido</string>
+    <string name="button">Button</string>
 </resources>

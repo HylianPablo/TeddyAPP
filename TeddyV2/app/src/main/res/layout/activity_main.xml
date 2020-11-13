@@ -18,8 +18,9 @@
             android:layout_gravity="center_horizontal"
             android:stretchColumns="0,1">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/title"
+                android:textColor="@color/onPrimary"
                 android:layout_width="308dp"
                 android:layout_height="wrap_content"
                 android:gravity="left"
@@ -52,11 +53,11 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" >
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="@string/button" />
     </androidx.viewpager.widget.ViewPager>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
