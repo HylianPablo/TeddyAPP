@@ -132,6 +132,7 @@ public class CreateMatchFragment extends Fragment {
         });
 
         Button createMatchButton = root.findViewById(R.id.createMatchButton);
+        
 
         return root;
     }

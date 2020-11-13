@@ -11,6 +11,7 @@ import com.example.teddyv2.data.LoginRepository;
 import com.example.teddyv2.data.Result;
 import com.example.teddyv2.data.model.LoggedInUser;
 import com.example.teddyv2.R;
+import com.example.teddyv2.utils.ValidationUtils;
 
 public class LoginViewModel extends ViewModel {
 
