@@ -46,8 +46,7 @@ public class LoginViewModel extends ViewModel {
     }
 
         public void loginDataChanged(String username, String password) {
-        // TODO: por defecto, el usuario era el email. Cambiar por username?
-        if (!ValidationUtils.isValidEmail(username)) {
+        if (!ValidationUtils.isNotNull(username)) {
             loginFormState.setValue(new LoginFormState(R.string.invalid_username, null));
         } else if (!ValidationUtils.isValidPassword(password)) {
             loginFormState.setValue(new LoginFormState(null, R.string.invalid_password));

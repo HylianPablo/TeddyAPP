@@ -28,6 +28,7 @@ import com.example.teddyv2.R;
 import com.example.teddyv2.ui.login.LoginViewModel;
 import com.example.teddyv2.ui.login.LoginViewModelFactory;
 import com.example.teddyv2.ui.register.RegisterActivity;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -41,7 +42,9 @@ public class LoginActivity extends AppCompatActivity {
                 .get(LoginViewModel.class);
 
         final EditText usernameEditText = findViewById(R.id.username);
+        final TextInputLayout usernameLayout = findViewById(R.id.username_layout);
         final EditText passwordEditText = findViewById(R.id.password);
+        final TextInputLayout passwordLayout = findViewById(R.id.password_layout);
         final Button loginButton = findViewById(R.id.login);
         final Button registerButton = findViewById(R.id.register);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
@@ -54,10 +57,10 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 loginButton.setEnabled(loginFormState.isDataValid());
                 if (loginFormState.getUsernameError() != null) {
-                    usernameEditText.setError(getString(loginFormState.getUsernameError()));
+                    usernameLayout.setError(getString(loginFormState.getUsernameError()));
                 }
                 if (loginFormState.getPasswordError() != null) {
-                    passwordEditText.setError(getString(loginFormState.getPasswordError()));
+                    passwordLayout.setError(getString(loginFormState.getPasswordError()));
                 }
             }
         });
@@ -97,6 +100,8 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
+                usernameLayout.setError(null);
+                passwordLayout.setError(null);
                 loginViewModel.loginDataChanged(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
             }

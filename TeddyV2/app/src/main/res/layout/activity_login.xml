@@ -102,7 +102,6 @@
             android:layout_marginTop="@dimen/button_top_margin"
             android:layout_marginEnd="@dimen/button_lateral_margin"
             android:layout_marginBottom="@dimen/login_general_margin"
-            android:enabled="false"
             android:text="@string/action_sign_in"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
