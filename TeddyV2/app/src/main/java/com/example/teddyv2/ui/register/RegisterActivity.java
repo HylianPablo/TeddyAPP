@@ -1,15 +1,22 @@
 package com.example.teddyv2.ui.register;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.teddyv2.MainActivity;
 import com.example.teddyv2.R;
 import com.example.teddyv2.domain.user.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * Actividad del registro.
@@ -62,8 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
      */
     public void navigateFromTermsToUserCreation(){
         FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction ft = manager.beginTransaction()
-                .add(android.R.id.content, userCreationFragment, userCreationFragment.getClass().getSimpleName());
+        FragmentTransaction ft = manager.beginTransaction().add(android.R.id.content, userCreationFragment, userCreationFragment.getClass().getSimpleName());
         ft.hide(termsFragment);
         ft.commit();
     }
@@ -72,11 +78,24 @@ public class RegisterActivity extends AppCompatActivity {
      * Navega de la pantalla de la creacion del usuario a la pantalla de nombre y apellidos
      */
     public void navigateFromUserCreationToName(){
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction ft = manager.beginTransaction()
-                .add(android.R.id.content, nameFragment, nameFragment.getClass().getSimpleName());
-        ft.hide(userCreationFragment);
-        ft.commit();
+        FirebaseFirestore.getInstance().collection("Usuarios").document(user.getUsername()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (!document.exists() ) {
+                            FragmentManager manager = getSupportFragmentManager();
+                            FragmentTransaction ft = manager.beginTransaction()
+                                    .add(android.R.id.content, nameFragment, nameFragment.getClass().getSimpleName());
+                            ft.hide(userCreationFragment);
+                            ft.commit();
+                        }else{
+                            userCreationFragment.mostrarErrorUsuario();
+
+                        }
+                    }
+            }
+        });
     }
 
     /**
@@ -128,9 +147,22 @@ public class RegisterActivity extends AppCompatActivity {
      * pantalla de felicitacion para indicar al usuario que su cuenta ha sido creada con exito.
      */
     public void finishRegistration(){
-        // TODO: Include database transaction here to register the User
-        navigateFromLevelSelectionToCongrats();
-    }
+        FirebaseFirestore.getInstance().collection("Usuarios").document(user.getUsername()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (!document.exists() ) {
+                        FirebaseFirestore.getInstance().collection("Usuarios").document(user.getUsername()).set(user.toHashMap()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                navigateFromLevelSelectionToCongrats();
+                            }
+                        });
+                    }
+                }
+    }});
+}
 
     /**
      * Navega a la actividad principal.
