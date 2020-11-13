@@ -103,7 +103,7 @@ public class PaymentFragment extends Fragment {
      * plantilla.
      */
     private void setLayoutLook(){
-        title.setText(R.string.payment_title);
+        title.setText(R.string.reg_title_payment);
 
         paymentLayout.setStartIconDrawable(R.drawable.euro_icon);
         paymentLayout.setHint(getString(R.string.prompt_payment_account));
@@ -126,7 +126,7 @@ public class PaymentFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(!isContinueOk()){
-                    paymentLayout.setError(getString(R.string.invalid_payment));
+                    paymentLayout.setError(getString(R.string.error_invalid_payment_account));
                 }else{
                     paymentLayout.setError(null);
                     continueBtn.setEnabled(true);

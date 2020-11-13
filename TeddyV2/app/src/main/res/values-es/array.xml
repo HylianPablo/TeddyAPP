@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="level_spinner">
+        <item>Principiante</item>
+        <item>Amateur</item>
+        <item>Experto</item>
+        <item>Profesional</item>
+    </string-array>
+
+    <string-array name="matchTypes">
+        <item>Individual</item>
+        <item>Por parejas</item>
+    </string-array>
+</resources>

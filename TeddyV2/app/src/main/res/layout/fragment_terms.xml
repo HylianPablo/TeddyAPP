@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/terms_margin"
             android:layout_marginEnd="@dimen/terms_margin"
-            android:text="@string/terms_title"
+            android:text="@string/reg_title_policy"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -34,7 +34,7 @@
             android:layout_marginTop="@dimen/terms_margin"
             android:layout_marginEnd="@dimen/terms_margin"
             android:scrollbars="vertical"
-            android:text="@string/privacy_policy"
+            android:text="@string/reg_privacy_policy"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/terms_title" />
@@ -46,7 +46,7 @@
             android:layout_marginStart="@dimen/terms_margin"
             android:layout_marginTop="@dimen/input_main_margin"
             android:layout_marginEnd="@dimen/terms_margin"
-            android:text="@string/policy_checkbox"
+            android:text="@string/reg_checkbox_policy"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/policy" />

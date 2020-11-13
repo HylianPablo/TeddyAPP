@@ -79,7 +79,7 @@ public class RegistrationCongratsFragment extends Fragment {
      * plantilla.
      */
     private void setLayoutLook(){
-        subTitle.setText(R.string.registration_congrats_subtitle);
+        subTitle.setText(R.string.reg_congrats);
     }
 
     /**
