@@ -3,11 +3,14 @@ package com.example.teddyv2.ui.main;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -31,6 +34,7 @@ public class SearchMatchFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     private PageViewModel pageViewModel;
+
 
     public static SearchMatchFragment newInstance(int index) {
         SearchMatchFragment fragment = new SearchMatchFragment();
@@ -107,12 +111,52 @@ public class SearchMatchFragment extends Fragment {
             }
         });
 
-        pageViewModel.getText().observe(this, new Observer<String>() {
+        final Button searchMatchButton = root.findViewById(R.id.searchMatchButton);
+        searchMatchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PaymentFragment paymentFragment = new PaymentFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(android.R.id.content, paymentFragment, paymentFragment.getClass().getSimpleName())
+                        .commit();
+            }
+        });
+
+        searchMatchButton.setEnabled(false);
+
+        startHour.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(startHour.getText().toString().length()==0||matchDate.getText().toString().length()==0){
+                    searchMatchButton.setEnabled(false);
+                }else{
+                    searchMatchButton.setEnabled(true);
+                }
+            }
+        });
+
+
+        /*pageViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 //textView.setText(s);
             }
         });
+         */
+        //searchMatchButton.setEnabled(false);
+
+
         return root;
     }
+
 }

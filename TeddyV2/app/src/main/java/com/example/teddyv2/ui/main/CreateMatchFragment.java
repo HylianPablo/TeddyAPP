@@ -5,8 +5,11 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -103,7 +106,7 @@ public class CreateMatchFragment extends Fragment {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                startHour.setText(sHour + ":" + String.format("%02d",sMinute));
+                                endHour.setText(sHour + ":" + String.format("%02d",sMinute));
                             }
                         }, hour, minutes, true);
                 picker.show();
@@ -131,8 +134,39 @@ public class CreateMatchFragment extends Fragment {
             }
         });
 
-        Button createMatchButton = root.findViewById(R.id.createMatchButton);
-        
+        final Button createMatchButton = root.findViewById(R.id.createMatchButton);
+        createMatchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PaymentFragment paymentFragment = new PaymentFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .add(android.R.id.content, paymentFragment, paymentFragment.getClass().getSimpleName())
+                        .commit();
+            }
+        });
+
+        createMatchButton.setEnabled(false);
+
+        endHour.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(startHour.getText().toString().length()==0|| endHour.getText().toString().length()==0 || matchDate.getText().toString().length()==0){
+                    createMatchButton.setEnabled(false);
+                }else{
+                    createMatchButton.setEnabled(true);
+                }
+            }
+        });
 
         return root;
     }
