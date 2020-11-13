@@ -145,12 +145,8 @@ public class UserCreationFragment extends Fragment {
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isAvailableUserName()){
                     setUserData();
                     registerActivity.navigateFromUserCreationToName();
-                }else{
-                    userLayout.setError(getString(R.string.error_username_taken));
-                }
             }
         });
 
@@ -241,14 +237,11 @@ public class UserCreationFragment extends Fragment {
     }
 
     /**
-     * Comprueba que el nombre de usuario indicado esta disponible con la base de datos.
+     * Muestra mensaje de error en el campo "username" con el mensaje "El nombre de usuario no está disponible".
      *
-     * @return {@code true} si el nombre de usuario indicado esta disponible o {@code false} en
-     * caso contrario
      */
-    private boolean isAvailableUserName(){
-        // TODO: Combrobar en la base de datos si el nombre de usuario esta disponible
-        // TODO: implement!
-        return true;
+    public void mostrarErrorUsuario(){
+        userLayout.setError(getString(R.string.error_username_taken));
     }
+
 }

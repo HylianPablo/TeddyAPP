@@ -30,7 +30,6 @@ public class LoginViewModel extends ViewModel {
     }
 
     public void login(String username, String password) {
-        // can be launched in a separate asynchronous job
         loginRepository.login(username, password,this);
 
     }

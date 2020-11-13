@@ -20,4 +20,20 @@ public enum UserLevel {
                 return null;
         }
     }
+    public static int getNumberByLevel(UserLevel level){
+        switch(level){
+            case BEGINNER:
+                return 0;
+            case AMATEUR:
+                return 1;
+            case EXPERT:
+                return 2;
+            case PROFESSIONAL:
+                return 3;
+            default:
+                return -1;
+        }
+    }
+
+
 }
