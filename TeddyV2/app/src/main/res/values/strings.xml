@@ -1,6 +1,6 @@
 <resources>
     <!-- Untranslatable texts -->
-    <string name="app_name" translatable="false">TeddyV2</string>
+    <string name="app_name" translatable="false">Teddy</string>
     <string name="small_placeholder" translatable="false">Lorem ipsum</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
 

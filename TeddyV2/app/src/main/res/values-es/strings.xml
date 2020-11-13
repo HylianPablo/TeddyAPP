@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Prompts -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="prompt_username">Username</string>
-    <string name="prompt_password_repetition">Repeat password</string>
+    <string name="prompt_email">Correo Electronico</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="prompt_username">Nombre de Usuario</string>
+    <string name="prompt_password_repetition">Repeticion de Contraseña</string>
     <string name="prompt_name">First name</string>
     <string name="prompt_surname">Surname</string>
     <string name="prompt_phone">Phone number</string>
