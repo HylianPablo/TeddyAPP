@@ -116,7 +116,7 @@ public class UserCreationFragment extends Fragment {
      * plantilla.
      */
     private void setLayoutLook(){
-        title.setText(R.string.user_creation_title);
+        title.setText(R.string.reg_title_user);
 
         userLayout.setStartIconDrawable(R.drawable.person_icon);
         userLayout.setHint(getString(R.string.prompt_username));
@@ -157,7 +157,7 @@ public class UserCreationFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(!ValidationUtils.isNotNull(userText.getText().toString())){
-                    userLayout.setError(getString(R.string.invalid_username));
+                    userLayout.setError(getString(R.string.error_invalid_username));
                 }else{
                     userLayout.setError(null);
                     continueBtn.setEnabled(isContinueOk());
@@ -175,7 +175,7 @@ public class UserCreationFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(!ValidationUtils.isValidPassword(passwordText.getText().toString())){
-                    passwordLayout.setError(getString(R.string.invalid_password));
+                    passwordLayout.setError(getString(R.string.error_invalid_password));
                 }else{
                     passwordLayout.setError(null);
                     continueBtn.setEnabled(isContinueOk());
@@ -193,7 +193,7 @@ public class UserCreationFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(!passwordsMatch()){
-                    passwordRepeatLayout.setError(getString(R.string.passwords_dont_match));
+                    passwordRepeatLayout.setError(getString(R.string.error_matching_passwords));
                 }else{
                     passwordRepeatLayout.setError(null);
                     continueBtn.setEnabled(isContinueOk());
@@ -241,7 +241,7 @@ public class UserCreationFragment extends Fragment {
      *
      */
     public void mostrarErrorUsuario(){
-        userLayout.setError(getString(R.string.username_taken_error));
+        userLayout.setError(getString(R.string.error_username_taken));
     }
 
 }

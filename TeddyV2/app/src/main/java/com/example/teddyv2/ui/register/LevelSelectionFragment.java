@@ -96,7 +96,7 @@ public class LevelSelectionFragment extends Fragment {
      * plantilla.
      */
     private void setLayoutLook(){
-        title.setText(R.string.level_selection_title);
+        title.setText(R.string.reg_title_level_selection);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 requireContext(),
                 R.array.level_spinner,

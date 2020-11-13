@@ -106,7 +106,7 @@ public class NameFragment extends Fragment {
      * plantilla.
      */
     private void setLayoutLook(){
-        title.setText(R.string.name_registration_title);
+        title.setText(R.string.reg_title_name);
 
         nameLayout.setStartIconDrawable(null);
         nameLayout.setHint(getString(R.string.prompt_name));

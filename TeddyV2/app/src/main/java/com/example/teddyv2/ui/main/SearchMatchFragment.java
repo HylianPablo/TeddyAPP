@@ -67,7 +67,7 @@ public class SearchMatchFragment extends Fragment {
         matchType.setAdapter(adapterMatchType);
 
         final Spinner difficultyType = root.findViewById(R.id.difficultyTypeSearch);
-        ArrayAdapter<String> adapterDifficultyType = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.difficultyTypes));
+        ArrayAdapter<String> adapterDifficultyType = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.level_spinner));
         difficultyType.setAdapter(adapterDifficultyType);
 
         final EditText startHour = root.findViewById(R.id.startHourSearch);

@@ -106,10 +106,10 @@ public class ContactFragment extends Fragment {
      * plantilla.
      */
     private void setLayoutLook(){
-        title.setText(R.string.contact_registration_title);
+        title.setText(R.string.reg_title_contact_info);
 
         phoneLayout.setStartIconDrawable(R.drawable.phone_icon);
-        phoneLayout.setHint(getString(R.string.phone_prompt));
+        phoneLayout.setHint(getString(R.string.prompt_phone));
         phoneText.setInputType(InputType.TYPE_CLASS_PHONE);
         if(!user.getPhone().equals(""))
             phoneText.setText(user.getPhone());
@@ -135,7 +135,7 @@ public class ContactFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(!ValidationUtils.isValidPhone(phoneText.getText().toString())){
-                    phoneLayout.setError(getString(R.string.invalid_phone));
+                    phoneLayout.setError(getString(R.string.error_invalid_phone));
                 }else{
                     phoneLayout.setError(null);
                     continueBtn.setEnabled(isContinueOk());
@@ -153,7 +153,7 @@ public class ContactFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(!ValidationUtils.isValidEmail(emailText.getText().toString())){
-                    emailLayout.setError(getString(R.string.invalid_email));
+                    emailLayout.setError(getString(R.string.error_invalid_email));
                 }else{
                     emailLayout.setError(null);
                     continueBtn.setEnabled(isContinueOk());

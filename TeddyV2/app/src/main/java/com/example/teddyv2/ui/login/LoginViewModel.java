@@ -5,8 +5,6 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 
-import android.util.Patterns;
-
 import com.example.teddyv2.data.LoginRepository;
 import com.example.teddyv2.data.Result;
 import com.example.teddyv2.data.model.LoggedInUser;
@@ -40,16 +38,15 @@ public class LoginViewModel extends ViewModel {
             LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
             loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
         } else {
-            loginResult.setValue(new LoginResult(R.string.login_failed));
+            loginResult.setValue(new LoginResult(R.string.error_login));
         }
     }
 
         public void loginDataChanged(String username, String password) {
-        // TODO: por defecto, el usuario era el email. Cambiar por username?
-        if (!ValidationUtils.isValidEmail(username)) {
-            loginFormState.setValue(new LoginFormState(R.string.invalid_username, null));
+        if (!ValidationUtils.isNotNull(username)) {
+            loginFormState.setValue(new LoginFormState(R.string.error_invalid_username, null));
         } else if (!ValidationUtils.isValidPassword(password)) {
-            loginFormState.setValue(new LoginFormState(null, R.string.invalid_password));
+            loginFormState.setValue(new LoginFormState(null, R.string.error_invalid_password));
         } else {
             loginFormState.setValue(new LoginFormState(true));
         }
