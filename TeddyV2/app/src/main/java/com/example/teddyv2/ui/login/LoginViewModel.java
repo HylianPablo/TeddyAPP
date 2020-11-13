@@ -11,7 +11,6 @@ import com.example.teddyv2.data.LoginRepository;
 import com.example.teddyv2.data.Result;
 import com.example.teddyv2.data.model.LoggedInUser;
 import com.example.teddyv2.R;
-import com.example.teddyv2.utils.ValidationUtils;
 
 public class LoginViewModel extends ViewModel {
 
@@ -33,8 +32,10 @@ public class LoginViewModel extends ViewModel {
 
     public void login(String username, String password) {
         // can be launched in a separate asynchronous job
-        Result<LoggedInUser> result = loginRepository.login(username, password);
+        loginRepository.login(username, password,this);
 
+    }
+        public void loginCallback(Result<LoggedInUser> result){
         if (result instanceof Result.Success) {
             LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
             loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
@@ -43,7 +44,7 @@ public class LoginViewModel extends ViewModel {
         }
     }
 
-    public void loginDataChanged(String username, String password) {
+        public void loginDataChanged(String username, String password) {
         // TODO: por defecto, el usuario era el email. Cambiar por username?
         if (!ValidationUtils.isValidEmail(username)) {
             loginFormState.setValue(new LoginFormState(R.string.invalid_username, null));
