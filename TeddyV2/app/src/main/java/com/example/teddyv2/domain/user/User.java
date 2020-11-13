@@ -1,7 +1,5 @@
 package com.example.teddyv2.domain.user;
 
-import android.util.Log;
-
 import com.example.teddyv2.utils.EncriptationUtils;
 
 import java.util.HashMap;

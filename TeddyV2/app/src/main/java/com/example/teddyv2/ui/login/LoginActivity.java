@@ -25,8 +25,6 @@ import android.widget.Toast;
 
 import com.example.teddyv2.MainActivity;
 import com.example.teddyv2.R;
-import com.example.teddyv2.ui.login.LoginViewModel;
-import com.example.teddyv2.ui.login.LoginViewModelFactory;
 import com.example.teddyv2.ui.register.RegisterActivity;
 
 public class LoginActivity extends AppCompatActivity {
