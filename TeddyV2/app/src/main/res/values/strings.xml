@@ -22,7 +22,7 @@
 
     <!-- Errors -->
     <string name="error_invalid_username">Not a valid username</string>
-    <string name="error_invalid_password">Password must have more than characters</string>
+    <string name="error_invalid_password">Password must have more than 5 characters</string>
     <string name="error_login">Login failed</string>
     <string name="error_matching_passwords">Passwords do not match</string>
     <string name="error_invalid_phone">Phone is not valid</string>
@@ -40,29 +40,70 @@
     <string name="reg_congrats">You account has been successfully created!</string>
 
     <string name="reg_privacy_policy">
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-        Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-        ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-        consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-        arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis
-        eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.
-        Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae,
-        eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
-        Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam
-        ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.
-        Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet
-        adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id,
-        lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis
-        faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
-        fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget
-        bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate
-        eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus.
-        Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum
-        ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis
-        mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget,
-        imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu,
-        accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus
-        ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestib
+        To create an account in \"Teddy\" you must first read and accept the privacy policy.\n
+        \n
+        The privacy policy of this application is adjusted to the General Data Protection
+        Regulations established by the European Union. In particular, we will stress the following
+        sections:\n
+        \n
+        1. All personal data gathered by this application will be exclusively used for the correct
+        identification of the user and to enhance their experience with the application.\n
+        2. Personal data regarding contact information will be exclusively used by Teddy employees
+        in the event of contacting the user being strictly necessary.\n
+        3. Personal data regarding payment methods (i.e. PayPal account) will be visible only to the
+        user and will aim to make the payment process of the services provided by Teddy easier and
+        more comfortable.\n
+        4. Under no circumstances will personal date be commercialized or deliberately distributed
+        with any other person or private institution.\n
+        5. Gathered personal data that could be used to identify the user such as name and surname;
+        as contact information such as phone number or email; or payment PayPal account, will be
+        encrypted in the backend database.\n
+        6. The users password will be encrypted using an SHA-1 algorithm and will not be able to be
+        decrypted neither in the frontend application nor the backend database, which will only use
+        the encrypted version.\n
+        7. The user will have the right to modify their personal data.\n
+        8. The user will have the right to delete their account.\n
+        9. Personal data will not be shared with any person or institution outside Teddy, unless it
+        is a public institution that possesses proper identification and that possesses a motive to
+        access said information, such as a court warrant.\n
+        10. As implied by the GDPR, in the case of a security breach or leak in the database that
+        could potentially expose any sort of personal data regarding a user, both the user and the
+        corresponding authorities will be informed in a time space not superior to 72 hours.\n
+        \n
+        Regarding user code of conduct, it is to be known by the user that Teddy will hold no
+        responsibility regarding the following actions, but that may enact sanctioning measures
+        against the perpetrator, which include the limitation of services offered by the application
+        or the temporary or permanent suspension of the users account. Said aforementioned conducts
+        are:\n
+        \n
+        1. The inappropriate use of the application with an aim that differs from the application\'s
+        designed target.\n
+        2. The inappropriate use of the personal data from other users such as name or surname.\n
+        3. The inappropriate use of the opinions system to devalue or overvalue another user.\n
+        4. The discomfort that may arise form the selection of a match level that does not
+        correspond to the user\'s correct level.\n
+        5. The discomfort that may arise from a user not selecting their correct level.\n
+        6. The use of words or language that may seem inappropriate or offensive when writing a
+        username, name or surname.\n
+        7. The use of language that may seem inappropriate or offensive when writing a review or
+        comment about another user.\n
+        \n
+        Lastly, it is made known to the user that, even though Teddy will not take responsibility,
+        Teddy and Teddy employees will fully collaborate with the Security forces of the State, and
+        that legal prosecution against users will be considered in the event of a user:\n
+        \n
+        1. Using the app with an illegitimate aim or with a target that is prosecuted by law.\n
+        2. Using the app when aiming to cause emotional distress or psychological or physical
+        damage to another person, independently of the fact of them being part of the registered
+        user group present in the application.\n
+        3. Trying to manipulate, distribute or commercialize this application without the
+        appropriate intellectual or exploitation rights.\n
+        4. Using the application when aiming to cause distress or harm to application staff.\n
+        5. Using the application when aiming to cause or organise acts of vandalism in the
+        premises.\n
+        6. Using the account of another user without the consent of said user.\n
+        7. Attempting to create an account with personal data that does not correspond to your
+        person.\n
     </string>
     <string name="reg_checkbox_policy">I have read and I accept the privacy policy</string>
 
