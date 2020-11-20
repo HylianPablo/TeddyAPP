@@ -16,10 +16,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.teddyv2.R;
@@ -115,9 +113,10 @@ public class SearchMatchFragment extends Fragment {
         searchMatchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PaymentFragment paymentFragment = new PaymentFragment();
+                //PaymentFragment paymentFragment = new PaymentFragment();
+                MatchesFoundFragment matchesFoundFragment = new MatchesFoundFragment();
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(android.R.id.content, paymentFragment, paymentFragment.getClass().getSimpleName())
+                        .replace(android.R.id.content, matchesFoundFragment, matchesFoundFragment.getClass().getSimpleName())
                         .commit();
             }
         });
