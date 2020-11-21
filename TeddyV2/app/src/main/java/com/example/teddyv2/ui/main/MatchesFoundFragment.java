@@ -56,8 +56,52 @@ public class MatchesFoundFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_matches_found, container, false);
 
-        CardView cardView = root.findViewById(R.id.card_view1);
-        cardView.setOnClickListener(new View.OnClickListener() {
+        CardView cardView1 = root.findViewById(R.id.cardView1);
+        cardView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PaymentFragment paymentFragment = new PaymentFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(android.R.id.content, paymentFragment, paymentFragment.getClass().getSimpleName())
+                        .commit();
+            }
+        });
+
+        CardView cardView2 = root.findViewById(R.id.cardView2);
+        cardView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PaymentFragment paymentFragment = new PaymentFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(android.R.id.content, paymentFragment, paymentFragment.getClass().getSimpleName())
+                        .commit();
+            }
+        });
+
+        CardView cardView3 = root.findViewById(R.id.cardView3);
+        cardView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PaymentFragment paymentFragment = new PaymentFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(android.R.id.content, paymentFragment, paymentFragment.getClass().getSimpleName())
+                        .commit();
+            }
+        });
+
+        CardView cardView4 = root.findViewById(R.id.cardView4);
+        cardView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PaymentFragment paymentFragment = new PaymentFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(android.R.id.content, paymentFragment, paymentFragment.getClass().getSimpleName())
+                        .commit();
+            }
+        });
+
+        CardView cardView5 = root.findViewById(R.id.cardView5);
+        cardView5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PaymentFragment paymentFragment = new PaymentFragment();
