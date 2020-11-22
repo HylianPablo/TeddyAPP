@@ -2,6 +2,7 @@ package com.example.teddyv2.ui.main;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
@@ -140,6 +141,7 @@ public class SearchMatchFragment extends Fragment {
                     searchMatchButton.setEnabled(false);
                 }else{
                     searchMatchButton.setEnabled(true);
+
                 }
             }
         });

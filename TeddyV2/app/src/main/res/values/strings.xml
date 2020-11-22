@@ -114,7 +114,7 @@
     <string name="match_end_time">Ending Time</string>
 
     <!-- Other Text -->
-    <string name="welcome">"Welcome !"</string>
+    <string name="welcome">"Welcome "</string>
     <string name="tab_text_1">Match search</string>
     <string name="tab_text_2">Match Creation</string>
     <string name="logo_description">Application logo</string>

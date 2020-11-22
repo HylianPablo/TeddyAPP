@@ -116,7 +116,7 @@
     <string name="match_end_time">Hora de fin</string>
 
     <!-- Other Text -->
-    <string name="welcome">Bienvenido !</string>
+    <string name="welcome">Bienvenido </string>
     <string name="tab_text_1">Búsqueda de partido</string>
     <string name="tab_text_2">Creación de partido</string>
     <string name="logo_description">Logotipo de la aplicación</string>
