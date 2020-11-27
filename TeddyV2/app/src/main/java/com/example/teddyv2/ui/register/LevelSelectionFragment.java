@@ -29,6 +29,10 @@ public class LevelSelectionFragment extends Fragment {
     private TextView title;
     private Button continueBtn;
     private Spinner spinner;
+    private TextView hint;
+
+    // Other atributes
+    private String[] levelExplanations;
 
     /**
      * Establece referencia con la Actividad de Registro.
@@ -89,6 +93,9 @@ public class LevelSelectionFragment extends Fragment {
         title = view.findViewById(R.id.single_spinner_layout_title);
         continueBtn = view.findViewById(R.id.single_spinner_continue_btn);
         spinner = view.findViewById(R.id.single_spinner_layout_spinner);
+        hint = view.findViewById(R.id.spinner_hint);
+
+        levelExplanations = getResources().getStringArray(R.array.level_explanation);
     }
 
     /**
@@ -104,6 +111,7 @@ public class LevelSelectionFragment extends Fragment {
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        hint.setText(levelExplanations[spinner.getSelectedItemPosition()]);
     }
 
     /**
@@ -117,6 +125,7 @@ public class LevelSelectionFragment extends Fragment {
                 // En este caso se setea aqui el dato del usuario porque es mas sencillo
                 user.setLevel(UserLevel.getUserLevelByNumber(i));
                 continueBtn.setEnabled(true);
+                hint.setText(levelExplanations[spinner.getSelectedItemPosition()]);
             }
 
             @Override

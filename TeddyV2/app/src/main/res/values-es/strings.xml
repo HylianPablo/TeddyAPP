@@ -5,75 +5,122 @@
     <string name="prompt_password">Contraseña</string>
     <string name="prompt_username">Nombre de Usuario</string>
     <string name="prompt_password_repetition">Repeticion de Contraseña</string>
-    <string name="prompt_name">First name</string>
-    <string name="prompt_surname">Surname</string>
-    <string name="prompt_phone">Phone number</string>
-    <string name="prompt_payment_account">PayPal account</string>
+    <string name="prompt_name">Nombre</string>
+    <string name="prompt_surname">Apellido</string>
+    <string name="prompt_phone">Numero de teléfono</string>
+    <string name="prompt_payment_account">Cuenta PayPal</string>
 
     <!-- Actions -->
-    <string name="action_sign_in">Sign in</string>
-    <string name="action_register">Register</string>
-    <string name="action_create_match">Create Match</string>
-    <string name="action_continue">Continue</string>
+    <string name="action_sign_in">Iniciar Sesión</string>
+    <string name="action_register">Registrarse</string>
+    <string name="action_create_match">Crear Partido</string>
+    <string name="action_continue">Continuar</string>
 
     <!-- Errors -->
-    <string name="error_invalid_username">Not a valid username</string>
-    <string name="error_invalid_password">Password must have more than characters</string>
-    <string name="error_login">Login failed</string>
-    <string name="error_matching_passwords">Passwords do not match</string>
-    <string name="error_invalid_phone">Phone is not valid</string>
-    <string name="error_invalid_email">Email is not valid</string>
-    <string name="error_invalid_payment_account">Invalid PayPal account</string>
-    <string name="error_username_taken">This username is already taken</string>
+    <string name="error_invalid_username">Nombre de usuario no válido</string>
+    <string name="error_invalid_password">Contraseña debe tener más de 5 caracteres</string>
+    <string name="error_login">Fallo al iniciar sesión</string>
+    <string name="error_matching_passwords">Contraseñas no coinciden</string>
+    <string name="error_invalid_phone">Teléfono no válido</string>
+    <string name="error_invalid_email">Correo electrónico no es válido</string>
+    <string name="error_invalid_payment_account">Cuenta de PayPal no válida</string>
+    <string name="error_username_taken">Este nombre de usuario no está disponible</string>
 
     <!-- Registration text -->
-    <string name="reg_title_policy">Privacy Policy</string>
-    <string name="reg_title_user">Create a user</string>
-    <string name="reg_title_name">Name and Surname</string>
-    <string name="reg_title_contact_info">Contact information</string>
-    <string name="reg_title_payment">PayPal Account</string>
-    <string name="reg_title_level_selection">Level Selection</string>
-    <string name="reg_congrats">You account has been successfully created!</string>
+    <string name="reg_title_policy">Política de Privacidad</string>
+    <string name="reg_title_user">Crear usuario</string>
+    <string name="reg_title_name">Nombre y Apellido</string>
+    <string name="reg_title_contact_info">Información de contacto</string>
+    <string name="reg_title_payment">Cuenta de PayPal</string>
+    <string name="reg_title_level_selection">Selección de nivel</string>
+    <string name="reg_congrats">¡Cuenta creada exitosamente!</string>
 
     <string name="reg_privacy_policy">
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-        Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-        ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-        consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-        arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis
-        eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.
-        Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae,
-        eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
-        Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam
-        ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.
-        Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet
-        adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id,
-        lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis
-        faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
-        fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget
-        bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate
-        eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus.
-        Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum
-        ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis
-        mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget,
-        imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu,
-        accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus
-        ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestib
+        Para poder crear una cuenta en \"Teddy\" debe leer y aceptar la política de privacidad.\n
+        \n
+        La política de protección de datos de esta aplicación se ajusta a lo dispuesto en el
+        Reglamento General de Protección de Datos de la Unión Europea. En concreto destacamos los
+        siguientes artículos:\n
+        \n
+        1. Todos los datos de carácter personal recogidos por la aplicación son de uso exclusivo
+        para la identificación del usuario dentro de la misma y de mejorar la experiencia de
+        usuario en el uso de la aplicación.\n
+        2. Los datos personales relativos al contacto será utilizada únicamente por el personal de
+        Teddy en el caso de que sea necesario ponerse en contacto con el usuario.\n
+        3. Los datos personales relativos a la información de pago serán visibles únicamente para
+        el usuario propietario y tendrá como objetivo facilitar el pago de los servicios ofrecidos
+        por Teddy.\n
+        4. Bajo ninguna circunstancia se comercializará o distribuirá deliberadamente información
+        de carácter personal de los usuarios a cualquier persona o entidad privada.\n
+        5. Los datos de carácter personal recogidos que puedan usarse para identificar al usuario,
+        entre los cuales se incluyen el nombre y apellido; así como datos de contacto como número
+        de teléfono o correo electrónico; o cuenta de pago PayPal, estarán encriptados en la base
+        de datos.\n
+        6. La contraseña de la cuenta de usuario será encriptada usando un algoritmo de
+        encriptación SHA-1 y no podrá ser desencriptado tanto en el backend como en el frontend de
+        la aplicación, que pasarán a trabajar únicamente con la versión encriptada de la misma.\n
+        7. El usuario tendrá derecho a la modificación de sus datos personales.\n
+        8. El usuario tendrá derecho al borrado de la cuenta.\n
+        9. No se proporcionará ningún dato personal a ninguna persona o entidad ajena a Teddy, salvo
+        en el caso de que sea una entidad pública que disponga de documentación acreditativa oficial
+        y un motivo por el cual se requiera acceder a estos datos, como una orden judicial.\n
+        10. Tal y como se dispone en el RGPD, en el caso de una fuga o brecha de seguridad en la
+        base de datos que pudiese comprometer los datos de carácter personal del usuario, tanto el
+        usuario como las autoridades competentes serán debidamente informadas en un plazo de tiempo
+        no superior a 72 horas.\n
+        \n
+        Respecto a las conductas de los usuarios, se hace saber que Teddy no se hará responsable
+        de las acciones siguientes, pero que podría tomar medidas sancionadoras en su contra como
+        el la restricción de actividades en las que el usuario puede tomar parte a través de la
+        aplicación y la suspensión temporal o permanente de la cuenta de usuario. Las conductas
+        mencionadas hacen referencia a:\n
+        \n
+        1. El uso inapropiado de la aplicación con fines ajenos a los cuales se ha diseñado la
+        aplicación.\n
+        2. El uso inapropiado que los usuarios puedan hacer relativos a los datos personales de
+        otros usuarios como nombre y apellido.\n
+        3. El uso inapropiado del sistema de valoraciones para tratar de desprestigiar o
+        sobreestimar a otro usuario.\n
+        4. El malestar que pudiese generarse en el caso de seleccionar un partido cuyo nivel no sea
+        el correspondiente al del usuario.\n
+        5. El malestar que pudiese generarse en el caso de que el usuario seleccione su nivel
+        incorrectamente.\n
+        6. El uso de palabras o lenguaje en el nombre de usuario, nombre o apellido que pudiera
+        resultar ofensivo o inapropiado.\n
+        7. El uso de un lenguaje ofensivo o inapropiado en las reseñas y valoraciones realizadas
+        hacia otros usuarios.\n
+        \n
+        Por último, se hace saber al usuario que, aunque Teddy no se hará responsable, Teddy y su
+        personal colaborará plenamente con las fuerzas del orden del Estado, y se tendrá en
+        consideración la toma de acciones legales contra usuarios que:\n
+        \n
+        1. Utilicen la aplicación con fines ilícitos o que conlleve un acto castigado por la ley.\n
+        2. Utilicen la aplicación con fines de inflingir daño psicológico, emocional o físico a otra
+        persona, independientemente de su pertenencia o no al grupo de usuarios registrados dentro
+        de la aplicación.\n
+        3. Traten de manipular, distribuir o comercializar esta aplicación sin los derechos
+        intelectuales y/o de explotación correspondientes.\n
+        4. Utilicen la aplicación con el fin de causar daño o problemas al personal de la
+        aplicación.\n
+        5. Utilicen la aplicación con el fin de organizar o causar daños o destrozos en las
+        instalaciones.\n
+        6. Utilicen la cuenta de otro usuario registrado sin el consentimiento del mismo.\n
+        7. Trated de crear una cuenta con unos datos personales que no correspondan a su persona.\n
     </string>
-    <string name="reg_checkbox_policy">I have read and I accept the privacy policy</string>
+    <string name="reg_checkbox_policy">He leído y acepto la política de privacidad</string>
 
     <!-- Match creation/search text -->
-    <string name="match_start_time">Starting Time</string>
-    <string name="match_date">Match Date</string>
-    <string name="match_search">Search Match</string>
-    <string name="match_end_time">Ending Time</string>
+    <string name="match_start_time">Hora de inicio</string>
+    <string name="match_date">Fecha del partido</string>
+    <string name="match_search">Buscar partido</string>
+    <string name="match_end_time">Hora de fin</string>
 
     <!-- Other Text -->
-    <string name="welcome">"Welcome !"</string>
-    <string name="tab_text_1">Match search</string>
-    <string name="tab_text_2">Match Creation</string>
-    <string name="logo_description">Application logo</string>
-    <string name="app_name_description">Application name: Teddy</string>
-    <string name="congratulations">Congratulations!</string>
-    <string name="button">Button</string>
+    <string name="welcome">Bienvenido </string>
+    <string name="tab_text_1">Búsqueda de partido</string>
+    <string name="tab_text_2">Creación de partido</string>
+    <string name="logo_description">Logotipo de la aplicación</string>
+    <string name="app_name_description">Nombre de la aplicación: Teddy</string>
+    <string name="congratulations">¡Enhorabuena!</string>
+    <string name="button">Botón</string>
 </resources>

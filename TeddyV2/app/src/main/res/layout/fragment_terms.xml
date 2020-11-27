@@ -1,72 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/terms_backgr"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        tools:context=".ui.register.TermsFragment">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/terms_backgr"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:clickable="true"
+    tools:context=".ui.register.TermsFragment">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/terms_title"
-            style="@style/TeddyProccessTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/terms_margin"
-            android:layout_marginEnd="@dimen/terms_margin"
-            android:text="@string/reg_title_policy"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+   <include layout="@layout/custom_appbar"
+       android:id="@+id/appBar"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/terms_title"
+        style="@style/TeddyProccessTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/terms_margin"
+        android:layout_marginEnd="@dimen/terms_margin"
+        android:text="@string/reg_title_policy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/policy_scroll"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/policy_height"
+        android:layout_marginTop="@dimen/terms_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/terms_title">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/policy"
             style="@style/TeddyPolicy"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/policy_height"
+            android:layout_height="match_parent"
             android:layout_marginStart="@dimen/terms_margin"
-            android:layout_marginTop="@dimen/terms_margin"
             android:layout_marginEnd="@dimen/terms_margin"
-            android:scrollbars="vertical"
             android:text="@string/reg_privacy_policy"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/terms_title" />
-
-        <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/policy_checkbox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/terms_margin"
-            android:layout_marginTop="@dimen/input_main_margin"
-            android:layout_marginEnd="@dimen/terms_margin"
-            android:text="@string/reg_checkbox_policy"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/policy" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/policy_continue_btn"
-            style="@style/TeddyButton.SecondaryColor"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/button_height"
-            android:layout_marginStart="@dimen/button_lateral_margin"
-            android:layout_marginTop="@dimen/button_top_margin"
-            android:layout_marginEnd="@dimen/button_lateral_margin"
-            android:layout_marginBottom="@dimen/login_general_margin"
-            android:enabled="false"
-            android:text="@string/action_continue"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/policy_checkbox"
-            app:layout_constraintVertical_bias="0.2" />
+    </androidx.core.widget.NestedScrollView>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/policy_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/terms_margin"
+        android:layout_marginTop="@dimen/input_main_margin"
+        android:layout_marginEnd="@dimen/terms_margin"
+        android:text="@string/reg_checkbox_policy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/policy_scroll" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/policy_continue_btn"
+        style="@style/TeddyButton.SecondaryColor"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginStart="@dimen/button_lateral_margin"
+        android:layout_marginTop="@dimen/button_top_margin"
+        android:layout_marginEnd="@dimen/button_lateral_margin"
+        android:layout_marginBottom="@dimen/login_general_margin"
+        android:enabled="false"
+        android:text="@string/action_continue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/policy_checkbox"
+        app:layout_constraintVertical_bias="0.2" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
