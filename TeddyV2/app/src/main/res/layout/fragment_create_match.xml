@@ -113,6 +113,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/createMatchButton"
         style="@style/TeddyButton.PrimaryVariantColor"
+        android:enabled="false"
         android:layout_width="186dp"
         android:layout_height="75dp"
         android:text="@string/action_create_match"
