@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -29,7 +29,7 @@
 
     <style name="TeddyButton.PrimaryVariantColor" parent="TeddyButton">
         <item name="android:backgroundTint">@color/btn_selector_primaryvariant_color</item>
-        <item name="android:textColor">@color/onPrimary</item>
+        <item name="android:textColor">@color/btn_selector_primaryvariant_text_color</item>
     </style>
 
     <style name="TeddyErrorText" parent="AppTheme">

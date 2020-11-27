@@ -96,6 +96,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/searchMatchButton"
+        android:enabled="false"
         style="@style/TeddyButton.PrimaryVariantColor"
         android:layout_width="186dp"
         android:layout_height="75dp"
