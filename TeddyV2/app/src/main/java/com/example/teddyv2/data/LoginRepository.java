@@ -43,6 +43,7 @@ public class LoginRepository {
         // If user credentials will be cached in local storage, it is recommended it be encrypted
         // @see https://developer.android.com/training/articles/keystore
     }
+
     // handle login
     public void login(final String username, final String password, final LoginViewModel modeloVista) {
             final String digestPass = EncriptationUtils.sha1(password);

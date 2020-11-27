@@ -32,7 +32,7 @@ public class User {
         email = (String) mapa.get("correo");
         password = (String) mapa.get("password");
         phone = (String) mapa.get("telefono");
-        level = UserLevel.getUserLevelByNumber((int) mapa.get("nivel"));
+        level = UserLevel.getUserLevelByNumber(Long.valueOf((long)mapa.get("nivel")).intValue());
         paymentAccount = (String) mapa.get("Payment");
     }
 

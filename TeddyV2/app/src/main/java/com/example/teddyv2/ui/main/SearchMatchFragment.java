@@ -16,15 +16,23 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.teddyv2.R;
+import com.example.teddyv2.domain.matches.Match;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.TimeZone;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -87,6 +95,7 @@ public class SearchMatchFragment extends Fragment {
                             }
                         }, hour, minutes, true);
                 picker.show();
+
             }
         });
 
@@ -115,6 +124,9 @@ public class SearchMatchFragment extends Fragment {
         searchMatchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                searchMatches(matchDate.getText().toString(), startHour.getText().toString(), "20:00");
+
+
                 PaymentFragment paymentFragment = new PaymentFragment();
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(android.R.id.content, paymentFragment, paymentFragment.getClass().getSimpleName())
@@ -158,5 +170,42 @@ public class SearchMatchFragment extends Fragment {
 
         return root;
     }
+
+    private void searchMatches(String fecha, String horaInicio, String horaFin) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+            formato.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+            final Timestamp fechaInicio = new Timestamp(formato.parse(fecha + " " + horaInicio));
+            Timestamp fechaFin = new Timestamp(formato.parse(fecha + " " + horaFin));
+            db.collection("Partidos").whereGreaterThanOrEqualTo("fecha", fechaInicio).whereLessThanOrEqualTo("fecha", fechaFin).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                @Override
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    ArrayList<Match> partidos = new ArrayList<Match>();
+                    for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
+                        partidos.add(new Match(doc.getData()));
+                    }
+                    mostrarResultado(partidos);
+                }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        mostrarError();
+                    }
+            });
+        } catch (Exception e) {
+            mostrarError();
+        }
+    }
+
+    public void mostrarResultado(ArrayList<Match> partidos){
+
+    }
+
+    public void mostrarError(){
+
+    }
+
+
 
 }
