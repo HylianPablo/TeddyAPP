@@ -61,6 +61,11 @@
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
+    <style name="TeddyHint" parent="TeddyErrorText">
+        <item name="android:textColor">@color/onPrimary</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
     <!-- Deprecated? -->
     <style name="TeddyButton.TeddySpinner" parent="TeddyButton">
         <item name="android:background">@color/greyTint</item>

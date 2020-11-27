@@ -41,6 +41,19 @@
         app:layout_constraintVertical_bias="0.475" >
     </Spinner>
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/spinner_hint"
+        style="@style/TeddyHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/input_lateral_margin"
+        android:layout_marginTop="@dimen/input_main_margin"
+        android:layout_marginEnd="@dimen/input_lateral_margin"
+        android:text="@string/small_placeholder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/single_spinner_layout_spinner" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/single_spinner_continue_btn"
         style="@style/TeddyButton.SecondaryColor"
@@ -55,7 +68,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/single_spinner_layout_spinner"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_hint"
         app:layout_constraintVertical_bias="0.2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
