@@ -15,6 +15,7 @@
     <string name="action_register">Registrarse</string>
     <string name="action_create_match">Crear Partido</string>
     <string name="action_continue">Continuar</string>
+    <string name="action_review">Enviar Valoracion</string>
 
     <!-- Errors -->
     <string name="error_invalid_username">Nombre de usuario no válido</string>
@@ -114,6 +115,9 @@
     <string name="match_date">Fecha del partido</string>
     <string name="match_search">Buscar partido</string>
     <string name="match_end_time">Hora de fin</string>
+
+    <!-- Review text -->
+    <string name="review_hint">Escriba aquí su valoración!</string>
 
     <!-- Other Text -->
     <string name="welcome">Bienvenido </string>
