@@ -2,7 +2,6 @@ package com.example.teddyv2.ui.main;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
@@ -16,14 +15,25 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.teddyv2.R;
+import com.example.teddyv2.domain.matches.Match;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.TimeZone;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -86,6 +96,7 @@ public class SearchMatchFragment extends Fragment {
                             }
                         }, hour, minutes, true);
                 picker.show();
+
             }
         });
 
@@ -114,12 +125,8 @@ public class SearchMatchFragment extends Fragment {
         searchMatchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //PaymentFragment paymentFragment = new PaymentFragment();
-                MatchesFoundFragment matchesFoundFragment = new MatchesFoundFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(android.R.id.content, matchesFoundFragment, matchesFoundFragment.getClass().getSimpleName())
-                        .commit();
-            }
+                searchMatches(matchDate.getText().toString(), startHour.getText().toString(), "20:00");
+                            }
         });
 
         searchMatchButton.setEnabled(false);
@@ -148,5 +155,51 @@ public class SearchMatchFragment extends Fragment {
 
         return root;
     }
+
+    private void searchMatches(String fecha, String horaInicio, String horaFin) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+            formato.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+            final Timestamp fechaInicio = new Timestamp(formato.parse(fecha + " " + horaInicio));
+            Timestamp fechaFin = new Timestamp(formato.parse(fecha + " " + horaFin));
+            db.collection("Partidos").whereGreaterThanOrEqualTo("fecha", fechaInicio).whereLessThanOrEqualTo("fecha", fechaFin).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                @Override
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    ArrayList<Match> partidos = new ArrayList<Match>();
+                    for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
+                        partidos.add(new Match(doc.getData()));
+                    }
+                    if(partidos.size() == 0){
+                        mostrarError();
+                    }else{
+                        mostrarResultado(partidos);
+                    }
+                }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        mostrarError();
+                    }
+            });
+        } catch (Exception e) {
+            mostrarError();
+        }
+    }
+
+    public void mostrarResultado(ArrayList<Match> partidos){
+        PaymentFragment paymentFragment = new PaymentFragment();
+        MatchesFoundFragment matchesFoundFragment = MatchesFoundFragment.newInstance(partidos);
+
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(android.R.id.content, matchesFoundFragment, matchesFoundFragment.getClass().getSimpleName())
+                .commit();
+    }
+
+    public void mostrarError(){
+        Toast.makeText(getContext(), "No existen partidos en esa fecha", Toast.LENGTH_LONG).show();
+    }
+
+
 
 }

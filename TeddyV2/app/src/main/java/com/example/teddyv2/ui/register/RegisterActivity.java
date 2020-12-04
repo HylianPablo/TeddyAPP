@@ -91,7 +91,6 @@ public class RegisterActivity extends AppCompatActivity {
                             ft.commit();
                         }else{
                             userCreationFragment.mostrarErrorUsuario();
-
                         }
                     }
             }
