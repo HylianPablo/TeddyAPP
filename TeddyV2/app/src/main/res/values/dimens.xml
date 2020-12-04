@@ -22,4 +22,5 @@
     <dimen name="splash_height">300dp</dimen>
     <dimen name="congrats_margin">24dp</dimen>
     <dimen name="match_spinner_margin">12dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>
