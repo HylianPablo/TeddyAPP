@@ -3,13 +3,21 @@ package com.example.teddyv2.ui.main;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.Constraints;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.teddyv2.R;
+import com.example.teddyv2.domain.matches.Match;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,11 +29,12 @@ public class MatchesFoundFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
+    ArrayList<Match> partidos;
 
     // TODO: Rename and change types of parameters
 
     public MatchesFoundFragment() {
-        // Required empty public constructor
+
     }
 
     /**
@@ -35,8 +44,9 @@ public class MatchesFoundFragment extends Fragment {
      * @return A new instance of fragment matchesFoundFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MatchesFoundFragment newInstance(String param1, String param2) {
+    public static MatchesFoundFragment newInstance(ArrayList<Match>partidos) {
         MatchesFoundFragment fragment = new MatchesFoundFragment();
+        fragment.partidos = partidos;
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -110,7 +120,6 @@ public class MatchesFoundFragment extends Fragment {
                         .commit();
             }
         });
-
         return root;
     }
 }
