@@ -2,7 +2,6 @@ package com.example.teddyv2.ui.main;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
@@ -17,6 +16,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -185,7 +185,11 @@ public class SearchMatchFragment extends Fragment {
                     for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
                         partidos.add(new Match(doc.getData()));
                     }
-                    mostrarResultado(partidos);
+                    if(partidos.size() == 0){
+                        mostrarError();
+                    }else{
+                        mostrarResultado(partidos);
+                    }
                 }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -208,7 +212,7 @@ public class SearchMatchFragment extends Fragment {
     }
 
     public void mostrarError(){
-
+        Toast.makeText(getContext(), "No existen partidos en esa fecha", Toast.LENGTH_LONG).show();
     }
 
 

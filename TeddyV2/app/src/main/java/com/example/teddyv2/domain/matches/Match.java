@@ -4,9 +4,11 @@ package com.example.teddyv2.domain.matches;
 import com.example.teddyv2.domain.user.UserLevel;
 import com.google.firebase.Timestamp;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 public class Match {
 
@@ -82,5 +84,19 @@ public class Match {
     public void setNivel(UserLevel nivel) {
         this.nivel = nivel;
     }
+
+    public String getDay(){
+        SimpleDateFormat format = new SimpleDateFormat("dd/M/yyyy");
+        format.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+        return format.format(fecha);
+    }
+
+    public String getHour(){
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+        format.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+        return format.format(fecha);
+    }
+
+
 
 }
