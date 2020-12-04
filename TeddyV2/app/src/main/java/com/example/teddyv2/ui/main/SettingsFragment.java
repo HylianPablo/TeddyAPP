@@ -3,6 +3,7 @@ package com.example.teddyv2.ui.main;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -11,6 +12,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.teddyv2.R;
 
@@ -74,6 +76,8 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     public void onStart() {
         super.onStart();
     }
+
+
 
 
     /**
