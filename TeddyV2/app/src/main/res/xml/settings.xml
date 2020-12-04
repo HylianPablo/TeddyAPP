@@ -5,35 +5,49 @@
         android:title="Datos personales">
 
         <EditTextPreference
-            android:key="accesstoken"
-            android:icon="@drawable/baseline_account_circle_black_18dp"
-            android:summary="Subtitulo 1"
-            android:title="Nombre de usuario" />
+            android:key="user_paypal"
+            android:icon="@drawable/baseline_monetization_on_black_18dp"
+            android:summary="Cuenta de Paypal actual"
+            android:title="Cuenta de PayPal" />
 
         <EditTextPreference
-            android:key="accesstokensecret"
+            android:key="user_password"
             android:icon="@drawable/baseline_vpn_key_black_18dp"
-            android:summary="Subtitulo 2"
+            android:summary="********"
             android:title="Contraseña" />
 
         <EditTextPreference
-            android:key="accesstokensecret2"
+            android:key="user_phone"
             android:icon="@drawable/baseline_phone_black_18dp"
-            android:summary="Subtitulo 3"
+            android:summary="+34 999 99 99 99"
             android:title="Teléfono" />
 
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="Valoraciones y similar">
-
-        <CheckBoxPreference
-            android:key="checkbox_preference"
-            android:title="Boton" />
-
-        <SwitchPreference
-            android:key="switch_preference"
-            android:title="Boton" />
+        android:title="Características del jugador">
+        <ListPreference
+            android:icon="@drawable/baseline_account_circle_black_18dp"
+            android:defaultValue="1"
+            android:entries="@array/level_spinner"
+            android:entryValues="@array/level_spinner"
+            android:key="user_level"
+            android:title="Nivel de jugador: Amateur" />
 
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Valoraciones del jugador">
+        <EditTextPreference
+            android:icon="@drawable/baseline_favorite_black_18dp"
+            android:key="user_rating"
+            android:selectable="false"
+            android:title="Su valoración es de 4.8/5.">
+        </EditTextPreference>
+    </PreferenceCategory>
+
+    <Preference
+        android:layout="@layout/match_history_button"
+        android:key="match_history"></Preference>
+
 </PreferenceScreen>

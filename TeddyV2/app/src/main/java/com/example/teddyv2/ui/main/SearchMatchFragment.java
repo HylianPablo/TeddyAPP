@@ -146,17 +146,6 @@ public class SearchMatchFragment extends Fragment {
             }
         });
 
-
-        /*pageViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                //textView.setText(s);
-            }
-        });
-         */
-        //searchMatchButton.setEnabled(false);
-
-
         return root;
     }
 
