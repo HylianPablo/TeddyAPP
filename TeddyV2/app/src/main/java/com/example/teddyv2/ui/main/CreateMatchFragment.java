@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -19,11 +20,31 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.teddyv2.R;
+import com.example.teddyv2.data.LoginRepository;
+import com.example.teddyv2.domain.matches.Match;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import org.w3c.dom.Document;
+
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.TimeZone;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -139,10 +160,8 @@ public class CreateMatchFragment extends Fragment {
         createMatchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PaymentFragment paymentFragment = new PaymentFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(android.R.id.content, paymentFragment, paymentFragment.getClass().getSimpleName())
-                        .commit();
+
+                crearPartido(matchDate.getText().toString(), startHour.getText().toString(), matchType.getSelectedItemPosition(), difficultyType.getSelectedItemPosition());
             }
         });
 
@@ -171,4 +190,71 @@ public class CreateMatchFragment extends Fragment {
 
         return root;
     }
+
+    private void crearPartido(final String fecha, final String hora, final int tipoPartido, final int dificultad){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+            formato.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+            final Timestamp fechaInicio = new Timestamp(formato.parse(fecha+ " " + hora));
+            final ArrayList<String> pistasDisponibles = new ArrayList<String>();
+            Task secondTask = FirebaseFirestore.getInstance().collection("Pistas").get();
+            secondTask.addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                @Override
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    for (int i = 0 ; i<queryDocumentSnapshots.getDocuments().size();i++ ) {
+                        DocumentSnapshot doc= queryDocumentSnapshots.getDocuments().get(i);
+                        final String idPista = doc.getId();
+                        final boolean ultimo = (i==(queryDocumentSnapshots.getDocuments().size()-1));
+                        Task firstTask = FirebaseFirestore.getInstance().collection("Partidos").whereEqualTo("fecha",fechaInicio).whereEqualTo("idPista",doc.getId()).get();
+                        firstTask.addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                            @Override
+                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                if(queryDocumentSnapshots.getDocuments().size()==0) {
+                                    if(pistasDisponibles.size()==0) {
+                                        pistasDisponibles.add(idPista);
+                                        crearPartidoCallback(fechaInicio, hora, idPista, tipoPartido, dificultad);
+                                    }
+                                }else{
+                                    if(pistasDisponibles.size()==0 && ultimo){
+                                        mostrarError();
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+        }catch (Exception e){
+            mostrarError();
+        }
+    }
+
+
+    private void crearPartidoCallback(Timestamp fechaInicio, String hora, String idPista, int tipoPartido, int dificultad){
+            Match nuevo = new Match(fechaInicio, LoginRepository.getInstance().getLoggedInUser().getUserId(),idPista,tipoPartido, dificultad);
+            FirebaseFirestore.getInstance().collection("Partidos").add(nuevo.toHashMap()).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    mostrarError();
+                }
+            }).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                @Override
+                public void onSuccess(DocumentReference documentReference) {
+                    PaymentFragment paymentFragment = new PaymentFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                    .add(android.R.id.content, paymentFragment, paymentFragment.getClass().getSimpleName())
+                    .commit();
+                }
+            });
+
+    }
+
+
+    public void mostrarError(){
+        Toast.makeText(getContext(), "No se ha podido crear el partido", Toast.LENGTH_LONG).show();
+    }
+
+
+
 }
