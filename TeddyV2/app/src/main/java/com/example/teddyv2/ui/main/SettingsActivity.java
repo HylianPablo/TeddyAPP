@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.teddyv2.ui.aftermatch.ValoracionActivity;
+
 public class SettingsActivity extends AppCompatActivity {
 
     @Override
@@ -38,9 +40,9 @@ public class SettingsActivity extends AppCompatActivity {
         String buttonText = button.getText().toString();
         Bundle bundle = new Bundle();
         bundle.putString("USERNAME",buttonText);
-        //Intent intent = new Intent(SettingsActivity.this, actividad2);
-        //intent.putExtras(bundle);
-        //startActivity(intent);
+        Intent intent = new Intent(SettingsActivity.this, ValoracionActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
         System.out.println("Usuario: "+button);
     }
 }

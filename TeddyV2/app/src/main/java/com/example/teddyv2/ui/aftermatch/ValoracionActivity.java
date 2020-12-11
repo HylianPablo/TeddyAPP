@@ -59,12 +59,12 @@ public class ValoracionActivity extends AppCompatActivity {
      * @throws AssertionError si Bundle es null
      */
     private void initAttributes(){
-        User usuarioValorado;
+        String usuarioValorado;
         LoggedInUser usuarioValorador;
         Bundle bundle = this.getIntent().getExtras();
         assert bundle != null;
 
-        usuarioValorado = (User) bundle.get(BUNDLE_KEY);
+        usuarioValorado = (String) bundle.get("USERNAME");
         usuarioValorador = LoginRepository.getInstance().getLoggedInUser();
         valoracion = new Valoracion(usuarioValorado, usuarioValorador);
     }

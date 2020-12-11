@@ -8,11 +8,11 @@ import java.util.HashMap;
 public class Valoracion {
 
     private LoggedInUser usuarioValorador;
-    private User usuarioValorado;
+    private String usuarioValorado;
     private int puntuacion;
     private String comentario;
 
-    public Valoracion(User usuarioValorado, LoggedInUser usuarioValorador){
+    public Valoracion(String usuarioValorado, LoggedInUser usuarioValorador){
         this.usuarioValorado = usuarioValorado;
         this.usuarioValorador = usuarioValorador;
         puntuacion = 0;
@@ -28,13 +28,13 @@ public class Valoracion {
     }
 
     public String getNameOfUsuarioValorado(){
-        return usuarioValorado.getName();
+        return usuarioValorado;
     }
 
     public HashMap<String, Object> toHashMap() {
         HashMap<String, Object> mapa = new HashMap<String, Object>();
         mapa.put("idUsuarioValora", usuarioValorador.getUserId());
-        mapa.put("idUsuarioValorado", usuarioValorado.getUsername());
+        mapa.put("idUsuarioValorado", usuarioValorado);
         mapa.put("puntuacion", puntuacion);
         mapa.put("comentario", comentario);
         return mapa;

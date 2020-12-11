@@ -29,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.89"
@@ -43,9 +44,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/match_start_time"
-        android:layout_marginBottom="@dimen/input_main_margin"
         app:errorTextAppearance="@style/TeddyErrorText"
-        app:layout_constraintBottom_toTopOf="@+id/finishHourCreate_layout"
+        app:layout_constraintBottom_toBottomOf="@+id/finishHourCreate_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -54,12 +54,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="time"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.921"
-            tools:layout_editor_absoluteX="0dp"
-            android:importantForAutofill="no"
-            android:inputType="time"/>
+            tools:layout_editor_absoluteX="0dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,17 +73,6 @@
     app:layout_constraintBottom_toTopOf="@+id/matchTypeCreate"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent">
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/finishHourCreate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp"
-        android:importantForAutofill="no"
-        android:inputType="time"/>
 
 </com.google.android.material.textfield.TextInputLayout>
 
