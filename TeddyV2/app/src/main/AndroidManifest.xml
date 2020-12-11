@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.aftermatch.ValoracionActivity"></activity>
         <activity android:name=".ui.main.SettingsActivity" />
         <activity android:name=".ui.register.RegisterActivity" />
         <activity
