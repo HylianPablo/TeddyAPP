@@ -33,13 +33,13 @@
     <!-- Set startIconDrawable if needed,set hint -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/single_input_layout_inputLayout"
+        style="@style/TeddyTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/input_lateral_margin"
         android:layout_marginTop="@dimen/form_vertical_margin"
         android:layout_marginEnd="@dimen/input_lateral_margin"
         android:hint="@string/small_placeholder"
-        app:errorTextAppearance="@style/TeddyErrorText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/single_input_layout_title"

@@ -1,4 +1,4 @@
-package com.example.teddyv2.ui.main;
+package com.example.teddyv2.ui.settings;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

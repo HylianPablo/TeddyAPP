@@ -102,32 +102,16 @@ public class CreateMatchFragment extends Fragment {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                startHour.setText(sHour + ":" + String.format("%02d",sMinute));
+                                if(sMinute>30){
+                                    sHour++;
+                                }
+                                startHour.setText(sHour + ":00" );
                             }
                         }, hour, minutes, true);
                 picker.show();
             }
         });
 
-        final EditText endHour = root.findViewById(R.id.finishHourCreate);
-        endHour.setInputType(InputType.TYPE_NULL);
-        endHour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar cldr = Calendar.getInstance();
-                int hour = cldr.get(Calendar.HOUR_OF_DAY);
-                int minutes = cldr.get(Calendar.MINUTE);
-                // time picker dialog
-                TimePickerDialog picker = new TimePickerDialog(getContext(),
-                        new TimePickerDialog.OnTimeSetListener() {
-                            @Override
-                            public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                endHour.setText(sHour + ":" + String.format("%02d",sMinute));
-                            }
-                        }, hour, minutes, true);
-                picker.show();
-            }
-        });
 
         final EditText matchDate = root.findViewById(R.id.matchDateCreate);
         matchDate.setInputType(InputType.TYPE_NULL);
@@ -162,7 +146,7 @@ public class CreateMatchFragment extends Fragment {
 
         createMatchButton.setEnabled(false);
 
-        endHour.addTextChangedListener(new TextWatcher() {
+        startHour.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -175,7 +159,7 @@ public class CreateMatchFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(startHour.getText().toString().length()==0|| endHour.getText().toString().length()==0 || matchDate.getText().toString().length()==0){
+                if(startHour.getText().toString().length()==0|| matchDate.getText().toString().length()==0){
                     createMatchButton.setEnabled(false);
                 }else{
                     createMatchButton.setEnabled(true);

@@ -1,4 +1,4 @@
-package com.example.teddyv2.ui.main;
+package com.example.teddyv2.ui.settings;
 
 import android.os.Bundle;
 
@@ -10,11 +10,11 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.teddyv2.R;
 import com.example.teddyv2.data.LoginRepository;
@@ -24,6 +24,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import static com.example.teddyv2.utils.ValidationUtils.isValidEmail;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
@@ -45,7 +47,11 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         paypal.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                paypal.setSummary(newValue.toString());
+                if(isValidEmail(newValue.toString())) {
+                    paypal.setSummary(newValue.toString());
+                }else{
+                    Toast.makeText(getContext(), "La dirección de correo electrónico es inválida.", Toast.LENGTH_LONG).show();
+                }
                 return true;
             }
         });
@@ -58,7 +64,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 for(int i=0;i<newValue.toString().length();i++){
                     encripted+="*";
                 }
-                paypal.setSummary(encripted);
+                password.setSummary(encripted);
                 return true;
             }
         });
@@ -67,7 +73,11 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         phone.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                phone.setSummary(newValue.toString());
+                if(!newValue.toString().matches("[0-9\\+ ]+")){
+                    Toast.makeText(getContext(), "El número de teléfono sólo debe incluir números.", Toast.LENGTH_LONG).show();
+                }else {
+                    phone.setSummary(newValue.toString());
+                }
                 return true;
             }
         });
@@ -76,7 +86,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         user_level.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                user_level.setTitle("Nivel de jugador: "+newValue.toString());
+                user_level.setTitle("Nivel de jugador: " + newValue.toString());
                 return true;
             }
         });
@@ -93,11 +103,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 }
             }
         });
-
     }
 
     @Override
-    public void onStart() {super.onStart();}
+    public void onStart() {
+        super.onStart();
+    }
 
 
 
@@ -115,7 +126,5 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
 
     }
-
-
 
 }

@@ -15,11 +15,11 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/matchDateCreate_layout"
+        style="@style/TeddyTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/match_date"
         android:layout_marginBottom="@dimen/input_main_margin"
-        app:errorTextAppearance="@style/TeddyErrorText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/startHourCreate_layout" >
@@ -29,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.89"
@@ -40,11 +41,13 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/startHourCreate_layout"
+        style="@style/TeddyTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/match_start_time"
-        android:layout_marginBottom="@dimen/input_main_margin"
         app:errorTextAppearance="@style/TeddyErrorText"
+        app:layout_constraintBottom_toBottomOf="@+id/finishHourCreate_layout"
+        android:layout_marginBottom="@dimen/input_main_margin"
         app:layout_constraintBottom_toTopOf="@+id/finishHourCreate_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -54,36 +57,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="time"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.921"
-            tools:layout_editor_absoluteX="0dp"
-            android:importantForAutofill="no"
-            android:inputType="time"/>
+            tools:layout_editor_absoluteX="0dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
 <com.google.android.material.textfield.TextInputLayout
     android:id="@+id/finishHourCreate_layout"
+    style="@style/TeddyTextInputLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:hint="@string/match_end_time"
     android:layout_marginBottom="@dimen/match_spinner_margin"
-    app:errorTextAppearance="@style/TeddyErrorText"
     app:layout_constraintBottom_toTopOf="@+id/matchTypeCreate"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent">
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/finishHourCreate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp"
-        android:importantForAutofill="no"
-        android:inputType="time"/>
 
 </com.google.android.material.textfield.TextInputLayout>
 

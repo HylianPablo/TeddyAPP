@@ -42,6 +42,7 @@
                     android:layout_gravity="left"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/days_one"
                     android:text="Modalidad del partido"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -52,6 +53,7 @@
                     android:layout_gravity="left"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/days_one"
                     android:text="Dificultad del partido"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -69,8 +71,10 @@
                         android:layout_gravity="left"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
+                        android:fontFamily="@font/trade_winds"
                         android:text="Dia XX de XXXXX"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#edeff0" />
 
                     <TextView
                         android:id="@+id/textCardView1Hour"
@@ -80,6 +84,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:text="Hora: XX:XX"
+                        android:fontFamily="@font/trade_winds"
+                        android:textColor="#edeff0"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <TextView
@@ -90,6 +96,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:text="Usuario Usuariez"
+                        android:fontFamily="@font/trade_winds"
+                        android:textColor="#edeff0"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </LinearLayout>
             </LinearLayout>
@@ -123,6 +131,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:text="Modalidad del partido"
+                    android:fontFamily="@font/days_one"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
@@ -133,6 +142,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:text="Dificultad del partido"
+                    android:fontFamily="@font/days_one"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <LinearLayout
@@ -150,6 +160,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:text="Dia XX de XXXXX"
+                        android:fontFamily="@font/trade_winds"
+                        android:textColor="#edeff0"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <TextView
@@ -160,6 +172,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:text="Hora: XX:XX"
+                        android:fontFamily="@font/trade_winds"
+                        android:textColor="#edeff0"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <TextView
@@ -170,6 +184,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:text="Usuario Usuariez"
+                        android:fontFamily="@font/trade_winds"
+                        android:textColor="#edeff0"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </LinearLayout>
             </LinearLayout>
@@ -203,6 +219,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:text="Modalidad del partido"
+                    android:fontFamily="@font/days_one"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
@@ -213,6 +230,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:text="Dificultad del partido"
+                    android:fontFamily="@font/days_one"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <LinearLayout
@@ -230,6 +248,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:text="Dia XX de XXXXX"
+                        android:fontFamily="@font/trade_winds"
+                        android:textColor="#edeff0"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <TextView
@@ -240,6 +260,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:text="Hora: XX:XX"
+                        android:fontFamily="@font/trade_winds"
+                        android:textColor="#edeff0"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <TextView
@@ -250,6 +272,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:text="Usuario Usuariez"
+                        android:fontFamily="@font/trade_winds"
+                        android:textColor="#edeff0"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </LinearLayout>
             </LinearLayout>
@@ -284,6 +308,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:text="Modalidad del partido"
+                    android:fontFamily="@font/days_one"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
@@ -294,6 +319,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:text="Dificultad del partido"
+                    android:fontFamily="@font/days_one"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <LinearLayout
@@ -311,6 +337,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:text="Dia XX de XXXXX"
+                        android:fontFamily="@font/trade_winds"
+                        android:textColor="#edeff0"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <TextView
@@ -321,6 +349,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:text="Hora: XX:XX"
+                        android:fontFamily="@font/trade_winds"
+                        android:textColor="#edeff0"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <TextView
@@ -331,6 +361,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:text="Usuario Usuariez"
+                        android:fontFamily="@font/trade_winds"
+                        android:textColor="#edeff0"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </LinearLayout>
             </LinearLayout>
@@ -365,6 +397,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:text="Modalidad del partido"
+                    android:fontFamily="@font/days_one"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
@@ -375,6 +408,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:text="Dificultad del partido"
+                    android:fontFamily="@font/days_one"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <LinearLayout
@@ -392,6 +426,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:text="Dia XX de XXXXX"
+                        android:fontFamily="@font/trade_winds"
+                        android:textColor="#edeff0"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <TextView
@@ -402,6 +438,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:text="Hora: XX:XX"
+                        android:fontFamily="@font/trade_winds"
+                        android:textColor="#edeff0"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <TextView
@@ -412,6 +450,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:text="Usuario Usuariez"
+                        android:fontFamily="@font/trade_winds"
+                        android:textColor="#edeff0"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
                 </LinearLayout>
             </LinearLayout>
