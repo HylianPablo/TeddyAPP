@@ -31,8 +31,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.TimeZone;
 
 /**
@@ -116,7 +118,6 @@ public class SearchMatchFragment extends Fragment {
                             }
                         }, hour, minutes, true);
                 picker.show();
-
             }
         });
 
@@ -139,6 +140,7 @@ public class SearchMatchFragment extends Fragment {
                             }
                         }, year, month, day);
                 picker.show();
+                picker.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
             }
         });
 
@@ -184,28 +186,34 @@ public class SearchMatchFragment extends Fragment {
             formato.setTimeZone(TimeZone.getTimeZone("GMT+1"));
             final Timestamp fechaInicio = new Timestamp(formato.parse(fecha + " " + horaInicio));
             Timestamp fechaFin = new Timestamp(formato.parse(fecha + " " + horaFin));
-            if(!fechaFin.toDate().after(fechaInicio.toDate())){
-                Toast.makeText(getContext(), "La fecha de inicio no puede ser igual o menor a la fecha de fin", Toast.LENGTH_LONG).show();
+            Date fechaAhora = new Date(System.currentTimeMillis());
+
+            if(fechaInicio.toDate().before(fechaAhora) || fechaFin.toDate().before(fechaAhora)){
+                Toast.makeText(getContext(), "La hora debe de ser posterior a la actual", Toast.LENGTH_LONG).show();
             }else{
-                db.collection("Partidos").whereGreaterThanOrEqualTo("fecha", fechaInicio).whereLessThanOrEqualTo("fecha", fechaFin).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        ArrayList<Match> partidos = new ArrayList<Match>();
-                        for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
-                            partidos.add(new Match(doc.getData()));
+                if(!fechaFin.toDate().after(fechaInicio.toDate())){
+                    Toast.makeText(getContext(), "La fecha de inicio no puede ser igual o menor a la fecha de fin", Toast.LENGTH_LONG).show();
+                }else{
+                    db.collection("Partidos").whereGreaterThanOrEqualTo("fecha", fechaInicio).whereLessThanOrEqualTo("fecha", fechaFin).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            ArrayList<Match> partidos = new ArrayList<Match>();
+                            for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
+                                partidos.add(new Match(doc.getData()));
+                            }
+                            if(partidos.size() == 0){
+                                mostrarError();
+                            }else{
+                                mostrarResultado(partidos);
+                            }
                         }
-                        if(partidos.size() == 0){
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
                             mostrarError();
-                        }else{
-                            mostrarResultado(partidos);
                         }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        mostrarError();
-                    }
-                });
+                    });
+                }
             }
         } catch (Exception e) {
             mostrarError();
