@@ -27,6 +27,16 @@ public class Match {
         nivel = null;
     }
 
+    public Match(Timestamp fecha, String idOrganizador, String idPista, int modalidad, int nivel) {
+        this.fecha = fecha.toDate();
+        this.idOrganizador = idOrganizador;
+        this.idPista = idPista;
+        this.modalidad = MatchType.getTypeByInt(modalidad);
+        this.nivel = UserLevel.getUserLevelByNumber(nivel);
+    }
+
+
+
     public Match(Map<String, Object> mapa) {
         fecha =((Timestamp) mapa.get("fecha")).toDate();
         idOrganizador = (String) mapa.get("idOrganizador");
