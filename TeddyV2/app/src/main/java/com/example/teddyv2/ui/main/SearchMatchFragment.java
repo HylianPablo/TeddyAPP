@@ -99,6 +99,27 @@ public class SearchMatchFragment extends Fragment {
 
             }
         });
+        final EditText endHour = root.findViewById(R.id.endHourSearch);
+        endHour.setInputType(InputType.TYPE_NULL);
+        endHour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar cldr = Calendar.getInstance();
+                int hour = cldr.get(Calendar.HOUR_OF_DAY);
+                int minutes = cldr.get(Calendar.MINUTE);
+                // time picker dialog
+                TimePickerDialog picker = new TimePickerDialog(getContext(),
+                        new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
+                                endHour.setText(sHour + ":" + String.format("%02d",sMinute));
+                            }
+                        }, hour, minutes, true);
+                picker.show();
+
+            }
+        });
+
 
         final EditText matchDate = root.findViewById(R.id.matchDateSearch);
         matchDate.setInputType(InputType.TYPE_NULL);
@@ -125,7 +146,7 @@ public class SearchMatchFragment extends Fragment {
         searchMatchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchMatches(matchDate.getText().toString(), startHour.getText().toString(), "20:00");
+                searchMatches(matchDate.getText().toString(), startHour.getText().toString(), endHour.getText().toString());
                             }
         });
 
@@ -163,25 +184,29 @@ public class SearchMatchFragment extends Fragment {
             formato.setTimeZone(TimeZone.getTimeZone("GMT+1"));
             final Timestamp fechaInicio = new Timestamp(formato.parse(fecha + " " + horaInicio));
             Timestamp fechaFin = new Timestamp(formato.parse(fecha + " " + horaFin));
-            db.collection("Partidos").whereGreaterThanOrEqualTo("fecha", fechaInicio).whereLessThanOrEqualTo("fecha", fechaFin).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                @Override
-                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                    ArrayList<Match> partidos = new ArrayList<Match>();
-                    for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
-                        partidos.add(new Match(doc.getData()));
+            if(!fechaFin.toDate().after(fechaInicio.toDate())){
+                Toast.makeText(getContext(), "La fecha de inicio no puede ser igual o menor a la fecha de fin", Toast.LENGTH_LONG).show();
+            }else{
+                db.collection("Partidos").whereGreaterThanOrEqualTo("fecha", fechaInicio).whereLessThanOrEqualTo("fecha", fechaFin).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        ArrayList<Match> partidos = new ArrayList<Match>();
+                        for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
+                            partidos.add(new Match(doc.getData()));
+                        }
+                        if(partidos.size() == 0){
+                            mostrarError();
+                        }else{
+                            mostrarResultado(partidos);
+                        }
                     }
-                    if(partidos.size() == 0){
-                        mostrarError();
-                    }else{
-                        mostrarResultado(partidos);
-                    }
-                }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         mostrarError();
                     }
-            });
+                });
+            }
         } catch (Exception e) {
             mostrarError();
         }
