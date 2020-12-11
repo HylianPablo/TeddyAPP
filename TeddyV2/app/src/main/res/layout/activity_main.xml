@@ -23,7 +23,7 @@
                 android:layout_width="308dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/vampiro_one"
-                android:gravity="left"
+                android:gravity="start"
                 android:minHeight="?actionBarSize"
                 android:padding="@dimen/appbar_padding"
                 android:text="@string/app_name"
