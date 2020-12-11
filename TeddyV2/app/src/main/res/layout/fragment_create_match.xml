@@ -15,11 +15,11 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/matchDateCreate_layout"
+        style="@style/TeddyTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/match_date"
         android:layout_marginBottom="@dimen/input_main_margin"
-        app:errorTextAppearance="@style/TeddyErrorText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/startHourCreate_layout" >
@@ -41,11 +41,14 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/startHourCreate_layout"
+        style="@style/TeddyTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/match_start_time"
         app:errorTextAppearance="@style/TeddyErrorText"
         app:layout_constraintBottom_toBottomOf="@+id/finishHourCreate_layout"
+        android:layout_marginBottom="@dimen/input_main_margin"
+        app:layout_constraintBottom_toTopOf="@+id/finishHourCreate_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -65,11 +68,11 @@
 
 <com.google.android.material.textfield.TextInputLayout
     android:id="@+id/finishHourCreate_layout"
+    style="@style/TeddyTextInputLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:hint="@string/match_end_time"
     android:layout_marginBottom="@dimen/match_spinner_margin"
-    app:errorTextAppearance="@style/TeddyErrorText"
     app:layout_constraintBottom_toTopOf="@+id/matchTypeCreate"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent">

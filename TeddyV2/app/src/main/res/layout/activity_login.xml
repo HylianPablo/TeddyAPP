@@ -29,7 +29,7 @@
                 android:layout_width="308dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/vampiro_one"
-                android:gravity="left"
+                android:gravity="start"
                 android:minHeight="?actionBarSize"
                 android:padding="@dimen/appbar_padding"
                 android:text="@string/app_name"
@@ -63,22 +63,22 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/username_layout"
+            style="@style/TeddyTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/input_lateral_margin"
             android:layout_marginTop="@dimen/input_main_margin"
             android:layout_marginEnd="@dimen/input_lateral_margin"
-            app:errorTextAppearance="@style/TeddyErrorText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_title">
+            app:layout_constraintTop_toBottomOf="@+id/login_title"
+            android:hint="@string/prompt_username">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="@string/prompt_username"
-                android:hint="@string/prompt_username"
                 android:inputType="textEmailAddress"
                 android:selectAllOnFocus="true"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -88,22 +88,22 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password_layout"
+            style="@style/TeddyTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/input_lateral_margin"
             android:layout_marginTop="@dimen/input_main_margin"
             android:layout_marginEnd="@dimen/input_lateral_margin"
-            app:errorTextAppearance="@style/TeddyErrorText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/username_layout">
+            app:layout_constraintTop_toBottomOf="@+id/username_layout"
+            android:hint="@string/prompt_password">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="@string/prompt_password"
-                android:hint="@string/prompt_password"
                 android:imeActionLabel="@string/action_sign_in"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"

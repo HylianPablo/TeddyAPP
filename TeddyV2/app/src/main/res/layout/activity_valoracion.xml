@@ -52,6 +52,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/review_input_text"
+            style="@style/TeddyTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/policy_height"
             android:selectAllOnFocus="true"

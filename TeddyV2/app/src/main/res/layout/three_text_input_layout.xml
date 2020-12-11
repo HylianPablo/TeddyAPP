@@ -35,12 +35,12 @@
         <!-- Set startIconDrawable if needed,set hint -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/three_input_layout_first_inputLayout"
+            style="@style/TeddyTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/input_lateral_margin"
             android:layout_marginTop="@dimen/form_vertical_margin"
             android:layout_marginEnd="@dimen/input_lateral_margin"
-            app:errorTextAppearance="@style/TeddyErrorText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/three_input_layout_title"
@@ -61,12 +61,12 @@
         <!-- Set startIconDrawable if needed,set hint -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/three_input_layout_second_inputLayout"
+            style="@style/TeddyTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/input_lateral_margin"
             android:layout_marginTop="@dimen/input_main_margin"
             android:layout_marginEnd="@dimen/input_lateral_margin"
-            app:errorTextAppearance="@style/TeddyErrorText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/three_input_layout_first_inputLayout"
@@ -87,12 +87,12 @@
         <!-- Set startIconDrawable if needed,set hint -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/three_input_layout_third_inputLayout"
+            style="@style/TeddyTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/input_lateral_margin"
             android:layout_marginTop="@dimen/input_main_margin"
             android:layout_marginEnd="@dimen/input_lateral_margin"
-            app:errorTextAppearance="@style/TeddyErrorText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/three_input_layout_second_inputLayout"
