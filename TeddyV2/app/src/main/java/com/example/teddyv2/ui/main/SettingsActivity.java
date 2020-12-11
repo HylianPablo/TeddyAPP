@@ -3,6 +3,7 @@ package com.example.teddyv2.ui.main;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,8 +34,13 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void rateUserClick(View v){
-        Button b = (Button) v;
-        String button = b.getText().toString();
+        Button button = (Button) v;
+        String buttonText = button.getText().toString();
+        Bundle bundle = new Bundle();
+        bundle.putString("USERNAME",buttonText);
+        //Intent intent = new Intent(SettingsActivity.this, actividad2);
+        //intent.putExtras(bundle);
+        //startActivity(intent);
         System.out.println("Usuario: "+button);
     }
 }
