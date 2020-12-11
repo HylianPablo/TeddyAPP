@@ -2,6 +2,7 @@ package com.example.teddyv2.ui.main;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.preference.EditTextPreference;
@@ -9,12 +10,20 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.teddyv2.R;
+import com.example.teddyv2.data.LoginRepository;
+import com.example.teddyv2.domain.user.User;
+import com.example.teddyv2.domain.user.UserLevel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
@@ -71,20 +80,42 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 return true;
             }
         });
+
+        FirebaseFirestore.getInstance().collection("Usuarios").document(LoginRepository.getInstance().getLoggedInUser().getUserId()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()){
+                        User usuario = new User(document.getData());
+                        mostrarDatos(usuario);
+                    }
+                }
+            }
+        });
+
     }
+
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onStart() {super.onStart();}
+
+
+
+    private void mostrarDatos(User usuario){
+        final EditTextPreference paypal = findPreference("user_paypal");
+        paypal.setSummary(usuario.getPaymentAccount());
+        paypal.setText(usuario.getPaymentAccount());
+        final EditTextPreference phone = findPreference("user_phone");
+        phone.setText(usuario.getPhone());
+        phone.setSummary(usuario.getPhone());
+        final ListPreference user_level = findPreference("user_level");
+        user_level.setValueIndex(UserLevel.getNumberByLevel(usuario.getLevel()));
+        user_level.setSummary(user_level.getValue());
+
+
+
     }
 
 
-
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment SettingsFragment.
-     */
 
 }

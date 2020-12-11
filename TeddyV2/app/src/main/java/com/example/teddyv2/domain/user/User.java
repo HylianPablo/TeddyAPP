@@ -3,6 +3,7 @@ package com.example.teddyv2.domain.user;
 import com.example.teddyv2.utils.EncriptationUtils;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class User {
 
@@ -26,7 +27,7 @@ public class User {
         paymentAccount = "";
     }
 
-    public User(HashMap<String, Object> mapa) {
+    public User(Map<String, Object> mapa) {
         surname = (String) mapa.get("apellidos");
         name = (String) mapa.get("nombre");
         email = (String) mapa.get("correo");
