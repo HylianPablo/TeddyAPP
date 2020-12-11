@@ -1,8 +1,7 @@
-package com.example.teddyv2.ui.aftermatch;
+package com.example.teddyv2.ui.settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,11 +11,9 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.example.teddyv2.MainActivity;
 import com.example.teddyv2.R;
 import com.example.teddyv2.data.LoginRepository;
 import com.example.teddyv2.data.model.LoggedInUser;
-import com.example.teddyv2.domain.user.User;
 import com.example.teddyv2.domain.user.Valoracion;
 import com.google.firebase.firestore.FirebaseFirestore;
 

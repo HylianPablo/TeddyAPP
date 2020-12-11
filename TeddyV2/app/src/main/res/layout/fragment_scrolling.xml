@@ -36,6 +36,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Partido individual"
+                    android:fontFamily="@font/days_one"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
                     android:textAppearance="?android:attr/textAppearanceLarge"></TextView>
@@ -44,6 +45,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="1 de enero, 00:00"
+                    android:fontFamily="@font/trade_winds"
                     android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -124,6 +126,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
                     android:text="Partido individual"
+                    android:fontFamily="@font/days_one"
                     android:textAppearance="?android:attr/textAppearanceLarge"></TextView>
 
                 <TextView
@@ -131,6 +134,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="1 de enero, 00:00"
+                    android:fontFamily="@font/trade_winds"
                     android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
 
                 <LinearLayout
@@ -215,6 +219,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
                     android:text="Partido individual"
+                    android:fontFamily="@font/days_one"
                     android:textAppearance="?android:attr/textAppearanceLarge"></TextView>
 
                 <TextView
@@ -222,6 +227,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="1 de enero, 00:00"
+                    android:fontFamily="@font/trade_winds"
                     android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
 
                 <LinearLayout
@@ -307,6 +313,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
                     android:text="Partido individual"
+                    android:fontFamily="@font/days_one"
                     android:textAppearance="?android:attr/textAppearanceLarge"></TextView>
 
                 <TextView
@@ -314,6 +321,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="1 de enero, 00:00"
+                    android:fontFamily="@font/trade_winds"
                     android:textAppearance="?android:attr/textAppearanceMedium"></TextView>
 
                 <LinearLayout
