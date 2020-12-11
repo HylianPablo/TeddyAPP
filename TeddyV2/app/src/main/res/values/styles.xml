@@ -32,6 +32,12 @@
         <item name="android:textColor">@color/btn_selector_primaryvariant_text_color</item>
     </style>
 
+    <style name="TeddyTextInputLayout" parent="TextAppearance.AppCompat">
+        <item name="hintTextColor">@color/secondaryVariant</item>
+        <item name="boxStrokeColor">@color/secondaryVariant</item>
+        <item name="errorTextAppearance">@style/TeddyErrorText</item>
+    </style>
+
     <style name="TeddyErrorText" parent="AppTheme">
         <item name="android:fontFamily">monospace</item>
         <item name="android:textColor">@color/error</item>
