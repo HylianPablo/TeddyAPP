@@ -133,4 +133,17 @@ public class User {
             mapa.put("Payment", paymentAccount);
             return mapa;
     }
+    public HashMap<String, Object> toHashMapNoEncripted() {
+        HashMap<String, Object> mapa = new HashMap<String, Object>();
+        mapa.put("apellidos", surname);
+        mapa.put("nombre", name);
+        mapa.put("correo", email);
+        mapa.put("password", password);
+        mapa.put("telefono", phone);
+        int nivel = UserLevel.getNumberByLevel(level);
+        mapa.put("nivel", nivel);
+        mapa.put("Payment", paymentAccount);
+        return mapa;
+    }
+
 }
