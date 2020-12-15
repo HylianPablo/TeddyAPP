@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.teddyv2.R;
 import com.example.teddyv2.data.LoginRepository;
+import com.example.teddyv2.domain.matches.Match;
 import com.example.teddyv2.domain.user.User;
 import com.example.teddyv2.domain.user.UserLevel;
 import com.example.teddyv2.utils.EncriptationUtils;
@@ -28,6 +29,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 
 import static com.example.teddyv2.utils.ValidationUtils.isValidEmail;
 
@@ -103,6 +107,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         });
 
         cargarDatos();
+        cargarValoraciones();
 
 
     }
@@ -141,6 +146,24 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         user_level.setSummary(user_level.getValue());
         final EditTextPreference password = findPreference("user_password");
         password.setText("********");
+    }
+
+    private  void cargarValoraciones(){
+        FirebaseFirestore.getInstance().collection("Valoraciones").whereEqualTo("idUsuarioValorado",LoginRepository.getInstance().getLoggedInUser().getUserId()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                double suma = 0;
+                for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
+                    suma+=doc.getDouble("puntuacion");
+                }
+                final EditTextPreference valoracion = findPreference("user_rating");
+                if(queryDocumentSnapshots.getDocuments().size() == 0){
+                    valoracion.setTitle("Todavía no tienes ninguna valoración");
+                }else{
+                    valoracion.setTitle("Su valoración es de "+(suma/queryDocumentSnapshots.getDocuments().size())+"/5.0");
+                }
+            }
+        });
     }
 
     private void actualizarBD(){
