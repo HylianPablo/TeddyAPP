@@ -27,12 +27,12 @@
     <PreferenceCategory
         android:title="Características del jugador">
         <ListPreference
-            android:icon="@drawable/baseline_account_circle_black_18dp"
             android:defaultValue="1"
             android:entries="@array/level_spinner"
             android:entryValues="@array/level_spinner"
+            android:icon="@drawable/baseline_account_circle_black_18dp"
             android:key="user_level"
-            android:title="Nivel de jugador: Amateur" />
+            android:title="Nivel de jugador" />
 
     </PreferenceCategory>
 

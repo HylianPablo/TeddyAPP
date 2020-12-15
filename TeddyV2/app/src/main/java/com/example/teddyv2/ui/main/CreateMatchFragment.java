@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.text.Editable;
 import android.text.InputType;
@@ -28,22 +27,17 @@ import com.example.teddyv2.domain.matches.Match;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
-import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import org.w3c.dom.Document;
 
-import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
+import java.util.Date;
 import java.util.TimeZone;
 
 /**
@@ -136,6 +130,7 @@ public class CreateMatchFragment extends Fragment {
                                 matchDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                             }
                         }, year, month, day);
+                picker.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 picker.show();
             }
         });
@@ -181,39 +176,44 @@ public class CreateMatchFragment extends Fragment {
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm");
             formato.setTimeZone(TimeZone.getTimeZone("GMT+1"));
             final Timestamp fechaInicio = new Timestamp(formato.parse(fecha+ " " + hora));
-            final ArrayList<String> pistasDisponibles = new ArrayList<String>();
-            Task secondTask = FirebaseFirestore.getInstance().collection("Pistas").get();
-            secondTask.addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                @Override
-                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                    for (int i = 0 ; i<queryDocumentSnapshots.getDocuments().size();i++ ) {
-                        DocumentSnapshot doc= queryDocumentSnapshots.getDocuments().get(i);
-                        final String idPista = doc.getId();
-                        final boolean ultimo = (i==(queryDocumentSnapshots.getDocuments().size()-1));
-                        Task firstTask = FirebaseFirestore.getInstance().collection("Partidos").whereEqualTo("fecha",fechaInicio).whereEqualTo("idPista",doc.getId()).get();
-                        firstTask.addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                            @Override
-                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                if(queryDocumentSnapshots.getDocuments().size()==0) {
-                                    if(pistasDisponibles.size()==0) {
-                                        pistasDisponibles.add(idPista);
-                                        crearPartidoCallback(fechaInicio, hora, idPista, tipoPartido, dificultad);
-                                    }
-                                }else{
-                                    if(pistasDisponibles.size()==0 && ultimo){
-                                        mostrarError();
+            Date fechaAhora = new Date(System.currentTimeMillis());
+
+            if(fechaInicio.toDate().before(fechaAhora)){
+                Toast.makeText(getContext(), "La hora debe de ser posterior a la actual", Toast.LENGTH_LONG).show();
+            }else {
+                final ArrayList<String> pistasDisponibles = new ArrayList<String>();
+                Task secondTask = FirebaseFirestore.getInstance().collection("Pistas").get();
+                secondTask.addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for (int i = 0; i < queryDocumentSnapshots.getDocuments().size(); i++) {
+                            DocumentSnapshot doc = queryDocumentSnapshots.getDocuments().get(i);
+                            final String idPista = doc.getId();
+                            final boolean ultimo = (i == (queryDocumentSnapshots.getDocuments().size() - 1));
+                            Task firstTask = FirebaseFirestore.getInstance().collection("Partidos").whereEqualTo("fecha", fechaInicio).whereEqualTo("idPista", doc.getId()).get();
+                            firstTask.addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                @Override
+                                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                    if (queryDocumentSnapshots.getDocuments().size() == 0) {
+                                        if (pistasDisponibles.size() == 0) {
+                                            pistasDisponibles.add(idPista);
+                                            crearPartidoCallback(fechaInicio, hora, idPista, tipoPartido, dificultad);
+                                        }
+                                    } else {
+                                        if (pistasDisponibles.size() == 0 && ultimo) {
+                                            mostrarError();
+                                        }
                                     }
                                 }
-                            }
-                        });
+                            });
+                        }
                     }
-                }
-            });
+                });
+            }
         }catch (Exception e){
             mostrarError();
         }
     }
-
 
     private void crearPartidoCallback(Timestamp fechaInicio, String hora, String idPista, int tipoPartido, int dificultad){
             Match nuevo = new Match(fechaInicio, LoginRepository.getInstance().getLoggedInUser().getUserId(),idPista,tipoPartido, dificultad);
@@ -231,9 +231,7 @@ public class CreateMatchFragment extends Fragment {
                     .commit();
                 }
             });
-
     }
-
 
     public void mostrarError(){
         Toast.makeText(getContext(), "No se ha podido crear el partido", Toast.LENGTH_LONG).show();
