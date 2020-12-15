@@ -3,25 +3,17 @@ package com.example.teddyv2.ui.settings;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import android.text.InputType;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.teddyv2.R;
 import com.example.teddyv2.data.LoginRepository;
-import com.example.teddyv2.domain.matches.Match;
 import com.example.teddyv2.domain.user.User;
 import com.example.teddyv2.domain.user.UserLevel;
 import com.example.teddyv2.utils.EncriptationUtils;
@@ -33,7 +25,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
 
 import static com.example.teddyv2.utils.ValidationUtils.isValidEmail;
 
