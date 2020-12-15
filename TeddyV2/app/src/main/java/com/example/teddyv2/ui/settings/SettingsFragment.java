@@ -10,11 +10,13 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.teddyv2.R;
@@ -67,23 +69,28 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         password.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                String encripted = "";
-                for(int i=0;i<newValue.toString().length();i++){
-                    encripted+="*";
+                if(newValue.toString().length()<=5){
+                    Toast.makeText(getContext(), "La contraseña debe tener al menos 5 caracteres.", Toast.LENGTH_LONG).show();
+                }else {
+                    usuario.setPassword(EncriptationUtils.sha1(newValue.toString()));
+                    actualizarBD();
                 }
-                password.setSummary(encripted);
-                usuario.setPassword(EncriptationUtils.sha1(newValue.toString()));
-                password.setText(encripted);
-                actualizarBD();
                 return true;
             }
         });
+        password.setOnBindEditTextListener(
+                new EditTextPreference.OnBindEditTextListener() {
+                    @Override
+                    public void onBindEditText(@NonNull EditText editText) {
+                        editText.setText("");
+                        editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    }
+                });
 
         final EditTextPreference phone = findPreference("user_phone");
         phone.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                Log.d("KEK","change");
                 if(!newValue.toString().matches("[0-9\\+ ]+")){
                     Toast.makeText(getContext(), "El número de teléfono sólo debe incluir números.", Toast.LENGTH_LONG).show();
                 }else {
@@ -145,7 +152,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         user_level.setValueIndex(UserLevel.getNumberByLevel(usuario.getLevel()));
         user_level.setSummary(user_level.getValue());
         final EditTextPreference password = findPreference("user_password");
-        password.setText("********");
+        password.setSummary("********");
     }
 
     private  void cargarValoraciones(){
