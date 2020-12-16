@@ -76,7 +76,8 @@
                         android:text="Usuario 1"
                         android:id="@+id/button1Card1"
                         android:onClick="rateUserClick"
-                        android:backgroundTint="@color/colorAccent">
+                        android:backgroundTint="@color/ratingButton"
+                        android:elevation="10dp">
                     </Button>
                     <Button
                         android:layout_width="match_parent"
@@ -84,7 +85,8 @@
                         android:text="Usuario 2"
                         android:id="@+id/button2Card1"
                         android:onClick="rateUserClick"
-                        android:backgroundTint="@color/colorAccent">
+                        android:backgroundTint="@color/ratingButton"
+                        android:elevation="10dp">
                     </Button>
                     <Button
                         android:layout_width="match_parent"
@@ -92,7 +94,8 @@
                         android:text="Usuario 3"
                         android:id="@+id/button3Card1"
                         android:onClick="rateUserClick"
-                        android:backgroundTint="@color/colorAccent">
+                        android:backgroundTint="@color/ratingButton"
+                        android:elevation="10dp">
                     </Button>
                 </LinearLayout>
             </LinearLayout>
@@ -167,7 +170,8 @@
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/colorAccent"
+                            android:backgroundTint="@color/ratingButton"
+                            android:elevation="10dp"
                             android:text="Usuario 1"
                             android:id="@+id/button1Card2"
                             android:onClick="rateUserClick"></Button>
@@ -175,7 +179,8 @@
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/colorAccent"
+                            android:backgroundTint="@color/ratingButton"
+                            android:elevation="10dp"
                             android:text="Usuario 2"
                             android:id="@+id/button2Card2"
                             android:onClick="rateUserClick"></Button>
@@ -183,7 +188,8 @@
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/colorAccent"
+                            android:backgroundTint="@color/ratingButton"
+                            android:elevation="10dp"
                             android:text="Usuario 3"
                             android:id="@+id/button3Card2"
                             android:onClick="rateUserClick"></Button>
@@ -262,7 +268,8 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/button1Card3"
                             android:onClick="rateUserClick"
-                            android:backgroundTint="@color/colorAccent"
+                            android:backgroundTint="@color/ratingButton"
+                            android:elevation="10dp"
                             android:text="Usuario 1"></Button>
 
                         <Button
@@ -270,7 +277,8 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/button2Card3"
                             android:onClick="rateUserClick"
-                            android:backgroundTint="@color/colorAccent"
+                            android:backgroundTint="@color/ratingButton"
+                            android:elevation="10dp"
                             android:text="Usuario 2"></Button>
 
                         <Button
@@ -278,7 +286,8 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/button3Card3"
                             android:onClick="rateUserClick"
-                            android:backgroundTint="@color/colorAccent"
+                            android:backgroundTint="@color/ratingButton"
+                            android:elevation="10dp"
                             android:text="Usuario 3"></Button>
                     </LinearLayout>
                 </LinearLayout>
@@ -356,7 +365,8 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/button1Card4"
                             android:onClick="rateUserClick"
-                            android:backgroundTint="@color/colorAccent"
+                            android:backgroundTint="@color/ratingButton"
+                            android:elevation="10dp"
                             android:text="Usuario 1"></Button>
 
                         <Button
@@ -364,7 +374,8 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/button2Card4"
                             android:onClick="rateUserClick"
-                            android:backgroundTint="@color/colorAccent"
+                            android:backgroundTint="@color/ratingButton"
+                            android:elevation="10dp"
                             android:text="Usuario 2"></Button>
 
                         <Button
@@ -372,7 +383,8 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/button3Card4"
                             android:onClick="rateUserClick"
-                            android:backgroundTint="@color/colorAccent"
+                            android:backgroundTint="@color/ratingButton"
+                            android:elevation="10dp"
                             android:text="Usuario 3"></Button>
                     </LinearLayout>
                 </LinearLayout>
@@ -390,10 +402,10 @@
             android:text="Siguiente"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintHorizontal_bias="0.765"
+            card_view:layout_constraintHorizontal_bias="0.86"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/cuarta_valoracion"
-            card_view:layout_constraintVertical_bias="0.0">
+            card_view:layout_constraintVertical_bias="1.0">
 
         </Button>
 
@@ -406,7 +418,7 @@
             android:text="Anterior"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="@+id/button4"
-            card_view:layout_constraintHorizontal_bias="0.189"
+            card_view:layout_constraintHorizontal_bias="0.054"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/cuarta_valoracion"
             card_view:layout_constraintVertical_bias="1.0"></Button>

@@ -23,4 +23,8 @@
     <color name="colorAccent">@color/secondary</color>
 
     <color name="greyTint">#DDDDDD</color>
+
+    <!-- Buttons -->
+    <color name="createSearch">#FAE9A5</color>
+    <color name="ratingButton">#239BB8</color>
 </resources>

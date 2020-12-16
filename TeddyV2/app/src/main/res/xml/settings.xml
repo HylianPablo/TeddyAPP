@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/cardview_light_background">
+    android:background="@color/onPrimary">
     <PreferenceCategory
         android:title="Datos personales">
 
         <EditTextPreference
             android:key="user_paypal"
-            android:icon="@drawable/baseline_monetization_on_black_18dp"
+            android:icon="@drawable/baseline_monetization_on_black_18"
             android:summary="Cuenta de Paypal actual"
             android:title="Cuenta de PayPal" />
 
         <EditTextPreference
             android:key="user_password"
-            android:icon="@drawable/baseline_vpn_key_black_18dp"
+            android:icon="@drawable/baseline_vpn_key_black_18"
             android:summary="********"
             android:title="Contraseña" />
 
         <EditTextPreference
             android:key="user_phone"
-            android:icon="@drawable/baseline_phone_black_18dp"
+            android:icon="@drawable/baseline_phone_black_18"
             android:summary="+34 999 99 99 99"
             android:title="Teléfono" />
 
@@ -30,7 +30,7 @@
             android:defaultValue="1"
             android:entries="@array/level_spinner"
             android:entryValues="@array/level_spinner"
-            android:icon="@drawable/baseline_account_circle_black_18dp"
+            android:icon="@drawable/baseline_account_circle_black_18_little"
             android:key="user_level"
             android:title="Nivel de jugador" />
 
@@ -39,7 +39,7 @@
     <PreferenceCategory
         android:title="Valoraciones del jugador">
         <EditTextPreference
-            android:icon="@drawable/baseline_favorite_black_18dp"
+            android:icon="@drawable/baseline_favorite_black_18"
             android:key="user_rating"
             android:selectable="false"
             android:title="Su valoración es de 4.8/5.">
