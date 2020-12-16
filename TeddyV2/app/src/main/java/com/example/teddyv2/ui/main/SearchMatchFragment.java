@@ -28,10 +28,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -194,12 +194,12 @@ public class SearchMatchFragment extends Fragment {
                 if(!fechaFin.toDate().after(fechaInicio.toDate())){
                     Toast.makeText(getContext(), "La fecha de inicio no puede ser igual o menor a la fecha de fin", Toast.LENGTH_LONG).show();
                 }else{
-                    db.collection("Partidos").whereGreaterThanOrEqualTo("fecha", fechaInicio).whereLessThanOrEqualTo("fecha", fechaFin).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    db.collection("Partidos").orderBy("fecha", Query.Direction.DESCENDING).whereGreaterThanOrEqualTo("fecha", fechaInicio).whereLessThanOrEqualTo("fecha", fechaFin).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                         @Override
                         public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                             ArrayList<Match> partidos = new ArrayList<Match>();
                             for (DocumentSnapshot doc : queryDocumentSnapshots.getDocuments()) {
-                                partidos.add(new Match(doc.getData()));
+                                partidos.add(new Match(doc.getData(),doc.getId()));
                             }
                             if(partidos.size() == 0){
                                 mostrarError();

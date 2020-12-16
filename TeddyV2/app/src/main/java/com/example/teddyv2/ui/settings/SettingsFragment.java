@@ -3,23 +3,17 @@ package com.example.teddyv2.ui.settings;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
+import android.text.InputType;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.teddyv2.R;
 import com.example.teddyv2.data.LoginRepository;
-import com.example.teddyv2.domain.matches.Match;
 import com.example.teddyv2.domain.user.User;
 import com.example.teddyv2.domain.user.UserLevel;
 import com.example.teddyv2.utils.EncriptationUtils;
@@ -31,7 +25,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
 
 import static com.example.teddyv2.utils.ValidationUtils.isValidEmail;
 
@@ -67,23 +60,28 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         password.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                String encripted = "";
-                for(int i=0;i<newValue.toString().length();i++){
-                    encripted+="*";
+                if(newValue.toString().length()<=5){
+                    Toast.makeText(getContext(), "La contraseña debe tener al menos 5 caracteres.", Toast.LENGTH_LONG).show();
+                }else {
+                    usuario.setPassword(EncriptationUtils.sha1(newValue.toString()));
+                    actualizarBD();
                 }
-                password.setSummary(encripted);
-                usuario.setPassword(EncriptationUtils.sha1(newValue.toString()));
-                password.setText(encripted);
-                actualizarBD();
                 return true;
             }
         });
+        password.setOnBindEditTextListener(
+                new EditTextPreference.OnBindEditTextListener() {
+                    @Override
+                    public void onBindEditText(@NonNull EditText editText) {
+                        editText.setText("");
+                        editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    }
+                });
 
         final EditTextPreference phone = findPreference("user_phone");
         phone.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                Log.d("KEK","change");
                 if(!newValue.toString().matches("[0-9\\+ ]+")){
                     Toast.makeText(getContext(), "El número de teléfono sólo debe incluir números.", Toast.LENGTH_LONG).show();
                 }else {
@@ -145,7 +143,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         user_level.setValueIndex(UserLevel.getNumberByLevel(usuario.getLevel()));
         user_level.setSummary(user_level.getValue());
         final EditTextPreference password = findPreference("user_password");
-        password.setText("********");
+        password.setSummary("********");
     }
 
     private  void cargarValoraciones(){
