@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -20,7 +21,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/title"
-                android:layout_width="308dp"
+                android:layout_width="245dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/vampiro_one"
                 android:gravity="start"
@@ -34,12 +35,14 @@
                 android:id="@+id/settingsButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
+                android:layout_gravity="top"
+                android:layout_marginRight="20dp"
                 android:layout_margin="@dimen/fab_margin"
                 android:elevation="30dp"
-                app:borderWidth="4dp"
+                android:scaleType="centerInside"
                 app:backgroundTint="@color/colorAccent"
-                app:srcCompat="@drawable/baseline_account_circle_black_18dp" />
+                app:borderWidth="4dp"
+                app:srcCompat="@drawable/baseline_account_circle_black_18" />
         </TableRow>
 
         <com.google.android.material.tabs.TabLayout
