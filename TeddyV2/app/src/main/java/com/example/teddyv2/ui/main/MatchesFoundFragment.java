@@ -2,14 +2,26 @@ package com.example.teddyv2.ui.main;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.teddyv2.R;
+import com.example.teddyv2.data.LoginRepository;
+import com.example.teddyv2.domain.matches.Match;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,15 +30,10 @@ import com.example.teddyv2.R;
  */
 public class MatchesFoundFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    ArrayList<Match> partidos;
+    int pagina;
 
-
-    // TODO: Rename and change types of parameters
-
-    public MatchesFoundFragment() {
-        // Required empty public constructor
-    }
+    public MatchesFoundFragment() { }
 
     /**
      * Use this factory method to create a new instance of
@@ -34,9 +41,10 @@ public class MatchesFoundFragment extends Fragment {
      *
      * @return A new instance of fragment matchesFoundFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static MatchesFoundFragment newInstance(String param1, String param2) {
+    public static MatchesFoundFragment newInstance(ArrayList<Match>partidos) {
         MatchesFoundFragment fragment = new MatchesFoundFragment();
+        fragment.partidos = partidos;
+        fragment.pagina = 0;
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -45,9 +53,6 @@ public class MatchesFoundFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
-
     }
 
     @Override
@@ -55,62 +60,87 @@ public class MatchesFoundFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_matches_found, container, false);
-
-        CardView cardView1 = root.findViewById(R.id.cardView1);
-        cardView1.setOnClickListener(new View.OnClickListener() {
+        cargarPartidos(root);
+        root.findViewById(R.id.buttonBack).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PaymentFragment paymentFragment = new PaymentFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(android.R.id.content, paymentFragment, paymentFragment.getClass().getSimpleName())
-                        .commit();
+                if(pagina>0) {
+                    pagina--;
+                    cargarPartidos(getView().getRootView());
+                }
             }
         });
-
-        CardView cardView2 = root.findViewById(R.id.cardView2);
-        cardView2.setOnClickListener(new View.OnClickListener() {
+        root.findViewById(R.id.buttonNext).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PaymentFragment paymentFragment = new PaymentFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(android.R.id.content, paymentFragment, paymentFragment.getClass().getSimpleName())
-                        .commit();
+                if(partidos.size()>(pagina*5)+5) {
+                    pagina++;
+                    cargarPartidos(getView().getRootView());
+                }
             }
         });
-
-        CardView cardView3 = root.findViewById(R.id.cardView3);
-        cardView3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PaymentFragment paymentFragment = new PaymentFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(android.R.id.content, paymentFragment, paymentFragment.getClass().getSimpleName())
-                        .commit();
-            }
-        });
-
-        CardView cardView4 = root.findViewById(R.id.cardView4);
-        cardView4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PaymentFragment paymentFragment = new PaymentFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(android.R.id.content, paymentFragment, paymentFragment.getClass().getSimpleName())
-                        .commit();
-            }
-        });
-
-        CardView cardView5 = root.findViewById(R.id.cardView5);
-        cardView5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PaymentFragment paymentFragment = new PaymentFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(android.R.id.content, paymentFragment, paymentFragment.getClass().getSimpleName())
-                        .commit();
-            }
-        });
-
         return root;
+    }
+
+    private void cargarPartidos(View root){
+
+        ArrayList<CardView> cardViews = new ArrayList<CardView>();
+        cardViews.add((CardView)root.findViewById(R.id.cardView1));
+        cardViews.add((CardView)root.findViewById(R.id.cardView2));
+        cardViews.add((CardView)root.findViewById(R.id.cardView3));
+        cardViews.add((CardView)root.findViewById(R.id.cardView4));
+        cardViews.add((CardView)root.findViewById(R.id.cardView5));
+        final String idJugador = LoginRepository.getInstance().getLoggedInUser().getUserId();
+        for (int i = 0 ; i < cardViews.size() ; i++) {
+            CardView c = cardViews.get(i);
+            if (partidos.size() > ((pagina * 5) + i)) {
+                final Match p = partidos.get((pagina*5)+i);
+                c.setVisibility(View.VISIBLE);
+                c.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(p.addParticipante(idJugador)){
+                            FirebaseFirestore.getInstance().collection("Partidos").document(p.getId()).update(p.toHashMap()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    redirigirPago();
+                                }
+                            });
+                        }else{
+                            Toast.makeText(getContext(), "No te puedes apuntar a ese partido", Toast.LENGTH_LONG).show();
+                        }
+
+
+
+                    }
+                });
+                LinearLayout layout1 = (LinearLayout) c.getChildAt(0);
+                ((TextView) layout1.getChildAt(0)).setText(p.getModalidad().toString());
+                ((TextView) layout1.getChildAt(1)).setText(p.getNivel().toString());
+                LinearLayout layout2 = (LinearLayout) layout1.getChildAt(2);
+                ((TextView) layout2.getChildAt(0)).setText(p.getDay());
+                ((TextView) layout2.getChildAt(1)).setText(p.getHour());
+                ((TextView) layout2.getChildAt(2)).setText(p.getIdOrganizador());
+            } else {
+                c.setVisibility(View.INVISIBLE);
+            }
+        }
+        if(pagina>0) {
+            root.findViewById(R.id.buttonBack).setVisibility(View.VISIBLE);
+        }else{
+            root.findViewById(R.id.buttonBack).setVisibility(View.INVISIBLE);
+        }
+        if(partidos.size()>(pagina*5)+5) {
+            root.findViewById(R.id.buttonNext).setVisibility(View.VISIBLE);
+        }else{
+            root.findViewById(R.id.buttonNext).setVisibility(View.INVISIBLE);
+        }
+    }
+
+    public void redirigirPago(){
+        PaymentFragment paymentFragment = new PaymentFragment();
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(android.R.id.content, paymentFragment, paymentFragment.getClass().getSimpleName())
+                .commit();
     }
 }

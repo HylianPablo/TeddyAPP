@@ -3,6 +3,7 @@ package com.example.teddyv2.domain.user;
 import com.example.teddyv2.utils.EncriptationUtils;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class User {
 
@@ -26,13 +27,13 @@ public class User {
         paymentAccount = "";
     }
 
-    public User(HashMap<String, Object> mapa) {
+    public User(Map<String, Object> mapa) {
         surname = (String) mapa.get("apellidos");
         name = (String) mapa.get("nombre");
         email = (String) mapa.get("correo");
         password = (String) mapa.get("password");
         phone = (String) mapa.get("telefono");
-        level = UserLevel.getUserLevelByNumber((int) mapa.get("nivel"));
+        level = UserLevel.getUserLevelByNumber(Long.valueOf((long)mapa.get("nivel")).intValue());
         paymentAccount = (String) mapa.get("Payment");
     }
 
@@ -132,4 +133,17 @@ public class User {
             mapa.put("Payment", paymentAccount);
             return mapa;
     }
+    public HashMap<String, Object> toHashMapNoEncripted() {
+        HashMap<String, Object> mapa = new HashMap<String, Object>();
+        mapa.put("apellidos", surname);
+        mapa.put("nombre", name);
+        mapa.put("correo", email);
+        mapa.put("password", password);
+        mapa.put("telefono", phone);
+        int nivel = UserLevel.getNumberByLevel(level);
+        mapa.put("nivel", nivel);
+        mapa.put("Payment", paymentAccount);
+        return mapa;
+    }
+
 }
