@@ -145,7 +145,7 @@ public class PaymentFragment extends Fragment {
                         Log.d("paymentExample", paymentDetails);
                         Log.i("paymentExample", paymentDetails);
                         Log.d("Pay Confirm : ", String.valueOf(confirm.getPayment().toJSONObject()));
-                        
+
                         Intent intent = new Intent(this.getActivity(), MainActivity.class);
                         startActivity(intent);
                     } catch (JSONException e) {
