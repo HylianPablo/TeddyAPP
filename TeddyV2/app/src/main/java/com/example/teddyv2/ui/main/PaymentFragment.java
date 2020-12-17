@@ -15,7 +15,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.teddyv2.MainActivity;
 import com.example.teddyv2.R;
+import com.example.teddyv2.ui.login.LoginActivity;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
@@ -143,13 +145,9 @@ public class PaymentFragment extends Fragment {
                         Log.d("paymentExample", paymentDetails);
                         Log.i("paymentExample", paymentDetails);
                         Log.d("Pay Confirm : ", String.valueOf(confirm.getPayment().toJSONObject()));
-//                        Starting a new activity for the payment details and status to show
-                        /*startActivity(new Intent(MainActivity.this, ConfirmationActivity.class)
-                                .putExtra("PaymentDetails", paymentDetails));*/
-                        Fragment fragment = new SearchMatchFragment();//TODO pasar el fragment bueno
-                        getActivity().getSupportFragmentManager().beginTransaction()
-                                .replace(android.R.id.content, fragment, fragment.getClass().getSimpleName())
-                                .commit();
+                        
+                        Intent intent = new Intent(this.getActivity(), MainActivity.class);
+                        startActivity(intent);
                     } catch (JSONException e) {
                         Log.e("paymentExample", "an extremely unlikely failure occurred : ", e);
                     }
