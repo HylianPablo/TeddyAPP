@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.277" />
+        app:layout_constraintVertical_bias="0.358" />
 
     <TextView
         android:id="@+id/paymentInfoPrice"
@@ -32,19 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/paymentInfoMatch"
-        app:layout_constraintVertical_bias="0.043" />
-
-    <TextView
-        android:id="@+id/paymentInfoPaypal"
-        android:layout_width="353dp"
-        android:layout_height="79dp"
-        android:text="Cuenta de paypal: usuario@email.com."
-        android:textSize="26dp"
-        app:layout_constraintBottom_toTopOf="@+id/acceptPaymentButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/paymentInfoPrice"
-        app:layout_constraintVertical_bias="0.244" />
+        app:layout_constraintVertical_bias="0.176" />
 
     <Button
         android:id="@+id/acceptPaymentButton"
@@ -54,8 +42,7 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/paymentInfoPrice"
-        app:layout_constraintVertical_bias="0.504" />
+        app:layout_constraintVertical_bias="0.29" />
 </androidx.constraintlayout.widget.ConstraintLayout>

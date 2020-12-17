@@ -6,12 +6,14 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.teddyv2.R;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
@@ -50,6 +52,8 @@ public class PaymentFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private Button acceptPaymentButton;
+    private TextView infoReserva;
+    private TextView cantidadAbonar;
     // TODO: Rename and change types of parameters
 
     public PaymentFragment() {
@@ -82,6 +86,10 @@ public class PaymentFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_payment, container, false);
 
         acceptPaymentButton = root.findViewById(R.id.acceptPaymentButton);
+        infoReserva = root.findViewById(R.id.paymentInfoMatch);
+        infoReserva.setText("Ha reservado usted la pista XX, de XX:XX a XX:XX."); //TODO pillar los datos
+        cantidadAbonar = root.findViewById(R.id.paymentInfoPrice);
+        cantidadAbonar.setText("Cantidad a abonar: 10 euros.");
         final Fragment f = this;
         acceptPaymentButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,14 +101,14 @@ public class PaymentFragment extends Fragment {
         Intent intent = new Intent(this.getActivity(), PayPalService.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
         getActivity().startService(intent);
+        Log.d("CreateView","------------FIN---------------");
         return root;
     }
 
     private void getPayment() {
-        System.out.println("Entrando en getPayment");
         //Creating a paypalpayment
         PayPalPayment payment = new PayPalPayment(new
-                BigDecimal(10),"EUR","Test",PayPalPayment.PAYMENT_INTENT_SALE);
+                BigDecimal(10),"EUR","Reserva Partido",PayPalPayment.PAYMENT_INTENT_SALE);
         //Creating Paypal Payment activity intent
         Intent intent = new Intent(this.getActivity(), PaymentActivity.class);
         //putting the paypal configuration to the intent
@@ -111,9 +119,9 @@ public class PaymentFragment extends Fragment {
         //Puting paypal payment to the intent
         intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment);
         //Starting the intent activity for result
+        Log.d("Get Payment","------------FIN---------------");
         //the request code will be used on the method onActivityResult
         startActivityForResult(intent, PAYPAL_REQUEST_CODE);
-        System.out.println("Saliendo de getPayment");
     }
 
     @Override
@@ -136,10 +144,12 @@ public class PaymentFragment extends Fragment {
                         Log.i("paymentExample", paymentDetails);
                         Log.d("Pay Confirm : ", String.valueOf(confirm.getPayment().toJSONObject()));
 //                        Starting a new activity for the payment details and status to show
-                        System.out.println("Stab me lad");
                         /*startActivity(new Intent(MainActivity.this, ConfirmationActivity.class)
                                 .putExtra("PaymentDetails", paymentDetails));*/
-
+                        Fragment fragment = new SearchMatchFragment();//TODO pasar el fragment bueno
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(android.R.id.content, fragment, fragment.getClass().getSimpleName())
+                                .commit();
                     } catch (JSONException e) {
                         Log.e("paymentExample", "an extremely unlikely failure occurred : ", e);
                     }
@@ -154,6 +164,7 @@ public class PaymentFragment extends Fragment {
 
     @Override
     public void onDestroy() {
+        Log.d("onDestroy","------------FIN---------------");
         getActivity().stopService(new Intent(this.getActivity(), PayPalService.class));
         super.onDestroy();
     }
