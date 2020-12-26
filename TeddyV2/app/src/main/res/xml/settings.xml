@@ -49,5 +49,8 @@
     <Preference
         android:layout="@layout/match_history_button"
         android:key="match_history"></Preference>
+    <Preference
+        android:layout="@layout/rates_text_button"
+        android:key="rates_history"></Preference>
 
 </PreferenceScreen>

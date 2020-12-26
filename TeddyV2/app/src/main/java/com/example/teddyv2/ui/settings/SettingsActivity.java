@@ -73,4 +73,12 @@ public class SettingsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onButtonClickRates(View v){
+        final FragmentManager manager = getSupportFragmentManager();
+        RatesFragment fragment = new RatesFragment();
+        manager.beginTransaction()
+                .add(android.R.id.content, fragment, fragment.getClass().getSimpleName())
+                .commit();
+    }
+
 }
