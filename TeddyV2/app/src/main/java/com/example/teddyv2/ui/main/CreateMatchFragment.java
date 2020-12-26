@@ -216,7 +216,7 @@ public class CreateMatchFragment extends Fragment {
     }
 
     private void crearPartidoCallback(Timestamp fechaInicio, String hora, String idPista, int tipoPartido, int dificultad){
-            Match nuevo = new Match(fechaInicio, LoginRepository.getInstance().getLoggedInUser().getUserId(),idPista,tipoPartido, dificultad);
+            final Match nuevo = new Match(fechaInicio, LoginRepository.getInstance().getLoggedInUser().getUserId(),idPista,tipoPartido, dificultad);
             FirebaseFirestore.getInstance().collection("Partidos").add(nuevo.toHashMap()).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
@@ -225,7 +225,7 @@ public class CreateMatchFragment extends Fragment {
             }).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                 @Override
                 public void onSuccess(DocumentReference documentReference) {
-                    PaymentFragment paymentFragment = new PaymentFragment();
+                    PaymentFragment paymentFragment = PaymentFragment.newInstance(nuevo);
                     getActivity().getSupportFragmentManager().beginTransaction()
                     .add(android.R.id.content, paymentFragment, paymentFragment.getClass().getSimpleName())
                     .commit();

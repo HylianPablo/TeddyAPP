@@ -221,7 +221,6 @@ public class SearchMatchFragment extends Fragment {
     }
 
     public void mostrarResultado(ArrayList<Match> partidos){
-        PaymentFragment paymentFragment = new PaymentFragment();
         MatchesFoundFragment matchesFoundFragment = MatchesFoundFragment.newInstance(partidos);
 
         getActivity().getSupportFragmentManager().beginTransaction()

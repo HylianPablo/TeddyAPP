@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -103,7 +104,7 @@ public class MatchesFoundFragment extends Fragment {
                             FirebaseFirestore.getInstance().collection("Partidos").document(p.getId()).update(p.toHashMap()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    redirigirPago();
+                                    redirigirPago(p);
                                 }
                             });
                         }else{
@@ -137,8 +138,8 @@ public class MatchesFoundFragment extends Fragment {
         }
     }
 
-    public void redirigirPago(){
-        PaymentFragment paymentFragment = new PaymentFragment();
+    public void redirigirPago(Match partido){
+        PaymentFragment paymentFragment = PaymentFragment.newInstance(partido);
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(android.R.id.content, paymentFragment, paymentFragment.getClass().getSimpleName())
                 .commit();
