@@ -83,6 +83,7 @@ public class SearchMatchFragment extends Fragment {
 
         final EditText startHour = root.findViewById(R.id.startHourSearch);
         startHour.setInputType(InputType.TYPE_NULL);
+        startHour.setFocusable(false);
         startHour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,6 +104,7 @@ public class SearchMatchFragment extends Fragment {
         });
         final EditText endHour = root.findViewById(R.id.endHourSearch);
         endHour.setInputType(InputType.TYPE_NULL);
+        endHour.setFocusable(false);
         endHour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,6 +126,7 @@ public class SearchMatchFragment extends Fragment {
 
         final EditText matchDate = root.findViewById(R.id.matchDateSearch);
         matchDate.setInputType(InputType.TYPE_NULL);
+        matchDate.setFocusable(false);
         matchDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

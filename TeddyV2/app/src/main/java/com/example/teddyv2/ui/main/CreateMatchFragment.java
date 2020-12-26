@@ -91,6 +91,7 @@ public class CreateMatchFragment extends Fragment {
 
         final EditText startHour = root.findViewById(R.id.startHourCreate);
         startHour.setInputType(InputType.TYPE_NULL);
+        startHour.setFocusable(false);
         startHour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +116,7 @@ public class CreateMatchFragment extends Fragment {
 
         final EditText matchDate = root.findViewById(R.id.matchDateCreate);
         matchDate.setInputType(InputType.TYPE_NULL);
+        matchDate.setFocusable(false);
         matchDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
