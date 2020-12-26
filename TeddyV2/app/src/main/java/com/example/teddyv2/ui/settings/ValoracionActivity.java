@@ -1,6 +1,8 @@
 package com.example.teddyv2.ui.settings;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -35,6 +37,7 @@ public class ValoracionActivity extends AppCompatActivity {
     EditText review;
     Button acceptButton;
     Button seeReviewsButton;
+    private String usuarioValorado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +105,11 @@ public class ValoracionActivity extends AppCompatActivity {
         seeReviewsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: Navegar a vista de las valoraciones y mostrar
+                RatesFragment rates = RatesFragment.newInstance(usuarioValorado);
+                FragmentManager manager = getSupportFragmentManager();
+                FragmentTransaction ft = manager.beginTransaction()
+                        .add(android.R.id.content, rates, rates.getClass().getSimpleName());
+                ft.commit();
             }
         });
 
