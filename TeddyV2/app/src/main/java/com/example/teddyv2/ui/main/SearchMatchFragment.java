@@ -148,7 +148,7 @@ public class SearchMatchFragment extends Fragment {
         searchMatchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchMatches(matchDate.getText().toString(), startHour.getText().toString(), endHour.getText().toString());
+                searchMatches(matchDate.getText().toString(), startHour.getText().toString(), endHour.getText().toString(), matchType.getSelectedItemPosition(), difficultyType.getSelectedItemPosition());
                             }
         });
 
@@ -179,7 +179,7 @@ public class SearchMatchFragment extends Fragment {
         return root;
     }
 
-    private void searchMatches(String fecha, String horaInicio, String horaFin) {
+    private void searchMatches(String fecha, String horaInicio, String horaFin, int modalidad, int nivel) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         try {
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -194,7 +194,7 @@ public class SearchMatchFragment extends Fragment {
                 if(!fechaFin.toDate().after(fechaInicio.toDate())){
                     Toast.makeText(getContext(), "La fecha de inicio no puede ser igual o menor a la fecha de fin", Toast.LENGTH_LONG).show();
                 }else{
-                    db.collection("Partidos").orderBy("fecha", Query.Direction.DESCENDING).whereGreaterThanOrEqualTo("fecha", fechaInicio).whereLessThanOrEqualTo("fecha", fechaFin).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    db.collection("Partidos").orderBy("fecha", Query.Direction.DESCENDING).whereGreaterThanOrEqualTo("fecha", fechaInicio).whereLessThanOrEqualTo("fecha", fechaFin).whereEqualTo("modalidad",modalidad ).whereEqualTo("nivel",nivel ).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                         @Override
                         public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                             ArrayList<Match> partidos = new ArrayList<Match>();
