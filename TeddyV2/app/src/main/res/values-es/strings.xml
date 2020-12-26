@@ -16,6 +16,7 @@
     <string name="action_create_match">Crear Partido</string>
     <string name="action_continue">Continuar</string>
     <string name="action_review">Enviar Valoracion</string>
+    <string name="action_see_reviews">Ver Valoraciones</string>
 
     <!-- Errors -->
     <string name="error_invalid_username">Nombre de usuario no válido</string>
