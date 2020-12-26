@@ -1,6 +1,8 @@
 package com.example.teddyv2.ui.settings;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -26,9 +28,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
  */
 public class ValoracionActivity extends AppCompatActivity {
 
-    // TODO: Esto es correcto?
-    private static final String BUNDLE_KEY = "usuario-valorado";
-
     // Atributos de datos
     Valoracion valoracion;
 
@@ -37,6 +36,8 @@ public class ValoracionActivity extends AppCompatActivity {
     RatingBar ratingBar;
     EditText review;
     Button acceptButton;
+    Button seeReviewsButton;
+    private String usuarioValorado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +77,7 @@ public class ValoracionActivity extends AppCompatActivity {
         ratingBar = findViewById(R.id.rating_bar);
         review = findViewById(R.id.review_input_text);
         acceptButton = findViewById(R.id.review_button);
+        seeReviewsButton = findViewById((R.id.see_reviews_button));
     }
 
     /**
@@ -97,6 +99,17 @@ public class ValoracionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 almacenarValoracion();
                 finish();
+            }
+        });
+
+        seeReviewsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RatesFragment rates = RatesFragment.newInstance(usuarioValorado);
+                FragmentManager manager = getSupportFragmentManager();
+                FragmentTransaction ft = manager.beginTransaction()
+                        .add(android.R.id.content, rates, rates.getClass().getSimpleName());
+                ft.commit();
             }
         });
 
