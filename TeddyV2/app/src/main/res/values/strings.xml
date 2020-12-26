@@ -20,6 +20,7 @@
     <string name="action_create_match">Create Match</string>
     <string name="action_continue">Continue</string>
     <string name="action_review">Submit Review</string>
+    <string name="action_see_reviews">See Reviews</string>
 
     <!-- Errors -->
     <string name="error_invalid_username">Not a valid username</string>

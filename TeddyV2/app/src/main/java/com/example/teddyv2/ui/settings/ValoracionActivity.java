@@ -37,6 +37,7 @@ public class ValoracionActivity extends AppCompatActivity {
     RatingBar ratingBar;
     EditText review;
     Button acceptButton;
+    Button seeReviewsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +77,7 @@ public class ValoracionActivity extends AppCompatActivity {
         ratingBar = findViewById(R.id.rating_bar);
         review = findViewById(R.id.review_input_text);
         acceptButton = findViewById(R.id.review_button);
+        seeReviewsButton = findViewById((R.id.see_reviews_button));
     }
 
     /**
@@ -97,6 +99,13 @@ public class ValoracionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 almacenarValoracion();
                 finish();
+            }
+        });
+
+        seeReviewsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO: Navegar a vista de las valoraciones y mostrar
             }
         });
 
