@@ -26,9 +26,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
  */
 public class ValoracionActivity extends AppCompatActivity {
 
-    // TODO: Esto es correcto?
-    private static final String BUNDLE_KEY = "usuario-valorado";
-
     // Atributos de datos
     Valoracion valoracion;
 
