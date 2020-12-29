@@ -1,7 +1,6 @@
 package com.example.teddyv2.ui.settings;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +24,7 @@ public class ScrollingFragment extends Fragment {
     ArrayList<Match> partidos;
     int pagina;
 
+    public ScrollingFragment(){}
 
     public ScrollingFragment(ArrayList<Match> partidos){
         this.partidos = partidos;

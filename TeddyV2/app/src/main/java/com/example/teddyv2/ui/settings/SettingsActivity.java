@@ -1,29 +1,29 @@
 package com.example.teddyv2.ui.settings;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.teddyv2.R;
 import com.example.teddyv2.data.LoginRepository;
 import com.example.teddyv2.domain.matches.Match;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.core.OrderBy;
 import com.google.firebase.firestore.Query.Direction;
 
 import java.util.ArrayList;
 
 public class SettingsActivity extends AppCompatActivity {
+
+
+    String objetivo = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +68,7 @@ public class SettingsActivity extends AppCompatActivity {
         String buttonText = button.getText().toString();
         Bundle bundle = new Bundle();
         bundle.putString("USERNAME",buttonText);
+        objetivo = buttonText;
         Intent intent = new Intent(SettingsActivity.this, ValoracionActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
@@ -75,7 +76,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void onButtonClickRates(View v){
         final FragmentManager manager = getSupportFragmentManager();
-        String username = "dummy";
+        String username = LoginRepository.getInstance().getLoggedInUser().getUserId();
         RatesFragment fragment = RatesFragment.newInstance(username);
         manager.beginTransaction()
                 .add(android.R.id.content, fragment, fragment.getClass().getSimpleName())
