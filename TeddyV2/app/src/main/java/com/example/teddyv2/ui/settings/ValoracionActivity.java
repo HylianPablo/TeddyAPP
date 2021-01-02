@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -57,11 +58,9 @@ public class ValoracionActivity extends AppCompatActivity {
      * @throws AssertionError si Bundle es null
      */
     private void initAttributes(){
-        String usuarioValorado;
         LoggedInUser usuarioValorador;
         Bundle bundle = this.getIntent().getExtras();
         assert bundle != null;
-
         usuarioValorado = (String) bundle.get("USERNAME");
         usuarioValorador = LoginRepository.getInstance().getLoggedInUser();
         valoracion = new Valoracion(usuarioValorado, usuarioValorador);
