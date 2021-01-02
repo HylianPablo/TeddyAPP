@@ -9,21 +9,23 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/ValoracionesTextTitle"
+        style="@style/TeddyProccessTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Valoraciones recibidas"
-        style="@style/TeddyProccessTitle"
+        android:fontFamily="@font/days_one"
+        android:text="@string/feedback"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.045" />
+        app:layout_constraintVertical_bias="0.008" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/textView2"
         android:layout_width="327dp"
         android:layout_height="470dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="80dp"
         android:background="@color/createSearch"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +46,7 @@
         android:id="@+id/salirButton"
         android:layout_width="132dp"
         android:layout_height="62dp"
-        android:text="Volver"
+        android:text="@string/back"
         android:textSize="18dp"
         android:backgroundTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -15,7 +15,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:backgroundTint="@color/colorAccent"
-        android:text="Historial de partidos"
+        android:text="@string/match_history"
         android:textSize="18dp"
         android:onClick="onButtonClick"
         app:layout_constraintBottom_toBottomOf="parent"

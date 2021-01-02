@@ -1,4 +1,22 @@
 <resources>
+    <!-- Settings -->
+    <string name="paypal_changed_ok">Paypal account successfully updated.</string>
+    <string name="password_changed_ok">Password successfully updated.</string>
+    <string name="phone_changed_ok">Phone number successfully updated.</string>
+    <string name="password_encypted">Password is encrypted.</string>
+    <string name="personal_data">Personal data.</string>
+    <string name="user_characteristics">User characteristics.</string>
+    <string name="user_level">User level.</string>
+    <string name="user_ratings">User ratings.</string>
+    <string name="medium_user_rate">Your rating is</string>
+    <string name="no_ratings">You don\'t have any ratings yet.</string>
+    <string name="back">Back</string>
+    <string name="feedback">Feedback received</string>
+
+    <!--Buttons-->
+    <string name="match_history">Match history</string>
+    <string name="user_rates_button">User ratings</string>
+
     <!-- Untranslatable texts -->
     <string name="app_name" translatable="false">Teddy</string>
     <string name="small_placeholder" translatable="false">Lorem ipsum</string>
@@ -31,6 +49,7 @@
     <string name="error_invalid_email">Email is not valid</string>
     <string name="error_invalid_payment_account">Invalid PayPal account</string>
     <string name="error_username_taken">This username is already taken</string>
+    <string name="update_error">Data could not be updated.</string>
 
     <!-- Registration text -->
     <string name="reg_title_policy">Privacy Policy</string>

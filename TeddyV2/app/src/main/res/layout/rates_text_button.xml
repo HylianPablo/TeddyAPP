@@ -15,7 +15,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:backgroundTint="@color/colorAccent"
-        android:text="Valoraciones del usuario"
+        android:text="@string/user_rates_button"
         android:textSize="18dp"
         android:onClick="onButtonClickRates"
         app:layout_constraintBottom_toBottomOf="parent"

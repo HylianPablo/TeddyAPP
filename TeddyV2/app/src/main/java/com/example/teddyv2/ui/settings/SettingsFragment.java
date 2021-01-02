@@ -49,8 +49,9 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                     paypal.setSummary(newValue.toString());
                     usuario.setPaymentAccount(newValue.toString());
                     actualizarBD();
+                    Toast.makeText(getContext(), R.string.paypal_changed_ok, Toast.LENGTH_LONG).show();
                 }else{
-                    Toast.makeText(getContext(), "La dirección de correo electrónico es inválida.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), R.string.error_invalid_payment_account, Toast.LENGTH_LONG).show();
                 }
                 return true;
             }
@@ -61,10 +62,11 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 if(newValue.toString().length()<=5){
-                    Toast.makeText(getContext(), "La contraseña debe tener al menos 5 caracteres.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), R.string.error_invalid_password, Toast.LENGTH_LONG).show();
                 }else {
                     usuario.setPassword(EncriptationUtils.sha1(newValue.toString()));
                     actualizarBD();
+                    Toast.makeText(getContext(), R.string.password_changed_ok, Toast.LENGTH_LONG).show();
                 }
                 return true;
             }
@@ -83,11 +85,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 if(!newValue.toString().matches("[0-9\\+ ]+")){
-                    Toast.makeText(getContext(), "El número de teléfono sólo debe incluir números.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), R.string.error_invalid_phone, Toast.LENGTH_LONG).show();
                 }else {
                     phone.setSummary(newValue.toString());
                     usuario.setPhone(newValue.toString());
                     actualizarBD();
+                    Toast.makeText(getContext(), R.string.phone_changed_ok, Toast.LENGTH_LONG).show();
                 }
                 return true;
             }
@@ -143,7 +146,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         user_level.setValueIndex(UserLevel.getNumberByLevel(usuario.getLevel()));
         user_level.setSummary(user_level.getValue());
         final EditTextPreference password = findPreference("user_password");
-        password.setSummary("********");
+        password.setSummary(R.string.password_encypted);
     }
 
     private  void cargarValoraciones(){
@@ -156,9 +159,9 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 }
                 final EditTextPreference valoracion = findPreference("user_rating");
                 if(queryDocumentSnapshots.getDocuments().size() == 0){
-                    valoracion.setTitle("Todavía no tienes ninguna valoración");
+                    valoracion.setTitle(R.string.no_ratings);
                 }else{
-                    valoracion.setTitle("Su valoración es de "+(suma/queryDocumentSnapshots.getDocuments().size())+"/5.0");
+                    valoracion.setTitle(getContext().getResources().getString(R.string.medium_user_rate)+" " + (suma/queryDocumentSnapshots.getDocuments().size())+"/5.0");
                 }
             }
         });
@@ -173,7 +176,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getContext(), "No se han podido actualizar los datos", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.update_error, Toast.LENGTH_LONG).show();
                 cargarDatos();
             }
         });

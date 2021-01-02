@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Settings -->
+    <string name="paypal_changed_ok">Paypal modificado correctamente.</string>
+    <string name="password_changed_ok">Contraseña modificado correctamente.</string>
+    <string name="phone_changed_ok">Teléfono modificado correctamente.</string>
+    <string name="password_encypted">La contraseña está encriptada..</string>
+    <string name="personal_data">Datos personales.</string>
+    <string name="user_characteristics">Características del jugador.</string>
+    <string name="user_level">Nivel de jugador.</string>
+    <string name="user_ratings">Valoraciones del jugador.</string>
+    <string name="medium_user_rate">Su valoración es de </string>
+    <string name="no_ratings">Todavía no tienes ninguna valoración.</string>
+    <string name="back">Volver</string>
+    <string name="feedback">Valoraciones recibidas</string>
+
+    <!--Buttons-->
+    <string name="match_history">Historial de partidos</string>
+    <string name="user_rates_button">Valoraciones del usuario</string>
+
     <!-- Prompts -->
     <string name="prompt_email">Correo Electronico</string>
     <string name="prompt_password">Contraseña</string>
@@ -27,6 +45,7 @@
     <string name="error_invalid_email">Correo electrónico no es válido</string>
     <string name="error_invalid_payment_account">Cuenta de PayPal no válida</string>
     <string name="error_username_taken">Este nombre de usuario no está disponible</string>
+    <string name="update_error">No se han podido actualizar los datos.</string>
 
     <!-- Registration text -->
     <string name="reg_title_policy">Política de Privacidad</string>
