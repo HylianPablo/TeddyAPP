@@ -40,6 +40,7 @@
     <string name="action_continue">Continue</string>
     <string name="action_review">Submit Review</string>
     <string name="action_see_reviews">See Reviews</string>
+    <string name="payment_correct">Payment successful.</string>
 
     <!-- Errors -->
     <string name="error_invalid_username">Not a valid username</string>

@@ -36,6 +36,7 @@
     <string name="action_continue">Continuar</string>
     <string name="action_review">Enviar Valoracion</string>
     <string name="action_see_reviews">Ver Valoraciones</string>
+    <string name="payment_correct">Pago realizado correctamente.</string>
 
     <!-- Errors -->
     <string name="error_invalid_username">Nombre de usuario no válido</string>

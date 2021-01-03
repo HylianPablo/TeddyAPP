@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.teddyv2.R;
 import com.example.teddyv2.domain.matches.Match;
@@ -151,6 +152,7 @@ public class PaymentFragment extends Fragment {
     @Override
     public void onDestroy() {
         getActivity().stopService(new Intent(this.getActivity(), PayPalService.class));
+        Toast.makeText(getContext(), R.string.payment_correct, Toast.LENGTH_LONG).show();
         super.onDestroy();
     }
 }
