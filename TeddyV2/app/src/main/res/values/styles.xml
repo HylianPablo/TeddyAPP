@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -12,8 +12,69 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
+
+    <style name="TeddyButton" parent="AppTheme">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/buttonText</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TeddyButton.SecondaryColor" parent="TeddyButton">
+        <item name="android:backgroundTint">@color/btn_selector_secondary_color</item>
+        <item name="android:textColor">@color/onSecondary</item>
+    </style>
+
+    <style name="TeddyButton.PrimaryVariantColor" parent="TeddyButton">
+        <item name="android:backgroundTint">@color/btn_selector_primaryvariant_color</item>
+        <item name="android:textColor">@color/btn_selector_primaryvariant_text_color</item>
+    </style>
+
+    <style name="TeddyTextInputLayout" parent="TextAppearance.AppCompat">
+        <item name="hintTextColor">@color/secondaryVariant</item>
+        <item name="boxStrokeColor">@color/secondaryVariant</item>
+        <item name="errorTextAppearance">@style/TeddyErrorText</item>
+    </style>
+
+    <style name="TeddyErrorText" parent="AppTheme">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textColor">@color/error</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textSize">@dimen/errorText</item>
+    </style>
+
+    <style name="TeddyProccessTitle" parent="AppTheme">
+        <item name="android:textSize">@dimen/title_text_size</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/onPrimary</item>
+    </style>
+
+    <style name="TeddySubtitle" parent="AppTheme">
+        <item name="android:textSize">@dimen/subtitle_text_size</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/onPrimary</item>
+    </style>
+
+    <style name="TeddyPolicy" parent="AppTheme">
+        <item name="android:justificationMode">inter_word</item>
+        <item name="android:textColor">@color/onPrimary</item>
+        <item name="android:textSize">@dimen/policy_text_size</item>
+        <item name="android:background">@color/greyTint</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TeddyHint" parent="TeddyErrorText">
+        <item name="android:textColor">@color/onPrimary</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <!-- Deprecated? -->
+    <style name="TeddyButton.TeddySpinner" parent="TeddyButton">
+        <item name="android:background">@color/greyTint</item>
+    </style>
 
 </resources>

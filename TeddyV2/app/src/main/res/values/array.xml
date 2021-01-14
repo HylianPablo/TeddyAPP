@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="level_spinner">
+        <item>Beginner</item>
+        <item>Amateur</item>
+        <item>Expert</item>
+        <item>Professional</item>
+    </string-array>
+
+    <string-array name="matchTypes">
+        <item>Individual</item>
+        <item>In pairs</item>
+    </string-array>
+
+    <string-array name="level_explanation">
+        <item>You have little knowledge about tennis and look for a chance to learn how to play with other people.</item>
+        <item>You have experience playing tennis, but you are interested in playing to have fun.</item>
+        <item>You know how to play tennis well and are looking for a challenge to improve your skills.</item>
+        <item>You are training professionally to improve your skills in order to part-take in competitions and tournaments.</item>
+    </string-array>
+</resources>

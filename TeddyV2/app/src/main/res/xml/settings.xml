@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/onPrimary">
+    <PreferenceCategory
+        android:title="@string/personal_data">
+
+        <EditTextPreference
+            android:key="user_paypal"
+            android:icon="@drawable/baseline_monetization_on_black_18"
+            android:summary="Cuenta de Paypal actual"
+            android:title="@string/prompt_payment_account" />
+
+        <EditTextPreference
+            android:key="user_password"
+            android:icon="@drawable/baseline_vpn_key_black_18"
+            android:summary="********"
+            android:title="@string/prompt_password" />
+
+        <EditTextPreference
+            android:key="user_phone"
+            android:icon="@drawable/baseline_phone_black_18"
+            android:summary="+34 999 99 99 99"
+            android:title="@string/prompt_phone" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/user_characteristics">
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/level_spinner"
+            android:entryValues="@array/level_spinner"
+            android:icon="@drawable/baseline_account_circle_black_18_little"
+            android:key="user_level"
+            android:title="@string/user_level" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/user_ratings">
+        <EditTextPreference
+            android:icon="@drawable/baseline_favorite_black_18"
+            android:key="user_rating"
+            android:selectable="false"
+            android:title="Su valoración es de 4.8/5.">
+        </EditTextPreference>
+    </PreferenceCategory>
+
+    <Preference
+        android:layout="@layout/match_history_button"
+        android:key="match_history"></Preference>
+    <Preference
+        android:layout="@layout/rates_text_button"
+        android:key="rates_history"></Preference>
+
+</PreferenceScreen>

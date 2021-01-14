@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="level_spinner">
+        <item>Principiante</item>
+        <item>Amateur</item>
+        <item>Experto</item>
+        <item>Profesional</item>
+    </string-array>
+
+    <string-array name="matchTypes">
+        <item>Individual</item>
+        <item>Por parejas</item>
+    </string-array>
+
+    <string-array name="level_explanation">
+        <item>Tienes poca esperiencia jugando al tenis y buscas aprender jugando con otras personas.</item>
+        <item>Tienes experiencia jugando al tenis, pero te interesa jugar para divertirte.</item>
+        <item>Tienes bastante dominio del tenis y buscas un reto para mejorar tus habilidades jugando.</item>
+        <item>Entrenas a nivel profesional y te interesa practicar para participar en competiciones o torneos.</item>
+    </string-array>
+
+</resources>

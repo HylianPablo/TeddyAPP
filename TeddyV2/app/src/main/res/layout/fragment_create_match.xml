@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:clickable="true"
+    android:background="@drawable/bg"
+    tools:context=".ui.main.CreateMatchFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/matchDateCreate_layout"
+        style="@style/TeddyTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/match_date"
+        android:layout_marginBottom="@dimen/input_main_margin"
+        app:boxBackgroundColor="@color/createSearch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/startHourCreate_layout" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/matchDateCreate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.89"
+            tools:layout_editor_absoluteX="0dp"
+            android:importantForAutofill="no"
+            android:inputType="date" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/startHourCreate_layout"
+        style="@style/TeddyTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/match_start_time"
+        app:boxBackgroundColor="@color/createSearch"
+        app:errorTextAppearance="@style/TeddyErrorText"
+        app:layout_constraintBottom_toBottomOf="@+id/finishHourCreate_layout"
+        android:layout_marginBottom="@dimen/input_main_margin"
+        app:layout_constraintBottom_toTopOf="@+id/finishHourCreate_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/startHourCreate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="time"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.921"
+            tools:layout_editor_absoluteX="0dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+<com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/finishHourCreate_layout"
+    style="@style/TeddyTextInputLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/match_end_time"
+    android:layout_marginBottom="@dimen/match_spinner_margin"
+    app:layout_constraintBottom_toTopOf="@+id/matchTypeCreate"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
+</com.google.android.material.textfield.TextInputLayout>
+
+    <Spinner
+        android:id="@+id/matchTypeCreate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/spinner_bg"
+        android:spinnerMode="dropdown"
+        android:popupBackground="@color/createSearch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/difficultyTypeCreate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/match_spinner_margin"
+        android:background="@drawable/spinner_bg"
+        android:spinnerMode="dropdown"
+        android:popupBackground="@color/createSearch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/matchTypeCreate"
+        app:layout_constraintVertical_bias="0.046"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/createMatchButton"
+        style="@style/TeddyButton.PrimaryVariantColor"
+        android:enabled="false"
+        android:layout_width="186dp"
+        android:layout_height="75dp"
+        android:text="@string/action_create_match"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/difficultyTypeCreate" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

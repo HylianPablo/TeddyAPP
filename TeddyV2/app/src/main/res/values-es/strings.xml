@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Settings -->
+    <string name="paypal_changed_ok">Paypal modificado correctamente.</string>
+    <string name="password_changed_ok">Contraseña modificado correctamente.</string>
+    <string name="phone_changed_ok">Teléfono modificado correctamente.</string>
+    <string name="password_encypted">La contraseña está encriptada..</string>
+    <string name="personal_data">Datos personales.</string>
+    <string name="user_characteristics">Características del jugador.</string>
+    <string name="user_level">Nivel de jugador.</string>
+    <string name="user_ratings">Valoraciones del jugador.</string>
+    <string name="medium_user_rate">Su valoración es de </string>
+    <string name="no_ratings">Todavía no tienes ninguna valoración.</string>
+    <string name="back">Volver</string>
+    <string name="next">Siguiente</string>
+    <string name="feedback">Valoraciones recibidas</string>
+
+    <!--Buttons-->
+    <string name="match_history">Historial de partidos</string>
+    <string name="user_rates_button">Valoraciones del usuario</string>
+
+    <!-- Prompts -->
+    <string name="prompt_email">Correo Electronico</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="prompt_username">Nombre de Usuario</string>
+    <string name="prompt_password_repetition">Repeticion de Contraseña</string>
+    <string name="prompt_name">Nombre</string>
+    <string name="prompt_surname">Apellido</string>
+    <string name="prompt_phone">Numero de teléfono</string>
+    <string name="prompt_payment_account">Cuenta PayPal</string>
+
+    <!-- Actions -->
+    <string name="action_sign_in">Iniciar Sesión</string>
+    <string name="action_register">Registrarse</string>
+    <string name="action_create_match">Crear Partido</string>
+    <string name="action_continue">Continuar</string>
+    <string name="action_review">Enviar Valoracion</string>
+    <string name="action_see_reviews">Ver Valoraciones</string>
+    <string name="payment_correct">Pago realizado correctamente.</string>
+
+    <!-- Errors -->
+    <string name="error_invalid_username">Nombre de usuario no válido</string>
+    <string name="error_invalid_password">Contraseña debe tener más de 5 caracteres</string>
+    <string name="error_login">Fallo al iniciar sesión</string>
+    <string name="error_matching_passwords">Contraseñas no coinciden</string>
+    <string name="error_invalid_phone">Teléfono no válido</string>
+    <string name="error_invalid_email">Correo electrónico no es válido</string>
+    <string name="error_invalid_payment_account">Cuenta de PayPal no válida</string>
+    <string name="error_username_taken">Este nombre de usuario no está disponible</string>
+    <string name="update_error">No se han podido actualizar los datos.</string>
+
+    <!-- Registration text -->
+    <string name="reg_title_policy">Política de Privacidad</string>
+    <string name="reg_title_user">Crear usuario</string>
+    <string name="reg_title_name">Nombre y Apellido</string>
+    <string name="reg_title_contact_info">Información de contacto</string>
+    <string name="reg_title_payment">Cuenta de PayPal</string>
+    <string name="reg_title_level_selection">Selección de nivel</string>
+    <string name="reg_congrats">¡Cuenta creada exitosamente!</string>
+
+    <string name="reg_privacy_policy">
+        Para poder crear una cuenta en \"Teddy\" debe leer y aceptar la política de privacidad.\n
+        \n
+        La política de protección de datos de esta aplicación se ajusta a lo dispuesto en el
+        Reglamento General de Protección de Datos de la Unión Europea. En concreto destacamos los
+        siguientes artículos:\n
+        \n
+        1. Todos los datos de carácter personal recogidos por la aplicación son de uso exclusivo
+        para la identificación del usuario dentro de la misma y de mejorar la experiencia de
+        usuario en el uso de la aplicación.\n
+        2. Los datos personales relativos al contacto será utilizada únicamente por el personal de
+        Teddy en el caso de que sea necesario ponerse en contacto con el usuario.\n
+        3. Los datos personales relativos a la información de pago serán visibles únicamente para
+        el usuario propietario y tendrá como objetivo facilitar el pago de los servicios ofrecidos
+        por Teddy.\n
+        4. Bajo ninguna circunstancia se comercializará o distribuirá deliberadamente información
+        de carácter personal de los usuarios a cualquier persona o entidad privada.\n
+        5. Los datos de carácter personal recogidos que puedan usarse para identificar al usuario,
+        entre los cuales se incluyen el nombre y apellido; así como datos de contacto como número
+        de teléfono o correo electrónico; o cuenta de pago PayPal, estarán encriptados en la base
+        de datos.\n
+        6. La contraseña de la cuenta de usuario será encriptada usando un algoritmo de
+        encriptación SHA-1 y no podrá ser desencriptado tanto en el backend como en el frontend de
+        la aplicación, que pasarán a trabajar únicamente con la versión encriptada de la misma.\n
+        7. El usuario tendrá derecho a la modificación de sus datos personales.\n
+        8. El usuario tendrá derecho al borrado de la cuenta.\n
+        9. No se proporcionará ningún dato personal a ninguna persona o entidad ajena a Teddy, salvo
+        en el caso de que sea una entidad pública que disponga de documentación acreditativa oficial
+        y un motivo por el cual se requiera acceder a estos datos, como una orden judicial.\n
+        10. Tal y como se dispone en el RGPD, en el caso de una fuga o brecha de seguridad en la
+        base de datos que pudiese comprometer los datos de carácter personal del usuario, tanto el
+        usuario como las autoridades competentes serán debidamente informadas en un plazo de tiempo
+        no superior a 72 horas.\n
+        \n
+        Respecto a las conductas de los usuarios, se hace saber que Teddy no se hará responsable
+        de las acciones siguientes, pero que podría tomar medidas sancionadoras en su contra como
+        el la restricción de actividades en las que el usuario puede tomar parte a través de la
+        aplicación y la suspensión temporal o permanente de la cuenta de usuario. Las conductas
+        mencionadas hacen referencia a:\n
+        \n
+        1. El uso inapropiado de la aplicación con fines ajenos a los cuales se ha diseñado la
+        aplicación.\n
+        2. El uso inapropiado que los usuarios puedan hacer relativos a los datos personales de
+        otros usuarios como nombre y apellido.\n
+        3. El uso inapropiado del sistema de valoraciones para tratar de desprestigiar o
+        sobreestimar a otro usuario.\n
+        4. El malestar que pudiese generarse en el caso de seleccionar un partido cuyo nivel no sea
+        el correspondiente al del usuario.\n
+        5. El malestar que pudiese generarse en el caso de que el usuario seleccione su nivel
+        incorrectamente.\n
+        6. El uso de palabras o lenguaje en el nombre de usuario, nombre o apellido que pudiera
+        resultar ofensivo o inapropiado.\n
+        7. El uso de un lenguaje ofensivo o inapropiado en las reseñas y valoraciones realizadas
+        hacia otros usuarios.\n
+        \n
+        Por último, se hace saber al usuario que, aunque Teddy no se hará responsable, Teddy y su
+        personal colaborará plenamente con las fuerzas del orden del Estado, y se tendrá en
+        consideración la toma de acciones legales contra usuarios que:\n
+        \n
+        1. Utilicen la aplicación con fines ilícitos o que conlleve un acto castigado por la ley.\n
+        2. Utilicen la aplicación con fines de inflingir daño psicológico, emocional o físico a otra
+        persona, independientemente de su pertenencia o no al grupo de usuarios registrados dentro
+        de la aplicación.\n
+        3. Traten de manipular, distribuir o comercializar esta aplicación sin los derechos
+        intelectuales y/o de explotación correspondientes.\n
+        4. Utilicen la aplicación con el fin de causar daño o problemas al personal de la
+        aplicación.\n
+        5. Utilicen la aplicación con el fin de organizar o causar daños o destrozos en las
+        instalaciones.\n
+        6. Utilicen la cuenta de otro usuario registrado sin el consentimiento del mismo.\n
+        7. Trated de crear una cuenta con unos datos personales que no correspondan a su persona.\n
+    </string>
+    <string name="reg_checkbox_policy">He leído y acepto la política de privacidad</string>
+
+    <!-- Match creation/search text -->
+    <string name="match_start_time">Hora de inicio</string>
+    <string name="match_date">Fecha del partido</string>
+    <string name="match_search">Buscar partido</string>
+    <string name="match_end_time">Hora de fin</string>
+
+    <!-- Review text -->
+    <string name="review_hint">Escriba aquí su valoración!</string>
+
+    <!-- Other Text -->
+    <string name="welcome">Bienvenido </string>
+    <string name="tab_text_1">Búsqueda de partido</string>
+    <string name="tab_text_2">Creación de partido</string>
+    <string name="logo_description">Logotipo de la aplicación</string>
+    <string name="app_name_description">Nombre de la aplicación: Teddy</string>
+    <string name="congratulations">¡Enhorabuena!</string>
+    <string name="button">Botón</string>
+
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+
+        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
+        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
+        "technologically advanced and open to imagination and magic.\n"
+        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
+        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
+        "flexibility of the material creates new affordances that supercede those in the physical "
+        "world, without breaking the rules of physics.\n"
+        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
+        "interact, and exist in space and in relation to each other. Realistic lighting shows "
+        "seams, divides space, and indicates moving parts.\n\n"
+
+        "Bold, graphic, intentional.\n\n"
+
+        "The foundational elements of print based design typography, grids, space, scale, color, "
+        "and use of imagery guide visual treatments. These elements do far more than please the "
+        "eye. They create hierarchy, meaning, and focus. Deliberate color choices, edge to edge "
+        "imagery, large scale typography, and intentional white space create a bold and graphic "
+        "interface that immerse the user in the experience.\n"
+        "An emphasis on user actions makes core functionality immediately apparent and provides "
+        "waypoints for the user.\n\n"
+
+        "Motion provides meaning.\n\n"
+
+        "Motion respects and reinforces the user as the prime mover. Primary user actions are "
+        "inflection points that initiate motion, transforming the whole design.\n"
+        "All action takes place in a single environment. Objects are presented to the user without "
+        "breaking the continuity of experience even as they transform and reorganize.\n"
+        "Motion is meaningful and appropriate, serving to focus attention and maintain continuity. "
+        "Feedback is subtle yet clear. Transitions are efﬁcient yet coherent.\n\n"
+
+        "3D world.\n\n"
+
+        "The material environment is a 3D space, which means all objects have x, y, and z "
+        "dimensions. The z-axis is perpendicularly aligned to the plane of the display, with the "
+        "positive z-axis extending towards the viewer. Every sheet of material occupies a single "
+        "position along the z-axis and has a standard 1dp thickness.\n"
+        "On the web, the z-axis is used for layering and not for perspective. The 3D world is "
+        "emulated by manipulating the y-axis.\n\n"
+
+        "Light and shadow.\n\n"
+
+        "Within the material environment, virtual lights illuminate the scene. Key lights create "
+        "directional shadows, while ambient light creates soft shadows from all angles.\n"
+        "Shadows in the material environment are cast by these two light sources. In Android "
+        "development, shadows occur when light sources are blocked by sheets of material at "
+        "various positions along the z-axis. On the web, shadows are depicted by manipulating the "
+        "y-axis only. The following example shows the card with a height of 6dp.\n\n"
+
+        "Resting elevation.\n\n"
+
+        "All material objects, regardless of size, have a resting elevation, or default elevation "
+        "that does not change. If an object changes elevation, it should return to its resting "
+        "elevation as soon as possible.\n\n"
+
+        "Component elevations.\n\n"
+
+        "The resting elevation for a component type is consistent across apps (e.g., FAB elevation "
+        "does not vary from 6dp in one app to 16dp in another app).\n"
+        "Components may have different resting elevations across platforms, depending on the depth "
+        "of the environment (e.g., TV has a greater depth than mobile or desktop).\n\n"
+
+        "Responsive elevation and dynamic elevation offsets.\n\n"
+
+        "Some component types have responsive elevation, meaning they change elevation in response "
+        "to user input (e.g., normal, focused, and pressed) or system events. These elevation "
+        "changes are consistently implemented using dynamic elevation offsets.\n"
+        "Dynamic elevation offsets are the goal elevation that a component moves towards, relative "
+        "to the component’s resting state. They ensure that elevation changes are consistent "
+        "across actions and component types. For example, all components that lift on press have "
+        "the same elevation change relative to their resting elevation.\n"
+        "Once the input event is completed or cancelled, the component will return to its resting "
+        "elevation.\n\n"
+
+        "Avoiding elevation interference.\n\n"
+
+        "Components with responsive elevations may encounter other components as they move between "
+        "their resting elevations and dynamic elevation offsets. Because material cannot pass "
+        "through other material, components avoid interfering with one another any number of ways, "
+        "whether on a per component basis or using the entire app layout.\n"
+        "On a component level, components can move or be removed before they cause interference. "
+        "For example, a floating action button (FAB) can disappear or move off screen before a "
+        "user picks up a card, or it can move if a snackbar appears.\n"
+        "On the layout level, design your app layout to minimize opportunities for interference. "
+        "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
+        "when a user tries to pick up one of cards.\n\n"
+    </string>
+</resources>

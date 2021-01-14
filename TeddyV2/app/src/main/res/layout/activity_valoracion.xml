@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@drawable/bg"
+    tools:context=".ui.settings.ValoracionActivity">
+
+    <include layout="@layout/custom_appbar"
+        android:id="@+id/appBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/reviewed_user"
+        style="@style/TeddyProccessTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/appBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/small_placeholder"
+        android:layout_marginTop="@dimen/rating_vertical_margin" />
+
+    <RatingBar
+        android:id="@+id/rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/rating_bar_margin"
+        android:numStars="@integer/num_stars"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reviewed_user"
+        android:layout_marginTop="@dimen/rating_vertical_margin"
+        android:stepSize="1"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/input_lateral_margin"
+        android:layout_marginTop="@dimen/rating_vertical_margin"
+        android:layout_marginEnd="@dimen/input_lateral_margin"
+        android:hint="@string/review_hint"
+        app:errorTextAppearance="@style/TeddyErrorText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rating_bar" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/review_input_text"
+            style="@style/TeddyTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/policy_height"
+            android:selectAllOnFocus="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/review_button"
+        style="@style/TeddyButton.SecondaryColor"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginStart="@dimen/button_lateral_margin"
+        android:layout_marginTop="@dimen/button_top_margin"
+        android:layout_marginEnd="@dimen/button_lateral_margin"
+        android:layout_marginBottom="@dimen/button_top_margin"
+        android:enabled="false"
+        android:text="@string/action_review"
+        app:layout_constraintBottom_toTopOf="@+id/see_reviews_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/see_reviews_button"
+        style="@style/TeddyButton.SecondaryColor"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginStart="@dimen/button_lateral_margin"
+        android:layout_marginTop="@dimen/button_top_margin"
+        android:layout_marginEnd="@dimen/button_lateral_margin"
+        android:enabled="true"
+        android:text="@string/action_see_reviews"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
